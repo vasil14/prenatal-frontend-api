@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
+import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+import Cards from '../cards/Cards';
 
 const ProductIndex = () => {
   const { products, getProducts } = useContext(ProductContext);
@@ -18,41 +19,26 @@ const ProductIndex = () => {
           New Product
         </Link>
       </div>
-      {/* <div className="overflow-x-auto relative">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="py-3 px-6">
-                Product name
-              </th>
-              <th scope="col" className="py-3 px-6">
-                Color
-              </th>
-              <th scope="col" className="py-3 px-6"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => {
-              return (
-                <tr
-                  key={product.id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                >
-                  <td className="py-4 px-6">{product.title}</td>
-                  <td className="py-4 px-6">{product.colore}</td>
-                  <td className="py-4 px-6">$2999</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div> */}
-      <div className="flex flex-wrap justify-between ">
+
+      <div className="grid grid-cols-4 justify-between ">
         {products.map((product, index) => {
           return (
-            <div className={`w-[280px] h-[360px] mb-[40px]`} key={index}>
-              <img src={product.image_link} />
+            <div className="w-[300px] ">
+              <Cards
+                image={
+                  <a href={product.link}>
+                    <img src={product.image_link} />
+                  </a>
+                }
+                price={product.price}
+                vipPrice={product.vip_price}
+                marke={product.marche}
+                title={product.title}
+              />
             </div>
+            // <div className={`w-[280px] h-[360px] mb-[40px]`} key={index}>
+            //   <img src={product.image_link} />
+            // </div>
           );
         })}
       </div>
