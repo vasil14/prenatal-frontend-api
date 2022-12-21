@@ -1,13 +1,13 @@
-import { createContext, useState } from 'react';
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000/api/v1/';
+import { createContext, useState } from "react";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [formValues, setFormValues] = useState({
-    name: '',
-    color: '',
+    name: "",
+    color: "",
   });
 
   const [products, setProducts] = useState([]);
@@ -19,12 +19,12 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProducts = async () => {
-    const apiProducts = await axios.get('products');
+    const apiProducts = await axios.get("products");
     setProducts(apiProducts.data);
   };
 
   const getProduct = async (id) => {
-    const response = await axios.get('products/' + id);
+    const response = await axios.get("products/" + id);
     setProduct(response.data);
   };
 

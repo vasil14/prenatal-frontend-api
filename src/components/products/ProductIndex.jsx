@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import ProductContext from '../../Context/ProductContext';
-import Cards from '../cards/Cards';
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import ProductContext from "../../Context/ProductContext";
+import Cards from "../cards/Cards";
 
 const ProductIndex = () => {
   const { products, getProducts } = useContext(ProductContext);
@@ -10,20 +10,11 @@ const ProductIndex = () => {
   }, []);
   console.log(products);
   return (
-    <div className="mt-12 ">
-      <div className="flex justify-end m-2 p-2">
-        <Link
-          to="/products/create"
-          className="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-md"
-        >
-          New Product
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-4 justify-between ">
+    <div className="mt-12 flex justify-between">
+      <div className=" grid xl:grid-cols-4 xl:gap-1 md:grid-cols-3 grid-cols-2 mx-auto  ">
         {products.map((product, index) => {
           return (
-            <div className="w-[300px] ">
+            <div key={index} className="w-[300px] ">
               <Cards
                 image={
                   <a href={product.link}>
