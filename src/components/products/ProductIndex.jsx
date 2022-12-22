@@ -10,11 +10,11 @@ const ProductIndex = () => {
   }, []);
   console.log(products);
   return (
-    <div className="mt-12 flex justify-between">
-      <div className=" grid xl:grid-cols-4 xl:gap-1 md:grid-cols-3 grid-cols-2 mx-auto  ">
+    <div className="mt-12 mx-auto">
+      <div className="flex flex-wrap md:justify-between justify-around items-center ">
         {products.map((product, index) => {
           return (
-            <div key={index} className="w-[300px] ">
+            <div key={index} className="w-[270px] ">
               <Cards
                 image={
                   <a href={product.link}>

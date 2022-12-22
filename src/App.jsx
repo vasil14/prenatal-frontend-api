@@ -5,13 +5,18 @@ import ProductIndex from "./components/products/ProductIndex";
 import ProductCreate from "./components/products/ProductCreate";
 import ProductEdit from "./components/products/ProductEdit";
 import Navbar from "./components/Navbar";
+import banner from "./assets/banner.jpg";
 
 function App() {
   return (
     <ProductProvider>
-      <div className=" ">
+      <div>
         <Navbar />
-        <div className="max-w-[1300px] mx-auto">
+
+        <div className="xl:max-w-[1300px] lg:max-w-[900px] md:max-w-[650px] xs:max-w-[600px] mx-auto">
+          <div>
+            <img className="mt-7" src={banner} alt="banner" />
+          </div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<ProductIndex />} />
