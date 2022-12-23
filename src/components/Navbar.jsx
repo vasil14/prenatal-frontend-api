@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../assets/prenatal.png";
 import icons from "../assets/nav_icons.png";
 import searchIcon from "../assets/search_icon.png";
@@ -8,7 +10,13 @@ const Navbar = () => {
   return (
     <div className="border-b-2 h-[167px] ">
       <div className="flex flex-row justify-between max-w-[1300px] mx-auto">
-        <img src={logo} alt="logo" className="  mt-6 left w-[208px] h-[40px]" />
+        <Link to="/">
+          <img
+            src={logo}
+            alt="logo"
+            className="  mt-6 left w-[208px] h-[40px]"
+          />
+        </Link>
         <div className="basis-1/2 relative center mt-4 rounded-lg">
           <div className="absolute top-4 left-3">
             <p>Che prodotto stai cercando?</p>

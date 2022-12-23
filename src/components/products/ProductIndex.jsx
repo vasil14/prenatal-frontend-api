@@ -17,9 +17,9 @@ const ProductIndex = () => {
             <div key={index} className="w-[270px] ">
               <Cards
                 image={
-                  <a href={product.link}>
+                  <Link to={`${product.id}`}>
                     <img src={product.image_link} />
-                  </a>
+                  </Link>
                 }
                 price={product.price}
                 vipPrice={product.vip_price}

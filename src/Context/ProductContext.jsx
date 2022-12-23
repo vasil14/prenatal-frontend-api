@@ -25,7 +25,7 @@ export const ProductProvider = ({ children }) => {
 
   const getProduct = async (id) => {
     const response = await axios.get("products/" + id);
-    setProduct(response.data);
+    setProduct(response.data[0]);
   };
 
   return (
