@@ -18,9 +18,9 @@ const Navbar = () => {
           />
         </Link>
         <div className="basis-1/2 relative center mt-4 rounded-lg">
-          <div className="absolute top-4 left-3">
+          {/* <div className="absolute top-4 left-3">
             <p>Che prodotto stai cercando?</p>
-          </div>
+          </div> */}
           <input
             type="text"
             name="search"
@@ -46,9 +46,9 @@ const Navbar = () => {
                 className={`${
                   index == categories.length - 1 ? "mr-0" : "mr-5"
                 }`}
-                key={index}
+                key={index} 
               >
-                {category}
+                <Link to={`products/${category}`}>{category}</Link>
               </div>
             );
           })}

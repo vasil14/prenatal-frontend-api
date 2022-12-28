@@ -1,5 +1,5 @@
 export const categories = [
-  "Mama",
+  "Mamma",
   "Bambina",
   "Bambino",
   "Casa",

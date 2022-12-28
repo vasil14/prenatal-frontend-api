@@ -1,23 +1,24 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductContext from "../../Context/ProductContext";
 import Cards from "../cards/Cards";
 
 const ProductIndex = () => {
-  const { products, getProducts } = useContext(ProductContext);
+  const { productsCategory, getProductsCategory } = useContext(ProductContext);
+  let {categoryName} = useParams();
   useEffect(() => {
-    getProducts();
-  }, []);
-  console.log(products);
+    getProductsCategory(categoryName);
+  }, [categoryName]);
+  console.log(categoryName);
   return (
     <div className="mt-12 mx-auto">
       <div className="flex flex-wrap md:justify-between justify-around items-center ">
-        {products.map((product, index) => {
+        {productsCategory.map((product, index) => {
           return (
             <div key={index} className="w-[270px] ">
               <Cards
                 image={
-                  <Link to={`${product.id}`}>
+                  <Link key={index} to={`${product.id}`}>
                     <img src={product.image_link} />
                   </Link>
                 }

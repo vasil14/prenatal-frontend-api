@@ -12,6 +12,8 @@ export const ProductProvider = ({ children }) => {
 
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
+  const [productsCategory, setProductsCategory] = useState([]);
+
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +30,11 @@ export const ProductProvider = ({ children }) => {
     setProduct(response.data[0]);
   };
 
+  const getProductsCategory = async (categoryName) =>{
+    const response = await axios.get('products/categoria-prodotto/' + categoryName)
+    setProductsCategory(response.data)
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -37,6 +44,8 @@ export const ProductProvider = ({ children }) => {
         getProducts,
         onChange,
         formValues,
+        productsCategory,
+        getProductsCategory
       }}
     >
       {children}

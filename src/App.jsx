@@ -1,8 +1,7 @@
-import { Routes, Route, Link } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import { ProductProvider } from "./Context/ProductContext";
 import Home from "./components/Home";
 import ProductIndex from "./components/products/ProductIndex";
-import ProductCreate from "./components/products/ProductCreate";
 import ProductEdit from "./components/products/ProductEdit";
 import Navbar from "./components/Navbar";
 import banner from "./assets/banner.jpg";
@@ -17,12 +16,11 @@ function App() {
           <div>
             <img className="mt-7" src={banner} alt="banner" />
           </div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<ProductIndex />} />
-            <Route path="/products/create" element={<ProductCreate />} />
-            <Route path="/products/:id" element={<ProductEdit />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/:categoryName" element={<ProductIndex />} />
+              <Route path="/products/:categoryName/:id" element={<ProductEdit />} />
+            </Routes>
         </div>
       </div>
     </ProductProvider>
