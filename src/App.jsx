@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ProductProvider } from "./Context/ProductContext";
 import Home from "./components/Home";
 import ProductIndex from "./components/products/ProductIndex";
@@ -16,11 +16,14 @@ function App() {
           <div>
             <img className="mt-7" src={banner} alt="banner" />
           </div>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products/:categoryName" element={<ProductIndex />} />
-              <Route path="/products/:categoryName/:id" element={<ProductEdit />} />
-            </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/:categoryName" element={<ProductIndex />} />
+            <Route
+              path="/products/:categoryName/:id"
+              element={<ProductEdit />}
+            />
+          </Routes>
         </div>
       </div>
     </ProductProvider>

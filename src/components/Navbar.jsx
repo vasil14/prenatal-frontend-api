@@ -18,13 +18,13 @@ const Navbar = () => {
           />
         </Link>
         <div className="basis-1/2 relative center mt-4 rounded-lg">
-          {/* <div className="absolute top-4 left-3">
+          <div className="absolute top-4 left-3">
             <p>Che prodotto stai cercando?</p>
-          </div> */}
+          </div>
           <input
             type="text"
             name="search"
-            className="h-14 w-full bg-transparent pl-10 pr-20  focus:outline-none underline "
+            className="h-14 w-full bg-transparent pl-10 pr-20 outline-none focus:outline-none underline "
           />
           <hr className="mx-auto max-w-95 h-[2px] bg-slate-400 rounded border-0 top-3"></hr>
           <div className="absolute top-4 right-4">
@@ -46,7 +46,7 @@ const Navbar = () => {
                 className={`${
                   index == categories.length - 1 ? "mr-0" : "mr-5"
                 }`}
-                key={index} 
+                key={index}
               >
                 <Link to={`products/${category}`}>{category}</Link>
               </div>
