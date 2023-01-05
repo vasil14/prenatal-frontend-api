@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { Carousel } from "flowbite-react";
+import { Link } from "react-router-dom";
 
-const Cards = ({ image, price, vipPrice, marke, title }) => {
+const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
+  const [hover, setHover] = useState(false);
+  const showCarusel = hover ? "Show" : "";
+
   return (
-    <div className="w-full max-w-sm bg-white ">
-      <div className="mb-10">{image}</div>
+    <div
+      className="relative w-full max-w-sm bg-white hover:scale-110 duration-200 ease-in-out"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      {/* <div className="absolute top-2 w-[50px] h-[20px] bg-black"></div> */}
+      <Link to={`${id}`}>
+        <img src={image} alt={image} />
+        <Carousel>
+          <img src={images[0].link} alt={image} />
+        </Carousel>
+      </Link>
 
       <div className="flex flex-row justify-between px-5 pb-5">
         <div className="text-red-500">€ {price}</div>
@@ -18,7 +33,9 @@ const Cards = ({ image, price, vipPrice, marke, title }) => {
 
       <div>
         <h3>{marke}</h3>
-        <span>{title}</span>
+        <Link to={`${id}`}>
+          <span>{title}</span>
+        </Link>
       </div>
 
       {/* <div>

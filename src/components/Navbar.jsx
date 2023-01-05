@@ -17,14 +17,15 @@ const Navbar = () => {
             className="  mt-6 left w-[208px] h-[40px]"
           />
         </Link>
-        <div className="basis-1/2 relative center mt-4 rounded-lg">
+        <div className="basis-1/2 relative center mt-4 border-0">
           <div className="absolute top-4 left-3">
-            <p>Che prodotto stai cercando?</p>
+            {/* <p>Che prodotto stai cercando?</p> */}
           </div>
           <input
             type="text"
             name="search"
-            className="h-14 w-full bg-transparent pl-10 pr-20 outline-none focus:outline-none underline "
+            className="h-14 w-full bg-transparent border-0 "
+            placeholder="Che prodotto stai cercando?"
           />
           <hr className="mx-auto max-w-95 h-[2px] bg-slate-400 rounded border-0 top-3"></hr>
           <div className="absolute top-4 right-4">

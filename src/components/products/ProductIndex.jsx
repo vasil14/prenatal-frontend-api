@@ -19,11 +19,9 @@ const ProductIndex = () => {
           return (
             <div key={index} className="w-[270px] ">
               <Cards
-                image={
-                  <Link key={index} to={`${product.id}`}>
-                    <img src={product.image_link} />
-                  </Link>
-                }
+                images={product.images}
+                image={product.image_link}
+                id={product.id}
                 price={product.price}
                 vipPrice={product.vip_price}
                 marke={product.marche}
