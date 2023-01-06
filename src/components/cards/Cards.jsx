@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
   const [hover, setHover] = useState(false);
   const showCarusel = hover ? "Show" : "";
+  console.log(images);
 
   return (
     <div
@@ -13,12 +14,19 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
       onMouseLeave={() => setHover(false)}
     >
       {/* <div className="absolute top-2 w-[50px] h-[20px] bg-black"></div> */}
-      <Link to={`${id}`}>
-        <img src={image} alt={image} />
-        <Carousel>
-          <img src={images[0].link} alt={image} />
-        </Carousel>
-      </Link>
+      <Carousel className="w-[270px] h-[360px] scroll-none">
+        <Link to={`${id}`}>
+          <img src={image} alt={image} />
+        </Link>
+
+        {images?.map((data, index) => {
+          return (
+            <Link to={`${id}`}>
+              <img key={index} src={data.link} alt={data.link} />
+            </Link>
+          );
+        })}
+      </Carousel>
 
       <div className="flex flex-row justify-between px-5 pb-5">
         <div className="text-red-500">€ {price}</div>
