@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/prenatal.png";
-import icons from "../assets/nav_icons.png";
+import cart from "../assets/cart.png";
+import user from "../assets/user.png";
+import location from "../assets/location.png";
 import searchIcon from "../assets/search_icon.png";
 import { categories, specialCat } from "../constants/index";
+import Account from "./user/Account";
 
 const Navbar = () => {
   return (
@@ -36,7 +39,13 @@ const Navbar = () => {
           <p className="text-[9px] text-right ">
             PRENOTA & RITIRA <br /> IN NEGOZIO
           </p>
-          <img src={icons} alt="icons" className="ml-2 w-[121px] h-[26px]" />
+          <div className="flex flex-row h-[25px]">
+            <img src={location} alt="icons" className="ml-4 " />
+            <div className="ml-4 ">
+              <Account />
+            </div>
+            <img src={cart} alt="icons" className="ml-4 " />
+          </div>
         </div>
       </div>
       <div className="flex flex-row justify-between max-w-[1300px] mx-auto mt-10">

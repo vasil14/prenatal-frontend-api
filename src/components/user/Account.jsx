@@ -1,0 +1,41 @@
+import React from "react";
+import user from "../../assets/user.png";
+import { Dropdown, Avatar } from "flowbite-react";
+import { Link } from "react-router-dom";
+
+const Icon = () => {
+  return <img src={user} alt="user" className="w-[26px]" />;
+};
+
+const Account = () => {
+  return (
+    <div>
+      <Dropdown label={<Icon />} arrowIcon={false} inline={true}>
+        <Dropdown.Item href="/login">
+          <Link to="/login">
+            <button
+              className="bg-[#e72b6f] rounded-full w-[200px] h-[40px] mt-[8px] text-white text-[16px]"
+              onclick="window.location.href='/login';"
+            >
+              ACCEDI
+            </button>
+          </Link>
+        </Dropdown.Item>
+
+        <div className="flex flex-row mx-auto mt-2 ml-2 mb-2">
+          <p className="text-[#e72b6f] text-[13px] font-poppins mr-1">
+            Nuovo su Prénatal?{" "}
+          </p>
+          <a
+            className="underline text-[#e72b6f] text-[13px] font-poppins "
+            href="/register"
+          >
+            Registrati qui
+          </a>
+        </div>
+      </Dropdown>
+    </div>
+  );
+};
+
+export default Account;
