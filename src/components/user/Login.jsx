@@ -1,16 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/prenatal.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/prenatal.png";
 
 const Login = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="relative flex flex-col justify-center overflow-hidden">
       <Link to="/">
         <img className="w-50 mt-20 mb-5 mx-auto " src={logo} alt="logo" />
       </Link>
-      <div className=" bg-white w-[450px] px-8 pt-10 pb-3 rounded-md mx-auto">
-        <h1 className="text-3xl font-poppins ">Sign in</h1>
-        <form className="mt-6">
+      <div className=" bg-white w-[450px] px-8 pt-10 pb-3 rounded-md mx-auto drop-shadow-lg mb-5">
+        <h1 className="text-3xl font-poppins ">Effettua il login</h1>
+        <form onSubmit={onSubmit} className="mt-6">
           <div className="mb-2">
             <input
               type="email"

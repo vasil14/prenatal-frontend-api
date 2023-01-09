@@ -1,22 +1,57 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { Link } from 'react-router-dom';
-import logo from '../assets/prenatal.png';
-import RadioButton from './RadioButton';
+import React, { useRef, useState, useContext } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
+import logo from "../../assets/prenatal.png";
+import axiosClient from "../../axios-client";
+import RadioButton from "../RadioButton";
+import ProductContext from "../../Context/ProductContext";
 
 const Register = () => {
+  const nameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const { setUser, setToken } = useContext(ProductContext);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      lastName: lastNameRef.current.value,
+    };
+    console.log(payload);
+
+    axiosClient
+      .post("/register", payload)
+      .then(({ data }) => {
+        setUser(data.user);
+        setToken(data.token);
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          setErrors(response.data.errors);
+        }
+      });
+  };
+
   const [startDate, setStartDate] = useState(new Date());
   return (
     <div className="relative flex flex-col justify-center overflow-hidden">
       <Link to="/">
         <img className="w-50 mt-20 mb-5 mx-auto " src={logo} alt="logo" />
       </Link>
-      <div className=" bg-white w-[450px] px-8 pt-10 pb-3 rounded-md mx-auto">
+      <div className=" bg-white w-[450px] px-8 pt-10 pb-3 rounded-md mx-auto drop-shadow-lg mb-5">
         <h1 className="text-3xl font-poppins ">Registrati</h1>
-        <form className="mt-6">
+        <form onSubmit={onSubmit} className="mt-6">
           <div className="mb-2">
             <input
+              ref={emailRef}
               type="email"
               placeholder="Email"
               className="block w-full px-4 py-2 my-4 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -24,6 +59,7 @@ const Register = () => {
           </div>
           <div className="mb-2">
             <input
+              ref={passwordRef}
               type="password"
               placeholder="Password"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -36,6 +72,7 @@ const Register = () => {
           <div className="grid grid-cols-2 gap-5">
             <div className=" mb-2">
               <input
+                ref={nameRef}
                 type="text"
                 placeholder="Nome"
                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -43,6 +80,7 @@ const Register = () => {
             </div>
             <div className="mb-2">
               <input
+                ref={lastNameRef}
                 type="text"
                 placeholder="Cognome"
                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -73,15 +111,15 @@ const Register = () => {
               className="form-check-label inline-block font-poppins text-[15px]"
               htmlFor="flexCheckDefault"
             >
-              Dichiaro di aver letto ed accettato{' '}
+              Dichiaro di aver letto ed accettato{" "}
               <a href="" className="text-[#e72b6f]">
                 l’informativa sui dati personali
-              </a>{' '}
-              e di aver preso visione ed accettato il{' '}
+              </a>{" "}
+              e di aver preso visione ed accettato il{" "}
               <a href="" className="text-[#e72b6f]">
                 Regolamento della Prenatal Card
-              </a>{' '}
-              o il{' '}
+              </a>{" "}
+              o il{" "}
               <a href="" className="text-[#e72b6f]">
                 Regolamento della Prenatal VIP Card
               </a>

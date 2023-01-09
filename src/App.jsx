@@ -1,11 +1,11 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { ProductProvider } from './Context/ProductContext';
-import Home from './components/Home';
-import ProductIndex from './components/products/ProductIndex';
-import ProductEdit from './components/products/ProductEdit';
-import Navbar from './components/Navbar';
-import Login from './components/Login';
-import Register from './components/Register';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { ProductProvider } from "./Context/ProductContext";
+import Home from "./components/Home";
+import ProductIndex from "./components/products/ProductIndex";
+import ProductEdit from "./components/products/ProductEdit";
+import Navbar from "./components/Navbar";
+import Login from "./components/user/Login";
+import Register from "./components/user/Register";
 
 function App() {
   const location = useLocation();

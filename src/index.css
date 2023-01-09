@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   background-color: rgb(241, 241, 241);
-}
+} */
 
-[type='radio'],
-[type='checkbox'] {
+[type="radio"],
+[type="checkbox"] {
   color: #404040 !important;
 }
 
-[type='radio']:focus,
-[type='checkbox']:focus {
+[type="radio"]:focus,
+[type="checkbox"]:focus {
   --tw-ring-color: none !important;
   color: #404040 !important ;
 }

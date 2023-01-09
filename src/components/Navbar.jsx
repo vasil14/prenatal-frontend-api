@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import logo from "../assets/prenatal.png";
 import cart from "../assets/cart.png";
-import user from "../assets/user.png";
 import location from "../assets/location.png";
 import searchIcon from "../assets/search_icon.png";
 import { categories, specialCat } from "../constants/index";

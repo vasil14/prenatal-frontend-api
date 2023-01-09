@@ -17,7 +17,7 @@ const ProductIndex = () => {
       <div className="flex flex-wrap md:justify-between justify-around items-center ">
         {productsCategory?.map((product, index) => {
           return (
-            <div key={index} className="w-[270px] ">
+            <div key={index} className="w-[270px] mb-10">
               <Cards
                 images={product.images}
                 image={product.image_link}

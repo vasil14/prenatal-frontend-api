@@ -13,8 +13,11 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
+      <Link to={`${id}`}>
+        <img src={image} alt={image} />
+      </Link>
       {/* <div className="absolute top-2 w-[50px] h-[20px] bg-black"></div> */}
-      <Carousel className="w-[270px] h-[360px] scroll-none">
+      {/* <Carousel className="w-[270px] h-[360px] scroll-none">
         <Link to={`${id}`}>
           <img src={image} alt={image} />
         </Link>
@@ -26,7 +29,7 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
             </Link>
           );
         })}
-      </Carousel>
+      </Carousel> */}
 
       <div className="flex flex-row justify-between px-5 pb-5">
         <div className="text-red-500">€ {price}</div>
