@@ -14,15 +14,26 @@ const Register = () => {
   const passwordRef = useRef();
 
   const { setUser, setToken } = useContext(ProductContext);
+  const [getGender, setGender] = useState();
+  const [startDate, setStartDate] = useState(new Date());
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const date =
+      startDate.getFullYear() +
+      "/" +
+      (startDate.getMonth() + 1) +
+      "/" +
+      startDate.getDate();
 
     const payload = {
       name: nameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
       lastName: lastNameRef.current.value,
+      gender: getGender,
+      birthday: date,
     };
     console.log(payload);
 
@@ -40,7 +51,6 @@ const Register = () => {
       });
   };
 
-  const [startDate, setStartDate] = useState(new Date());
   return (
     <div className="relative flex flex-col justify-center overflow-hidden">
       <Link to="/">
@@ -88,7 +98,6 @@ const Register = () => {
             </div>
           </div>
           <DatePicker
-            placeholderText="sjkdfh"
             className="w-full rounded-md mt-2"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -97,8 +106,42 @@ const Register = () => {
           <div className="flex flex-row justify-between mt-5">
             <h1>Sesso</h1>
             <div className="flex flex-row ">
-              <RadioButton descritpion="Femmina" id="sesso" />
-              <RadioButton descritpion="Maschio" id="sesso" />
+              {/* <RadioButton
+                value="Femmina"
+                onChange={(e) => setGender(e.target.value)}
+                descritpion="Femmina"
+                id="sesso"
+              />
+              <RadioButton
+                value="Maschio"
+                onChange={(e) => setGender(e.target.value)}
+                descritpion="Maschio"
+                id="sesso"
+              /> */}
+              <div className="form-check flex justify-items-center ml-4">
+                <input
+                  className="form-check-input rounded-full h-[17px] w-[17px] appearance-none  bg-white checked:border-none checked:bg-secondary focus:outline-none transition duration-200 bg-repeat cursor-pointer mr-[10px]"
+                  type="radio"
+                  name="sesso"
+                  value="Femmina"
+                  onChange={(e) => setGender(e.target.value)}
+                />
+                <label className="form-check-label inline-block font-poppins font-normal text-[15px] text-primary">
+                  Femmina
+                </label>
+              </div>
+              <div className="form-check flex justify-items-center ml-4">
+                <input
+                  className="form-check-input rounded-full h-[17px] w-[17px] appearance-none  bg-white checked:border-none checked:bg-secondary focus:outline-none transition duration-200 bg-repeat cursor-pointer mr-[10px]"
+                  type="radio"
+                  name="sesso"
+                  value="Maschio"
+                  onChange={(e) => setGender(e.target.value)}
+                />
+                <label className="form-check-label inline-block font-poppins font-normal text-[15px] text-primary">
+                  Maschio
+                </label>
+              </div>
             </div>
           </div>
           <div className="flex flex-row form-check mt-12  ">
@@ -112,15 +155,15 @@ const Register = () => {
               htmlFor="flexCheckDefault"
             >
               Dichiaro di aver letto ed accettato{" "}
-              <a href="" className="text-[#e72b6f]">
+              <a href="#" className="text-[#e72b6f]">
                 l’informativa sui dati personali
               </a>{" "}
               e di aver preso visione ed accettato il{" "}
-              <a href="" className="text-[#e72b6f]">
+              <a href="#" className="text-[#e72b6f]">
                 Regolamento della Prenatal Card
               </a>{" "}
               o il{" "}
-              <a href="" className="text-[#e72b6f]">
+              <a href="#" className="text-[#e72b6f]">
                 Regolamento della Prenatal VIP Card
               </a>
               . *

@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/prenatal.png";
+import ProductContext from "../../Context/ProductContext";
+import axiosClient from "../../axios-client";
 
 const Login = () => {
+  const { setUser, setToken } = useContext(ProductContext);
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const payload = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+    console.log(payload);
+
+    axiosClient
+      .post("/login", payload)
+      .then(({ data }) => {
+        setUser(data.user);
+        setToken(data.token);
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          setErrors(response.data.errors);
+        }
+      });
   };
 
   return (
@@ -17,6 +43,7 @@ const Login = () => {
         <form onSubmit={onSubmit} className="mt-6">
           <div className="mb-2">
             <input
+              ref={emailRef}
               type="email"
               placeholder="Email"
               className="block w-full px-4 py-2 my-4 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -24,6 +51,7 @@ const Login = () => {
           </div>
           <div className="mb-2">
             <input
+              ref={passwordRef}
               type="password"
               placeholder="Password"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
