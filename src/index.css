@@ -18,3 +18,13 @@
   --tw-ring-color: none !important;
   color: #404040 !important ;
 }
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.404);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

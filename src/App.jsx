@@ -6,6 +6,7 @@ import ProductEdit from "./components/products/ProductEdit";
 import Navbar from "./components/Navbar";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
+import CategoryDropdown from "./components/CategoryDropdown";
 
 function App() {
   const location = useLocation();

@@ -1,11 +1,11 @@
 import React, { useRef, useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import logo from "../../assets/prenatal.png";
 import ProductContext from "../../Context/ProductContext";
 import axiosClient from "../../axios-client";
-import { Navigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [authenticated, setauthenticated] = useState(null);
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const Login = () => {
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
+        navigate("/");
       })
       .catch((err) => {
         const response = err.response;
