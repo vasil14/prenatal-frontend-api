@@ -54,6 +54,8 @@ export const ProductProvider = ({ children }) => {
     setProductsCategory(response.data);
   };
 
+  // const getCategoriesWithChildren = async();
+
   return (
     <ProductContext.Provider
       value={{

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import axiosClient from "../axios-client";
 import logo from "../assets/prenatal.png";
 import cart from "../assets/cart.png";
 import location from "../assets/location.png";
@@ -12,10 +12,12 @@ import Backdrop from "./Backdrop";
 
 const Navbar = () => {
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
+  const [getCategories, setCategories] = useState([]);
 
-  const categoryHandler = () => {
+  function categoryHandler(category) {
     setCategoryIdOpen(true);
-  };
+    setCategories(category);
+  }
 
   const closeCategory = () => {
     setCategoryIdOpen(false);
@@ -65,14 +67,19 @@ const Navbar = () => {
             {categories.map((category, index) => {
               return (
                 <div
-                  onClick={categoryHandler}
+                  onClick={() => categoryHandler(category)}
                   className={`${
                     index == categories.length - 1 ? "mr-0" : "mr-5"
                   } cursor-pointer`}
                   key={index}
                 >
-                  {category}
-                  {/* <Link to={`products/${category}`}>{category}</Link> */}
+                  {!categoryIsOpen && category}
+
+                  {categoryIsOpen && (
+                    <div onClick={closeCategory}>
+                      <Link to={`products/${category}`}>{category}</Link>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -94,7 +101,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {categoryIsOpen && <CategoryDropdown />}
+      {categoryIsOpen && <CategoryDropdown children={getCategories} />}
       {categoryIsOpen && <Backdrop onClick={closeCategory} />}
     </div>
   );
