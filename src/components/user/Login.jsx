@@ -94,12 +94,11 @@ const Login = () => {
             <p className="flex justify-center text-[13px] mt-12">
               Non hai un account?
             </p>
-            <a
-              className="flex justify-center text-[#e72b6f] text-sm font-poppins font-medium mt-2"
-              href="/register"
-            >
-              REGISTRATI
-            </a>
+            <Link to="/register">
+              <p className="flex justify-center text-[#e72b6f] text-sm font-poppins font-medium mt-2">
+                REGISTRATI
+              </p>
+            </Link>
           </form>
         </div>
       </div>

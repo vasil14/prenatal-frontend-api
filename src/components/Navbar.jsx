@@ -15,12 +15,13 @@ const Navbar = () => {
   const [getCategories, setCategories] = useState([]);
 
   function categoryHandler(category) {
-    setCategoryIdOpen(true);
+    setCategoryIdOpen(!categoryIsOpen);
     setCategories(category);
   }
 
-  const closeCategory = () => {
-    setCategoryIdOpen(false);
+  const closeCategory = (e) => {
+    // console.log(e.target.a, "here");
+    setCategoryIdOpen(!categoryIsOpen);
   };
 
   return (
