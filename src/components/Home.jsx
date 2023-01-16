@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import ModalComponent from "./ModalComponent";
-import Account from "./user/Account";
+import React, { useState } from "react";
+import IncDecCounter from "./shoppingCart/IncDecCounter";
 
 const Home = () => {
   return (
-    <div>
-      <ModalComponent />
+    <div className="flex ">
+      <IncDecCounter />
     </div>
   );
 };

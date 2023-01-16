@@ -21,7 +21,7 @@ const CategoryDropdown = ({ children }) => {
           }
         });
     }
-  }, [getCategories]);
+  }, [children]);
 
   return (
     <div className="relative">
@@ -30,9 +30,7 @@ const CategoryDropdown = ({ children }) => {
           {getCategories.map((data) => {
             console.log(data.name);
 
-            {
-              data.name;
-            }
+            <h1>{data.name}</h1>;
 
             // {
             //   data.children.map((x) => {

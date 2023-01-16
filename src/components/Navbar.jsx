@@ -9,9 +9,11 @@ import { categories, specialCat } from "../constants/index";
 import Account from "./user/Account";
 import CategoryDropdown from "./CategoryDropdown";
 import Backdrop from "./Backdrop";
+import ShoppingCart from "./shoppingCart/ShoppingCart";
 
 const Navbar = () => {
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
+
   const [getCategories, setCategories] = useState([]);
 
   function categoryHandler(category) {
@@ -56,16 +58,19 @@ const Navbar = () => {
             </p>
             <div className="flex flex-row h-[25px]">
               <img src={location} alt="icons" className="ml-4 " />
-              <div className="ml-4 ">
+              <div className="ml-4">
                 <Account />
               </div>
-              <img src={cart} alt="icons" className="ml-4 " />
+              <div className="ml-4">
+                <ShoppingCart />
+              </div>
             </div>
           </div>
         </div>
         <div className="flex flex-row justify-between max-w-[1300px] mx-auto mt-10">
           <div className="flex flex-row  ">
             {categories.map((category, index) => {
+              // console.log(category);
               return (
                 <div
                   onClick={() => categoryHandler(category)}

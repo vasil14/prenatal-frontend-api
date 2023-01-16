@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Button, Carousel, Dropdown } from 'flowbite-react';
+import React, { useState } from "react";
+import { Modal, Button, Carousel, Dropdown } from "flowbite-react";
 
 const ModalComponent = () => {
   const [show, setShow] = useState(false);

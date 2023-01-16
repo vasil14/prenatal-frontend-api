@@ -3,18 +3,15 @@ import user from "../../assets/user.png";
 import { Dropdown } from "flowbite-react";
 import { Link } from "react-router-dom";
 
-const Icon = () => {
-  return <img src={user} alt="user" className="w-[26px]" />;
-};
-
 const Account = () => {
   return (
     <div>
       <Dropdown
         className="drop-shadow-lg w-[250px] flex justify-center"
-        label={<Icon />}
+        label={<img src={user} alt="user" className="w-[26px]" />}
         arrowIcon={false}
         inline={true}
+        placement="auto"
       >
         <Dropdown.Item href="/login">
           <Link to="/login">
