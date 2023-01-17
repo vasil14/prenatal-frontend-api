@@ -28,3 +28,8 @@
   top: 0;
   left: 0;
 }
+
+:root {
+  --swiper-navigation-size: 15px !important;
+  --swiper-navigation-color: #e72b6f !important;
+}

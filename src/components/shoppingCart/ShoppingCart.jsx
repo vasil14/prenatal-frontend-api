@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import cart from "../../assets/cart.png";
-import { Dropdown } from "flowbite-react";
-import { Link } from "react-router-dom";
 import item from "../../assets/item.jpg";
-import { InputNumber } from "antd";
-import Bin from "../../assets/bin.png";
 import Trash from "../../assets/trash.svg";
 import IncDecCounter from "./IncDecCounter";
+import cart from "../../assets/cart.png";
+import BadgeComponent from "./BadgeComponent";
 
 function ShoppingCart() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -14,10 +11,14 @@ function ShoppingCart() {
     setCartOpen(!cartOpen);
   }
   return (
-    <div>
-      <img src={cart} alt="cart" onClick={cartHandler} />
+    <div className="relative items-center">
+      {/* <img src={cart} alt="cart" onClick={cartHandler} /> */}
+      <BadgeComponent
+        img={<img src={cart} alt="cart" />}
+        onClick={cartHandler}
+      />
       {cartOpen && (
-        <div className=" max-w-[310px] drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)] bg-white">
+        <div className="absolute right-0 top-9 w-[310px] z-30 drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white">
           <div className="p-4 border-b border-gray-100">
             <p className="text-base font-bold text-[#e72b6f]">
               Il tuo carello (1)
@@ -52,17 +53,19 @@ function ShoppingCart() {
             </div>
           </div>
           <div className="w-full p-4 space-y-4 border-t border-gray-100">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-normal">Spedizone :</p>
-              <p className="text-sm font-medium flex-shrink-0 ml-2 uppercase text-[#e72b6f]">
-                GRATIS
-              </p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="uppercase text-sm font-normal flex">Totale :</p>
-              <p className="text-lg font-medium flex-shrink-0 ml-2 text-[#e72b6f]">
-                € 139,90
-              </p>
+            <div>
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-normal">Spedizone :</p>
+                <p className="text-sm font-medium flex-shrink-0 ml-2 uppercase text-[#e72b6f]">
+                  GRATIS
+                </p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="uppercase text-sm font-normal flex">Totale :</p>
+                <p className="text-lg font-medium flex-shrink-0 ml-2 text-[#e72b6f]">
+                  € 139,90
+                </p>
+              </div>
             </div>
             <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border focus:outline-none hover:bg-white hover:border-[#e72b6f] hover:text-[#e72b6f] text-base py-2 text-white bg-[#e72b6f] ">
               {" "}

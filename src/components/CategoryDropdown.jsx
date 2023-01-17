@@ -11,7 +11,6 @@ const CategoryDropdown = ({ children }) => {
         .get("/categories/" + children)
         .then(({ data }) => {
           const res = data[0].children;
-          // console.log(data[0]);
           return setCategories(res);
         })
         .catch((err) => {
@@ -28,8 +27,6 @@ const CategoryDropdown = ({ children }) => {
       <div className="absolute top-7 bg-black w-full text-white ">
         <div className="max-w-[1300px] mx-auto my-6 text-white">
           {getCategories.map((data) => {
-            console.log(data.name);
-
             <h1>{data.name}</h1>;
 
             // {

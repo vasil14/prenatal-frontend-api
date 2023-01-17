@@ -51,7 +51,7 @@ export const ProductProvider = ({ children }) => {
     const response = await axios.get(
       "products/categoria-prodotto/" + categoryName
     );
-    setProductsCategory(response.data);
+    setProductsCategory(response.data.data);
   };
 
   // const getCategoriesWithChildren = async();

@@ -1,27 +1,67 @@
 import React, { useState } from "react";
-import { Carousel } from "flowbite-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
 import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
+
+SwiperCore.use([Navigation]);
 
 const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
+  const [showCarusel, setShowCarusel] = useState(false);
+  const handleMouseEnter = () => {
+    setShowCarusel(true);
+  };
+  const handleMouseLeave = () => {
+    setShowCarusel(false);
+  };
   return (
-    <div className="relative w-full max-w-sm bg-white hover:scale-110 duration-200 ease-in-out">
-      <Link to={`${id}`}>
-        <img src={image} alt="sadfsadf" />
-      </Link>
-      {/* <div className="absolute top-2 w-[50px] h-[20px] bg-black"></div> */}
-      {/* <Carousel className="w-[270px] h-[360px] scroll-none">
-        <Link to={`${id}`}>
-          <img src={image} alt={image} />
-        </Link>
+    <div
+      className="relative w-full max-w-sm bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* <Link to={`${id}`}>
+        <img src={image} alt={image} />
+      </Link> */}
 
-        {images?.map((data, index) => {
-          return (
-            <Link to={`${id}`}>
-              <img key={index} src={data.link} alt={data.link} />
-            </Link>
-          );
-        })}
-      </Carousel> */}
+      {!showCarusel ? (
+        <Swiper>
+          <Link to={id}>
+            <SwiperSlide>
+              {" "}
+              <img src={image} alt={image} />{" "}
+            </SwiperSlide>
+          </Link>
+          {images?.map((a, i) => {
+            return (
+              <Link to={id}>
+                <SwiperSlide key={i}>
+                  <img src={a.link} alt={a} />
+                </SwiperSlide>
+              </Link>
+            );
+          })}
+        </Swiper>
+      ) : (
+        <Swiper navigation>
+          <Link to={id}>
+            <SwiperSlide>
+              {" "}
+              <img src={image} alt={image} />{" "}
+            </SwiperSlide>
+          </Link>
+          {images?.map((a, i) => {
+            return (
+              <Link to={id}>
+                <SwiperSlide key={i}>
+                  <img src={a.link} alt={a} />
+                </SwiperSlide>
+              </Link>
+            );
+          })}
+        </Swiper>
+      )}
 
       <div className="flex flex-row justify-between px-5 pb-5">
         <div className="text-red-500">€ {price}</div>

@@ -10,6 +10,7 @@ const ProductIndex = () => {
   useEffect(() => {
     getProductsCategory(categoryName);
   }, [categoryName]);
+  console.log(productsCategory);
   return (
     <div className="mt-12 mx-auto">
       <BreadcrumbComponent product_type={productsCategory[0]?.product_type} />

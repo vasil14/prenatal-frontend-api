@@ -44,10 +44,10 @@ const Navbar = () => {
             <input
               type="text"
               name="search"
-              className="h-14 w-full bg-transparent border-0 "
+              className="h-14 w-full bg-transparent border-none active:border-none focus:border-none"
               placeholder="Che prodotto stai cercando?"
             />
-            <hr className="mx-auto max-w-95 h-[2px] bg-slate-400 rounded border-0 top-3"></hr>
+            <hr className="mx-auto max-w-95 h-[2px] bg-black rounded top-3"></hr>
             <div className="absolute top-4 right-4">
               <img src={searchIcon} alt="searchIcon" />
             </div>
