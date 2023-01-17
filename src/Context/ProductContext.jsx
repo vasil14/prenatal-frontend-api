@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+import { createContext, useState } from 'react';
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:8000/api/v1/';
 
 const ProductContext = createContext({
   user: null,
@@ -11,20 +11,20 @@ const ProductContext = createContext({
 
 export const ProductProvider = ({ children }) => {
   const [formValues, setFormValues] = useState({
-    name: "",
-    color: "",
+    name: '',
+    color: '',
   });
 
   const [user, setUser] = useState({});
-  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
 
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem("ACCESS_TOKEN", token);
+      localStorage.setItem('ACCESS_TOKEN', token);
     } else {
-      localStorage.removeItem("ACCESS_TOKEN");
+      localStorage.removeItem('ACCESS_TOKEN');
     }
   };
 
@@ -38,20 +38,20 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProducts = async () => {
-    const apiProducts = await axios.get("products");
+    const apiProducts = await axios.get('products');
     setProducts(apiProducts.data);
   };
 
   const getProduct = async (id) => {
-    const response = await axios.get("products/" + id);
+    const response = await axios.get('products/' + id);
     setProduct(response.data[0]);
   };
 
-  const getProductsCategory = async (categoryName) => {
+  const getProductsCategory = async (categoryName, currentPage) => {
     const response = await axios.get(
-      "products/categoria-prodotto/" + categoryName
+      `products/categoria-prodotto/${categoryName}?page=${currentPage}`
     );
-    setProductsCategory(response.data.data);
+    setProductsCategory(response.data);
   };
 
   // const getCategoriesWithChildren = async();

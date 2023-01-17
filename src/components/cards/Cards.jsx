@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-import { Link } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-SwiperCore.use([Navigation]);
+// SwiperCore.use([Navigation]);
 
 const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
   const [showCarusel, setShowCarusel] = useState(false);
@@ -26,38 +26,36 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
       </Link> */}
 
       {!showCarusel ? (
-        <Swiper>
-          <Link to={id}>
-            <SwiperSlide>
-              {" "}
-              <img src={image} alt={image} />{" "}
-            </SwiperSlide>
-          </Link>
+        <Swiper navigation>
+          <SwiperSlide>
+            <Link to={`${id}`}>
+              <img src={image} alt={image} />
+            </Link>
+          </SwiperSlide>
           {images?.map((a, i) => {
             return (
-              <Link to={id}>
-                <SwiperSlide key={i}>
+              <SwiperSlide key={i}>
+                <Link to={`${id}`}>
                   <img src={a.link} alt={a} />
-                </SwiperSlide>
-              </Link>
+                </Link>
+              </SwiperSlide>
             );
           })}
         </Swiper>
       ) : (
         <Swiper navigation>
-          <Link to={id}>
-            <SwiperSlide>
-              {" "}
-              <img src={image} alt={image} />{" "}
-            </SwiperSlide>
-          </Link>
+          <SwiperSlide>
+            <Link to={`${id}`}>
+              <img src={image} alt={image} />
+            </Link>
+          </SwiperSlide>
           {images?.map((a, i) => {
             return (
-              <Link to={id}>
-                <SwiperSlide key={i}>
+              <SwiperSlide key={i}>
+                <Link to={`${id}`}>
                   <img src={a.link} alt={a} />
-                </SwiperSlide>
-              </Link>
+                </Link>
+              </SwiperSlide>
             );
           })}
         </Swiper>

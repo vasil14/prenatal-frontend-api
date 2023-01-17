@@ -1,21 +1,26 @@
-import React, { useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import Cards from "../cards/Cards";
+import React, { useEffect, useContext, useState } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import Cards from '../cards/Cards';
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
   let { categoryName } = useParams();
+  const [searchParams] = useSearchParams();
+  let currentPage = searchParams.get('page');
+  const [products, setProducts] = useState(null);
+
   useEffect(() => {
-    getProductsCategory(categoryName);
+    getProductsCategory(categoryName, currentPage);
+    setProducts(productsCategory);
   }, [categoryName]);
-  console.log(productsCategory);
+  console.log(currentPage);
   return (
     <div className="mt-12 mx-auto">
       <BreadcrumbComponent product_type={productsCategory[0]?.product_type} />
       <div className="flex flex-wrap md:justify-between justify-around items-center ">
-        {productsCategory?.map((product, index) => {
+        {productsCategory.data?.map((product, index) => {
           return (
             <div key={index} className="w-[270px] mb-10">
               <Cards
