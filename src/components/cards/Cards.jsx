@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-// SwiperCore.use([Navigation]);
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
+  SwiperCore.use([Navigation]);
   const [showCarusel, setShowCarusel] = useState(false);
   const handleMouseEnter = () => {
     setShowCarusel(true);
@@ -17,7 +16,7 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
   };
   return (
     <div
-      className="relative w-full max-w-sm bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out"
+      className="relative  max-w-sm w-[300px] bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out align-center z-10"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -25,8 +24,8 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
         <img src={image} alt={image} />
       </Link> */}
 
-      {!showCarusel ? (
-        <Swiper navigation>
+      <div className="border w-[300px] ">
+        <Swiper loop="true" className=" object-contain">
           <SwiperSlide>
             <Link to={`${id}`}>
               <img src={image} alt={image} />
@@ -42,24 +41,7 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
             );
           })}
         </Swiper>
-      ) : (
-        <Swiper navigation>
-          <SwiperSlide>
-            <Link to={`${id}`}>
-              <img src={image} alt={image} />
-            </Link>
-          </SwiperSlide>
-          {images?.map((a, i) => {
-            return (
-              <SwiperSlide key={i}>
-                <Link to={`${id}`}>
-                  <img src={a.link} alt={a} />
-                </Link>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      )}
+      </div>
 
       <div className="flex flex-row justify-between px-5 pb-5">
         <div className="text-red-500">€ {price}</div>

@@ -1,47 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axiosClient from "../axios-client";
+import React, { useEffect, useState, useContext } from "react";
+import ProductContext from "../Context/ProductContext";
 
-const CategoryDropdown = ({ children }) => {
+const CategoryDropdown = ({ categoryName }) => {
   // console.log(children);
-  const [getCategories, setCategories] = useState([]);
-
-  useEffect(() => {
-    if (children) {
-      axiosClient
-        .get("/categories/" + children)
-        .then(({ data }) => {
-          const res = data[0].children;
-          return setCategories(res);
-        })
-        .catch((err) => {
-          const response = err.response;
-          if (response && response.status === 422) {
-            setErrors(response.data.errors);
-          }
-        });
-    }
-  }, [children]);
 
   return (
     <div className="relative">
       <div className="absolute top-7 bg-black w-full text-white ">
         <div className="max-w-[1300px] mx-auto my-6 text-white">
-          {getCategories.map((data) => {
-            <h1>{data.name}</h1>;
-
-            // {
-            //   data.children.map((x) => {
-            //     // console.log(data);
-            //     <h1 key={x.id}>{x.name}</h1>;
-            //     {
-            //       x.children.map((y) => {
-            //         // console.log(data);
-            //         <h1 key={y.id}>{y.name}</h1>;
-            //       });
-            //     }
-            //   });
-            // }
-          })}
+          <li>000000000000</li>
+          {/* {getCategories[0]?.map((data) => {
+            <li>{data.name}</li>;
+          })} */}
         </div>
       </div>
     </div>

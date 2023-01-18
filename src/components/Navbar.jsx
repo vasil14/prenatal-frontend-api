@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axiosClient from "../axios-client";
 import logo from "../assets/prenatal.png";
-import cart from "../assets/cart.png";
 import location from "../assets/location.png";
 import searchIcon from "../assets/search_icon.png";
 import { categories, specialCat } from "../constants/index";
@@ -107,7 +105,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {categoryIsOpen && <CategoryDropdown children={getCategories} />}
+      {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
       {categoryIsOpen && <Backdrop onClick={closeCategory} />}
     </div>
   );

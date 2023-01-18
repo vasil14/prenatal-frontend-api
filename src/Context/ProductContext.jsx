@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000/api/v1/';
+import { createContext, useState } from "react";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext({
   user: null,
@@ -11,26 +11,27 @@ const ProductContext = createContext({
 
 export const ProductProvider = ({ children }) => {
   const [formValues, setFormValues] = useState({
-    name: '',
-    color: '',
+    name: "",
+    color: "",
   });
 
   const [user, setUser] = useState({});
-  const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem('ACCESS_TOKEN', token);
+      localStorage.setItem("ACCESS_TOKEN", token);
     } else {
-      localStorage.removeItem('ACCESS_TOKEN');
+      localStorage.removeItem("ACCESS_TOKEN");
     }
   };
 
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);
+  const [categoryChildren, setCategoryChildren] = useState([]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -38,12 +39,12 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProducts = async () => {
-    const apiProducts = await axios.get('products');
+    const apiProducts = await axios.get("products");
     setProducts(apiProducts.data);
   };
 
   const getProduct = async (id) => {
-    const response = await axios.get('products/' + id);
+    const response = await axios.get("products/" + id);
     setProduct(response.data[0]);
   };
 
@@ -54,7 +55,10 @@ export const ProductProvider = ({ children }) => {
     setProductsCategory(response.data);
   };
 
-  // const getCategoriesWithChildren = async();
+  const getCategoriesWithChildren = async (categoryName) => {
+    const response = await axios.get("categories/" + categoryName);
+    setCategoryChildren(response.data);
+  };
 
   return (
     <ProductContext.Provider
@@ -71,6 +75,9 @@ export const ProductProvider = ({ children }) => {
         token,
         setUser,
         setToken,
+        categoryChildren,
+        setCategoryChildren,
+        getCategoriesWithChildren,
       }}
     >
       {children}
