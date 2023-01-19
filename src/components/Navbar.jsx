@@ -8,6 +8,7 @@ import Account from "./user/Account";
 import CategoryDropdown from "./CategoryDropdown";
 import Backdrop from "./Backdrop";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
+import ProductContext from "../Context/ProductContext";
 
 const Navbar = () => {
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
@@ -18,6 +19,7 @@ const Navbar = () => {
     setCategoryIdOpen(!categoryIsOpen);
     setCategories(category);
   }
+  console.log(getCategories);
 
   const closeCategory = (e) => {
     // console.log(e.target.a, "here");
@@ -25,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="border-b-2 h-[167px] ">
+    <div className="border-b-2 h-[167px] relative">
       <div className="">
         <div className="flex flex-row justify-between max-w-[1300px] mx-auto">
           <Link to="/">
@@ -68,7 +70,6 @@ const Navbar = () => {
         <div className="flex flex-row justify-between max-w-[1300px] mx-auto mt-10">
           <div className="flex flex-row  ">
             {categories.map((category, index) => {
-              // console.log(category);
               return (
                 <div
                   onClick={() => categoryHandler(category)}
@@ -81,7 +82,9 @@ const Navbar = () => {
 
                   {categoryIsOpen && (
                     <div onClick={closeCategory}>
-                      <Link to={`products/${category}`}>{category}</Link>
+                      <Link to={`products/${category.toLowerCase()}`}>
+                        {category}
+                      </Link>
                     </div>
                   )}
                 </div>
