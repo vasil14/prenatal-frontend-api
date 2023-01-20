@@ -2,57 +2,51 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/prenatal.png";
 import location from "../assets/location.png";
-import searchIcon from "../assets/search_icon.png";
 import { categories, specialCat } from "../constants/index";
 import Account from "./user/Account";
 import CategoryDropdown from "./CategoryDropdown";
 import Backdrop from "./Backdrop";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
-import ProductContext from "../Context/ProductContext";
+import SearchComponent from "./SearchComponent";
+import SearchDropdownComponent from "./SearchDropdownComponent";
 
 const Navbar = () => {
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
-
   const [getCategories, setCategories] = useState([]);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   function categoryHandler(category) {
     setCategoryIdOpen(!categoryIsOpen);
     setCategories(category);
   }
-  console.log(getCategories);
 
-  const closeCategory = (e) => {
-    // console.log(e.target.a, "here");
+  const closeCategory = () => {
     setCategoryIdOpen(!categoryIsOpen);
+  };
+  const handleSearchBar = () => {
+    setShowSearchDropdown(true);
+  };
+
+  const closeSearchBar = () => {
+    setShowSearchDropdown(false);
   };
 
   return (
-    <div className="border-b-2 h-[167px] relative">
-      <div className="">
-        <div className="flex flex-row justify-between max-w-[1300px] mx-auto">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              className="  mt-6 left w-[208px] h-[40px]"
-            />
-          </Link>
-          <div className="basis-1/2 relative center mt-4 border-0">
-            <div className="absolute top-4 left-3">
-              {/* <p>Che prodotto stai cercando?</p> */}
-            </div>
-            <input
-              type="text"
-              name="search"
-              className="h-14 w-full bg-transparent border-none active:border-none focus:border-none"
-              placeholder="Che prodotto stai cercando?"
-            />
-            <hr className="mx-auto max-w-95 h-[2px] bg-black rounded top-3"></hr>
-            <div className="absolute top-4 right-4">
-              <img src={searchIcon} alt="searchIcon" />
-            </div>
+    <div className="border-b-2 h-[167px] ">
+      <div className=" max-w-[1300px] mx-auto ">
+        <div className="flex flex-row justify-between items-center pt-8 z-40">
+          <div className="w-60">
+            <Link to="/">
+              <img src={logo} alt="logo" className="w-[208px] " />
+            </Link>
           </div>
-          <div className="right flex flex-row mt-8">
+          <SearchComponent
+            onClick={handleSearchBar}
+            color="border-gray-800"
+            placeholder="Che prodotto stai cercando?"
+            paddingX="px-16"
+          />
+          <div className="flex flex-row  w-72">
             <p className="text-[9px] text-right ">
               PRENOTA & RITIRA <br /> IN NEGOZIO
             </p>
@@ -74,18 +68,19 @@ const Navbar = () => {
                 <div
                   onClick={() => categoryHandler(category)}
                   className={`${
-                    index == categories.length - 1 ? "mr-0" : "mr-5"
+                    index === categories.length - 1 ? "mr-0" : "mr-5"
                   } cursor-pointer`}
                   key={index}
                 >
                   {!categoryIsOpen && category}
 
                   {categoryIsOpen && (
-                    <div onClick={closeCategory}>
-                      <Link to={`products/${category.toLowerCase()}`}>
-                        {category}
-                      </Link>
-                    </div>
+                    <Link
+                      to={`products/${category.toLowerCase()}`}
+                      onClick={closeCategory}
+                    >
+                      {category}
+                    </Link>
                   )}
                 </div>
               );
@@ -96,7 +91,7 @@ const Navbar = () => {
               return (
                 <div
                   className={`${
-                    index == categories.length - 1 ? "mr-0" : "mr-5"
+                    index === specialCat.length - 1 ? "mr-0" : "mr-5"
                   }`}
                   key={index}
                 >
@@ -110,6 +105,11 @@ const Navbar = () => {
 
       {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
       {categoryIsOpen && <Backdrop onClick={closeCategory} />}
+
+      {showSearchDropdown && (
+        <SearchDropdownComponent onClick={closeSearchBar} />
+      )}
+      {showSearchDropdown && <Backdrop onClick={closeSearchBar} />}
     </div>
   );
 };

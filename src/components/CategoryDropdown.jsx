@@ -12,7 +12,7 @@ const CategoryDropdown = ({ categoryName }) => {
   console.log(categoryChildren[0]?.children);
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-30">
       <div className="absolute bg-white w-full text-white ">
         <div className="max-w-[1300px] mx-auto my-6 text-black">
           <div className="flex flex-row">

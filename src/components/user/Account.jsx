@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Account = () => {
   return (
-    <div>
+    <div className="w-[26px]">
       <Dropdown
         className="drop-shadow-lg w-[250px] flex justify-center"
         label={<img src={user} alt="user" className="w-[26px]" />}
