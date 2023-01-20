@@ -33,8 +33,8 @@ const Navbar = () => {
 
   return (
     <div className="border-b-2 h-[167px] ">
-      <div className=" max-w-[1300px] mx-auto ">
-        <div className="flex flex-row justify-between items-center pt-8 z-40">
+      <div className=" max-w-[1300px] mx-auto z-40">
+        <div className="flex flex-row justify-between items-center pt-8">
           <div className="w-60">
             <Link to="/">
               <img src={logo} alt="logo" className="w-[208px] " />
