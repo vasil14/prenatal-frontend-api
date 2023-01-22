@@ -1,7 +1,7 @@
-import React from "react";
-import logo2 from "../assets/logo2.png";
-import cancel from "../assets/cancel.png";
-import SearchComponent from "./SearchComponent";
+import React from 'react';
+import logo2 from '../assets/logo2.png';
+import cancel from '../assets/cancel.png';
+import SearchComponent from './SearchComponent';
 
 const SearchDropdownComponent = ({ onClick }) => {
   return (
@@ -15,7 +15,7 @@ const SearchDropdownComponent = ({ onClick }) => {
         />
         <SearchComponent
           color="border-[#e72b6f]"
-          placehoder="Ricerca..."
+          placeholder="Ricerca..."
           paddingX="px-5"
         />
         <img

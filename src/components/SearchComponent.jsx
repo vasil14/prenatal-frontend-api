@@ -1,5 +1,5 @@
-import React from "react";
-import searchIcon from "../assets/search_icon.png";
+import React from 'react';
+import searchIcon from '../assets/search_icon.png';
 
 const SearchComponent = ({ onClick, color, paddingX, placeholder }) => {
   return (
