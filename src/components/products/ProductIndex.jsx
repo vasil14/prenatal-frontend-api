@@ -1,9 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
-import ProductContext from '../../Context/ProductContext';
-import BreadcrumbComponent from '../BreadcrumbComponent';
-import Cards from '../cards/Cards';
-import { Pagination } from 'antd';
+import React, { useEffect, useContext, useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import ProductContext from "../../Context/ProductContext";
+import BreadcrumbComponent from "../BreadcrumbComponent";
+import Cards from "../cards/Cards";
+import { Pagination } from "antd";
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
@@ -16,7 +16,7 @@ const ProductIndex = () => {
     getProductsCategory(categoryName, currentPage);
     setProducts(productsCategory);
   }, [categoryName, currentPage]);
-  console.log(currentPage);
+  console.log(productsCategory);
   return (
     <div>
       <div className="mt-12 mx-auto">

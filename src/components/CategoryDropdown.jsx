@@ -17,7 +17,7 @@ const CategoryDropdown = ({ categoryName }) => {
         <div className="max-w-[1300px] mx-auto my-6 text-black">
           <div className="flex flex-row">
             {categoryChildren[0]?.children?.map((sub_1, i) => (
-              <div key={i} className="mr-20 mb-[20px] pt-5 ">
+              <div key={sub_1.id} className="mr-20 mb-[20px] pt-5 ">
                 <Link
                   to={
                     "/products/" +

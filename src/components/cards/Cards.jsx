@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
 
-const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
+const Cards = ({ image, images, price, vipPrice, marke, title, id, size }) => {
   SwiperCore.use([Navigation]);
   const [showCarusel, setShowCarusel] = useState(false);
   const handleMouseEnter = () => {
@@ -16,16 +16,22 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
   };
   return (
     <div
-      className="relative  max-w-sm w-[300px] bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out align-center z-10"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={`relative  max-w-sm w-[${size}] bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out align-center z-10`}
     >
       {/* <Link to={`${id}`}>
         <img src={image} alt={image} />
       </Link> */}
 
-      <div className="border w-[300px]">
-        <Swiper loop="true" className=" object-contain" navigation>
+      <div
+        className={`border w-[${size}]`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Swiper
+          loop="true"
+          className=" object-contain"
+          navigation={showCarusel}
+        >
           <SwiperSlide>
             <Link to={`${id}`}>
               <img src={image} alt={image} />
@@ -54,10 +60,10 @@ const Cards = ({ image, images, price, vipPrice, marke, title, id }) => {
         </div>
       </div>
 
-      <div>
-        <h3>{marke}</h3>
+      <div className="text-black font-poppins">
+        <h3 className="text-sm uppercase font-light leading-none">{marke}</h3>
         <Link to={`${id}`}>
-          <span>{title}</span>
+          <span className="text-[14px] leading-none">{title}</span>
         </Link>
       </div>
 
