@@ -7,16 +7,18 @@ import { Pagination } from "antd";
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
-  let { categoryName } = useParams();
-  const [searchParams] = useSearchParams();
-  const [products, setProducts] = useState(null);
+  let { categoryName, subCat } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
+  console.log("sub:", subCat?.replaceAll("-", " "));
+  console.log("cat:", categoryName);
 
   useEffect(() => {
-    getProductsCategory(categoryName, currentPage);
-    setProducts(productsCategory);
+    if (subCat) {
+      getProductsCategory(subCat?.replaceAll("-", " "), currentPage);
+    } else {
+      getProductsCategory(categoryName, currentPage);
+    }
   }, [categoryName, currentPage]);
-  console.log(productsCategory);
   return (
     <div>
       <div className="mt-12 mx-auto">

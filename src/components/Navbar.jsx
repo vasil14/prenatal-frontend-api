@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <div className="border-b-2 h-[167px] ">
-      <div className=" max-w-[1300px] mx-auto z-40">
+      <div className=" max-w-[1300px] mx-auto z-50">
         <div className="flex flex-row justify-between items-center pt-8">
           <div className="w-60">
             <Link to="/">
@@ -104,12 +104,12 @@ const Navbar = () => {
       </div>
 
       {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
-      {categoryIsOpen && <Backdrop onClick={closeCategory} />}
+      {/* {categoryIsOpen && <Backdrop onClick={closeCategory} />} */}
 
       {showSearchDropdown && (
         <SearchDropdownComponent onClick={closeSearchBar} />
       )}
-      {showSearchDropdown && <Backdrop onClick={closeSearchBar} />}
+      {/* {showSearchDropdown && <Backdrop onClick={closeSearchBar} />} */}
     </div>
   );
 };

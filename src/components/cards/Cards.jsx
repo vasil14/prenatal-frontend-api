@@ -5,7 +5,16 @@ import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const Cards = ({ image, images, price, vipPrice, marke, title, id, size }) => {
+const Cards = ({
+  image,
+  images,
+  price,
+  vipPrice,
+  marke,
+  title,
+  id,
+  size = "300px",
+}) => {
   SwiperCore.use([Navigation]);
   const [showCarusel, setShowCarusel] = useState(false);
   const handleMouseEnter = () => {
