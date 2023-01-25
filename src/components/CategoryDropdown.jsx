@@ -9,7 +9,6 @@ const CategoryDropdown = ({ categoryName }) => {
   useEffect(() => {
     getCategoriesWithChildren(categoryName);
   }, [categoryName]);
-  console.log(categoryChildren[0]?.children);
 
   return (
     <div className="relative z-30 drop-shadow-xl">
@@ -32,13 +31,11 @@ const CategoryDropdown = ({ categoryName }) => {
                 </Link>
                 <div className="space-y-3.5">
                   {sub_1?.children?.map((sub_2, i) => (
-                    <div className="space-y-3.5">
-                      <h3 key={i} className="font-light text-[14px]">
-                        {sub_2.name}
-                      </h3>
+                    <div key={i} className="space-y-3.5">
+                      <h3 className="font-light text-[14px]">{sub_2.name}</h3>
                       {sub_2.children?.map((sub_3, i) => (
-                        <div className="space-y-3.5">
-                          <h3 key={i} className="font-light text-[14px] pl-2">
+                        <div key={i} className="space-y-3.5">
+                          <h3 className="font-light text-[14px] pl-2">
                             {sub_3.name}
                           </h3>
                         </div>

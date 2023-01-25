@@ -4,13 +4,12 @@ import ProductContext from "../../Context/ProductContext";
 import BreadcrumbComponent from "../BreadcrumbComponent";
 import Cards from "../cards/Cards";
 import { Pagination } from "antd";
+import FilterComponent from "../Filters/FilterComponent";
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
   let { categoryName, subCat } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  console.log("sub:", subCat?.replaceAll("-", " "));
-  console.log("cat:", categoryName);
 
   useEffect(() => {
     if (subCat) {
@@ -21,9 +20,21 @@ const ProductIndex = () => {
   }, [categoryName, currentPage]);
   return (
     <div>
-      <div className="mt-12 mx-auto">
-        <BreadcrumbComponent product_type={productsCategory[0]?.product_type} />
-        <div className="flex flex-wrap md:justify-between justify-between ">
+      <div className=" mx-auto">
+        <div className="py-6">
+          <BreadcrumbComponent
+            product_type={productsCategory[0]?.product_type}
+          />
+        </div>
+        <div>
+          <h1 className="block text-2xl font-bold text-gray-800 uppercase ">
+            {categoryName}
+          </h1>
+        </div>
+        <div className="mt-10">
+          <FilterComponent />
+        </div>
+        <div className="flex flex-wrap md:justify-between justify-between pt-12">
           {productsCategory?.data?.map((product, index) => {
             return (
               <div key={index} className="w-[270px] mb-10">

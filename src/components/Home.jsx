@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import IncDecCounter from './shoppingCart/IncDecCounter';
+import React, { useState } from "react";
 
 const Home = () => {
-  return <div className="flex">Home </div>;
+  return <div className="flex">asfafdsf</div>;
 };
 
 export default Home;

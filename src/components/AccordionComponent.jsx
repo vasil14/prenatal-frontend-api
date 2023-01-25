@@ -7,10 +7,8 @@ const text = `
   it can be found as a welcome guest in many households across the world.
 `;
 const AccordionComponent = ({ data }) => {
-  console.log(data);
   const [active, setActiveKey] = useState(["0"]);
   const onChange = (key) => {
-    console.log([key]);
     setActiveKey([key]);
   };
   return (

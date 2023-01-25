@@ -104,12 +104,12 @@ const Navbar = () => {
       </div>
 
       {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
-      {/* {categoryIsOpen && <Backdrop onClick={closeCategory} />} */}
+      {categoryIsOpen && <Backdrop onClick={closeCategory} />}
 
       {showSearchDropdown && (
         <SearchDropdownComponent onClick={closeSearchBar} />
       )}
-      {/* {showSearchDropdown && <Backdrop onClick={closeSearchBar} />} */}
+      {showSearchDropdown && <Backdrop onClick={closeSearchBar} />}
     </div>
   );
 };

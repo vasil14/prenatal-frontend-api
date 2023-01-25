@@ -14,7 +14,6 @@ const ProductEdit = () => {
   useEffect(() => {
     getProduct(id);
   }, []);
-  console.log(product);
   return (
     <div>
       <div className="mt-4">

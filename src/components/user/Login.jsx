@@ -26,7 +26,6 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-    console.log(payload);
 
     axiosClient
       .post("/login", payload)

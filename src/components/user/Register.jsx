@@ -35,7 +35,6 @@ const Register = () => {
       gender: getGender,
       birthday: date,
     };
-    console.log(payload);
 
     axiosClient
       .post("/register", payload)

@@ -14,8 +14,6 @@ const SearchDropdownComponent = ({ onClick }) => {
     getProducts(formValues?.search);
   }, [formValues]);
 
-  console.log(products);
-
   return (
     <div className="absolute top-0 bg-slate-300 w-full text-white  z-30">
       <div className="flex flex-row px-12 pt-8 justify-between">
@@ -41,7 +39,6 @@ const SearchDropdownComponent = ({ onClick }) => {
         <div className="basis-1/5"></div>
         <div className="basis-4-5 relative grid grid-cols-5 gap-6 md:justify-between justify-between ">
           {products?.map((product) => {
-            console.log(product.title);
             return (
               <div key={product.id}>
                 <Cards
