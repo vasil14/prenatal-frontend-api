@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import filter from "../../assets/filter.png";
-import FilterDropdown from "./FilterDropdown";
+import React, { useState } from 'react';
+import filter from '../../assets/filter.png';
+import FilterDropdown from './FilterDropdown';
 
-import FilterButton from "./FilterButton";
-import TagliaDropdown from "./TagliaDropdown";
+import FilterButton from './FilterButton';
+import TagliaDropdown from './TagliaDropdown';
 
 const FilterComponent = () => {
   const [taglia, setTaglia] = useState(false);
@@ -11,7 +11,17 @@ const FilterComponent = () => {
   const tagliaHandler = () => {
     setTaglia(!taglia);
   };
-
+  // const config = [
+  //   { key: 'taglia', label: 'talia', component: TagliaDropdown },
+  //   { key: 'Marca', label: 'Marca', component: TagliaDropdown },
+  // ];
+  // config.map((key) => {
+  //   const Component = key.component;
+  //   console.log(Component, 'Component');
+  //   return (
+  //     <Component style={{ display: current === key.key ? 'block' : 'none' }} />
+  //   );
+  // });
   return (
     <div className="w-full relative">
       <div className="max-w-[1300px] flex items-center space-x-5 ">
@@ -22,12 +32,11 @@ const FilterComponent = () => {
           </p>
         </div>
         <div className="flex items-center space-x-3">
-          <FilterButton name={"Taglia"} onClick={tagliaHandler} />
-
-          <FilterButton name={"Prezzo & disponibilita"} />
-          <FilterButton name={"Marca"} />
-          <FilterButton name={"Genere"} />
-          <FilterButton name={"Colore"} />
+          <FilterButton name={'Taglia'} onClick={tagliaHandler} />
+          <FilterButton name={'Prezzo & disponibilita'} />
+          <FilterButton name={'Marca'} />
+          <FilterButton name={'Genere'} />
+          <FilterButton name={'Colore'} />
         </div>
       </div>
       {taglia && <TagliaDropdown />}
