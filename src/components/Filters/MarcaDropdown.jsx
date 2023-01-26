@@ -1,49 +1,26 @@
 import React from "react";
-import Checkbox from "../Checkbox";
 
-const FilterDropdown = () => {
+const MarcaDropdown = () => {
   return (
     <div className="absolute w-full bg-white drop-shadow-xl z-50 ">
       <div className="flex flex-wrap">
         <div className="px-3 pt-3 w-1/3">
           <h1 className="text-[#e72b6f] text-base font-semibold px-5 pt-5">
-            Abbigliamento mamma
+            Filtra per marca
           </h1>
           <div className="px-5 pb-2 overflow-y-auto max-h-96">
             <Checkbox
-              description={"XXS | 36-38"}
-              rounded={"none"}
-              color={"gray-200"}
-              h={"20px"}
-              w-={"20px"}
-            />
-            <Checkbox
-              description={"XS | 38-40"}
+              description={"Lines"}
               rounded={"none"}
               color={"gray-200"}
             />
             <Checkbox
-              description={"S | 40-42"}
+              description={"Mamijux"}
               rounded={"none"}
               color={"gray-200"}
             />
             <Checkbox
-              description={"M | 42-44"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
-            <Checkbox
-              description={"L | 46-48"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
-            <Checkbox
-              description={"XL | 48-50"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
-            <Checkbox
-              description={"Taglia unica"}
+              description={"Prénatal"}
               rounded={"none"}
               color={"gray-200"}
             />
@@ -62,4 +39,4 @@ const FilterDropdown = () => {
   );
 };
 
-export default FilterDropdown;
+export default MarcaDropdown;

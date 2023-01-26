@@ -10,13 +10,13 @@
 
 [type="radio"],
 [type="checkbox"] {
-  color: #404040 !important;
+  color: #789940 !important;
 }
 
 [type="radio"]:focus,
 [type="checkbox"]:focus {
   --tw-ring-color: none !important;
-  color: #404040 !important ;
+  color: #789940 !important ;
 }
 
 .backdrop {

@@ -5,7 +5,7 @@ const FilterButton = ({ name, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-white border border-gray-400 rounded-full px-4 py-2 text-xs flex items-center "
+      className="bg-white border border-gray-400 rounded-full px-4 py-2 text-xs flex items-center hover:bg-gray-400 hover:text-white"
     >
       <span className="px-4">{name}</span>
       <DownOutlined style={{ fontSize: "10px" }} />
