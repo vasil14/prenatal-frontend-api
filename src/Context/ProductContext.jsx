@@ -25,10 +25,21 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const [categoryIsOpen, setCategoryIdOpen] = useState(false);
+  const [getCategories, setCategories] = useState([]);
+  const closeCategory = () => {
+    setCategoryIdOpen(!categoryIsOpen);
+  };
+  function categoryHandler(category) {
+    setCategoryIdOpen(!categoryIsOpen);
+    setCategories(category);
+  }
+
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);
   const [categoryChildren, setCategoryChildren] = useState([]);
+  const [subCatProducts, setSubCatProducts] = useState([]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -59,6 +70,13 @@ export const ProductProvider = ({ children }) => {
     setCategoryChildren(response.data);
   };
 
+  const getSubCatProducts = async (categoryName, subCat, currentPage) => {
+    const response = await axios.get(
+      `products/categoria-prodotto/${categoryName}/${subCat}?page=${currentPage}`
+    );
+    setSubCatProducts(response.data);
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -77,6 +95,13 @@ export const ProductProvider = ({ children }) => {
         categoryChildren,
         setCategoryChildren,
         getCategoriesWithChildren,
+        getSubCatProducts,
+        subCatProducts,
+        setSubCatProducts,
+        closeCategory,
+        categoryIsOpen,
+        categoryHandler,
+        getCategories,
       }}
     >
       {children}

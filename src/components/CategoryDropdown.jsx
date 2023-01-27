@@ -3,7 +3,7 @@ import ProductContext from "../Context/ProductContext";
 import { Link } from "react-router-dom";
 
 const CategoryDropdown = ({ categoryName }) => {
-  const { categoryChildren, getCategoriesWithChildren } =
+  const { categoryChildren, getCategoriesWithChildren, closeCategory } =
     useContext(ProductContext);
 
   useEffect(() => {
@@ -25,7 +25,10 @@ const CategoryDropdown = ({ categoryName }) => {
                     sub_1.name.replaceAll(" ", "-").toLowerCase()
                   }
                 >
-                  <h1 className="font-bold text-[16px] mb-[20px]">
+                  <h1
+                    className="font-bold text-[16px] mb-[20px]"
+                    onClick={closeCategory}
+                  >
                     {sub_1.name.toUpperCase()}
                   </h1>
                 </Link>

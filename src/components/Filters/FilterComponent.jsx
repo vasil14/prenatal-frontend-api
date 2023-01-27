@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import filter from "../../assets/filter.png";
-import FilterDropdown from "./FilterDropdown";
-
 import FilterButton from "./FilterButton";
 import TagliaDropdown from "./TagliaDropdown";
 import MarcaDropdown from "./MarcaDropdown";
+import GenereDropdown from "./GenereDropdown";
+import PrezzoComponent from "./PrezzoComponent";
+import ColoreDropdown from "./ColoreDropdown";
 
 const FilterComponent = () => {
   const [taglia, setTaglia] = useState(0);
@@ -44,7 +45,10 @@ const FilterComponent = () => {
         </div>
       </div>
       {taglia === 1 && <TagliaDropdown />}
+      {taglia === 2 && <PrezzoComponent />}
       {taglia === 3 && <MarcaDropdown />}
+      {taglia === 4 && <GenereDropdown />}
+      {taglia === 5 && <ColoreDropdown />}
     </div>
   );
 };

@@ -45,3 +45,33 @@
   .ant-pagination-item {
   border: none !important;
 }
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-track {
+  background-color: #e72b6f !important;
+}
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
+  .ant-slider-track {
+  height: 2px !important;
+}
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::after {
+  box-shadow: 0 0 0 2px #e72b6f !important;
+}
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
+  .ant-slider-handle {
+  inset-block-start: -2px !important;
+}
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::after {
+  width: 15px !important;
+  height: 15px !important;
+}
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::before {
+  width: 15px !important;
+  height: 15px !important;
+}

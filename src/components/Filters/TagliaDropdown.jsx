@@ -143,7 +143,7 @@ const TagliaDropdown = () => {
             />
           </div>
         </div>
-        <div className="w-full px-5 py-3">
+        <div className="w-full px-5 pb-3 pt-5">
           <button
             className="rounded-full bg-[#e72b6f] text-white  text-sm font-normal uppercase px-5 py-1.5"
             aria-label="Applica"

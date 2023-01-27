@@ -6,7 +6,7 @@ import ProductEdit from "./components/products/ProductEdit";
 import Navbar from "./components/Navbar";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
-import CategoryDropdown from "./components/CategoryDropdown";
+import ProductIndexSub from "./components/products/ProductIndex";
 import Footer from "./components/Footer";
 
 function App() {
@@ -23,9 +23,21 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/products/:categoryName" element={<ProductIndex />} />
-
-          <Route path="/products/:categoryName/:id" element={<ProductEdit />} />
+          <Route
+            exact
+            path="/products/:categoryName"
+            element={<ProductIndex />}
+          />
+          {/* <Route
+            exact
+            path="/products/:categoryName/:id(\0-9)"
+            element={<ProductEdit />}
+          /> */}
+          <Route
+            exact
+            path="/products/:categoryName/:subCat"
+            element={<ProductIndexSub />}
+          />
         </Routes>
       </div>
       {location.pathname.match(/login/) ||

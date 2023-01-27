@@ -1,24 +1,22 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductContext from "../../Context/ProductContext";
 import BreadcrumbComponent from "../BreadcrumbComponent";
 import Cards from "../cards/Cards";
 import { Pagination } from "antd";
 import FilterComponent from "../Filters/FilterComponent";
 
-const ProductIndex = () => {
-  const { productsCategory, getProductsCategory } = useContext(ProductContext);
+const ProductIndexSub = () => {
+  const { getSubCatProducts, subCatProducts } = useContext(ProductContext);
   let { categoryName, subCat } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (subCat) {
-      getProductsCategory(subCat, currentPage);
-    } else {
-      getProductsCategory(categoryName, currentPage);
-    }
-  }, [categoryName, currentPage]);
+    getSubCatProducts(subCat, currentPage);
+  }, [subCat]);
 
+  console.log(subCat);
+  console.log(subCatProducts);
   return (
     <div>
       <div className=" mx-auto">
@@ -36,7 +34,7 @@ const ProductIndex = () => {
           <FilterComponent />
         </div>
         <div className="flex flex-wrap md:justify-between justify-between pt-12">
-          {productsCategory?.data?.map((product, index) => {
+          {subCatProducts?.data?.map((product, index) => {
             return (
               <div key={index} className="w-[270px] mb-10">
                 <Cards
@@ -71,4 +69,4 @@ const ProductIndex = () => {
   );
 };
 
-export default ProductIndex;
+export default ProductIndexSub;

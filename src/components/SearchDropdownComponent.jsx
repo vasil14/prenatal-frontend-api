@@ -15,7 +15,7 @@ const SearchDropdownComponent = ({ onClick }) => {
   }, [formValues]);
 
   return (
-    <div className="absolute top-0 bg-slate-300 w-full text-white  z-30">
+    <div className="absolute top-0 bg-slate-300 w-full text-white z-50">
       <div className="flex flex-row px-12 pt-8 justify-between">
         <img
           onClick={onClick}

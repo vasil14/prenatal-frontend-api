@@ -1,20 +1,39 @@
 import React from "react";
-import { Breadcrumb } from "flowbite-react";
+import { Link } from "react-router-dom";
+import { Breadcrumb } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 
 const BreadcrumbComponent = ({ product_type }) => {
-  const a = product_type?.split(" > ");
-
+  const a = product_type?.split("/");
   return (
-    <Breadcrumb aria-label="Breadcrumb">
-      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+    <Breadcrumb>
+      <Breadcrumb.Item>
+        <Link to={"/"}>
+          <HomeOutlined />
+        </Link>
+      </Breadcrumb.Item>
       {a?.map((category, index) => {
         return (
-          <Breadcrumb.Item key={index} href="#">
-            {category}
+          <Breadcrumb.Item key={index}>
+            <Link to={`/products/${category}`}>
+              {category.charAt(0).toUpperCase() +
+                category.slice(1).replace("-", " ")}
+            </Link>
           </Breadcrumb.Item>
         );
       })}
     </Breadcrumb>
+
+    //   <Breadcrumb aria-label="Breadcrumb">
+    //     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+    //     {a?.map((category, index) => {
+    //       return (
+    //         <Breadcrumb.Item key={index} href="#">
+    //           {category.charAt(0).toUpperCase() + category.slice(1)}
+    //         </Breadcrumb.Item>
+    //       );
+    //     })}
+    //   </Breadcrumb>
   );
 };
 

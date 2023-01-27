@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/prenatal.png";
 import location from "../assets/location.png";
@@ -9,20 +9,13 @@ import Backdrop from "./Backdrop";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import SearchComponent from "./SearchComponent";
 import SearchDropdownComponent from "./SearchDropdownComponent";
+import ProductContext from "../Context/ProductContext";
 
 const Navbar = () => {
-  const [categoryIsOpen, setCategoryIdOpen] = useState(false);
-  const [getCategories, setCategories] = useState([]);
+  const { closeCategory, categoryIsOpen, categoryHandler, getCategories } =
+    useContext(ProductContext);
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
-  function categoryHandler(category) {
-    setCategoryIdOpen(!categoryIsOpen);
-    setCategories(category);
-  }
-
-  const closeCategory = () => {
-    setCategoryIdOpen(!categoryIsOpen);
-  };
   const handleSearchBar = () => {
     setShowSearchDropdown(true);
   };
@@ -75,11 +68,8 @@ const Navbar = () => {
                   {!categoryIsOpen && category}
 
                   {categoryIsOpen && (
-                    <Link
-                      to={`products/${category.toLowerCase()}`}
-                      onClick={closeCategory}
-                    >
-                      {category}
+                    <Link to={`products/${category.toLowerCase()}`}>
+                      <div onClick={closeCategory}>{category}</div>
                     </Link>
                   )}
                 </div>
@@ -104,12 +94,12 @@ const Navbar = () => {
       </div>
 
       {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
-      {categoryIsOpen && <Backdrop onClick={closeCategory} />}
+      {/* {categoryIsOpen && <Backdrop onClick={closeCategory} />} */}
 
       {showSearchDropdown && (
         <SearchDropdownComponent onClick={closeSearchBar} />
       )}
-      {showSearchDropdown && <Backdrop onClick={closeSearchBar} />}
+      {/* {showSearchDropdown && <Backdrop onClick={closeSearchBar} />} */}
     </div>
   );
 };
