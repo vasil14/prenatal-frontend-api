@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
-import ProductContext from "../Context/ProductContext";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react';
+import ProductContext from '../Context/ProductContext';
+import { Link } from 'react-router-dom';
 
 const CategoryDropdown = ({ categoryName }) => {
   const { categoryChildren, getCategoriesWithChildren, closeCategory } =
@@ -19,10 +19,10 @@ const CategoryDropdown = ({ categoryName }) => {
               <div key={sub_1.id} className="mr-20 mb-[20px] pt-5 ">
                 <Link
                   to={
-                    "/products/" +
-                    categoryName +
-                    "/" +
-                    sub_1.name.replaceAll(" ", "-").toLowerCase()
+                    '/products/' +
+                    categoryName.toLowerCase() +
+                    '/' +
+                    sub_1.name.replaceAll(' ', '-').toLowerCase()
                   }
                 >
                   <h1
@@ -35,7 +35,18 @@ const CategoryDropdown = ({ categoryName }) => {
                 <div className="space-y-3.5">
                   {sub_1?.children?.map((sub_2, i) => (
                     <div key={i} className="space-y-3.5">
-                      <h3 className="font-light text-[14px]">{sub_2.name}</h3>
+                      <Link
+                        to={
+                          '/products/' +
+                          categoryName.toLowerCase() +
+                          '/' +
+                          sub_1.name.replaceAll(' ', '-').toLowerCase() +
+                          '/' +
+                          sub_2.name.replaceAll(' ', '-').toLowerCase()
+                        }
+                      >
+                        <h3 className="font-light text-[14px]">{sub_2.name}</h3>
+                      </Link>
                       {sub_2.children?.map((sub_3, i) => (
                         <div key={i} className="space-y-3.5">
                           <h3 className="font-light text-[14px] pl-2">

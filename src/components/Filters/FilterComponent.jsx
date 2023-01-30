@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import filter from "../../assets/filter.png";
-import FilterButton from "./FilterButton";
-import TagliaDropdown from "./TagliaDropdown";
-import MarcaDropdown from "./MarcaDropdown";
-import GenereDropdown from "./GenereDropdown";
-import PrezzoComponent from "./PrezzoComponent";
-import ColoreDropdown from "./ColoreDropdown";
+import React, { useState } from 'react';
+import filter from '../../assets/filter.png';
+import FilterButton from './FilterButton';
+import TagliaDropdown from './TagliaDropdown';
+import MarcaDropdown from './MarcaDropdown';
+import GenereDropdown from './GenereDropdown';
+import PrezzoComponent from './PrezzoComponent';
+import ColoreDropdown from './ColoreDropdown';
 
 const FilterComponent = () => {
   const [taglia, setTaglia] = useState(0);
@@ -13,17 +13,6 @@ const FilterComponent = () => {
   const tagliaHandler = (value) => {
     value == taglia ? setTaglia(0) : setTaglia(value);
   };
-  // const config = [
-  //   { key: 'taglia', label: 'talia', component: TagliaDropdown },
-  //   { key: 'Marca', label: 'Marca', component: TagliaDropdown },
-  // ];
-  // config.map((key) => {
-  //   const Component = key.component;
-  //   console.log(Component, 'Component');
-  //   return (
-  //     <Component style={{ display: current === key.key ? 'block' : 'none' }} />
-  //   );
-  // });
   return (
     <div className="w-full relative">
       <div className="max-w-[1260px] flex items-center space-x-5 ">
@@ -34,14 +23,14 @@ const FilterComponent = () => {
           </p>
         </div>
         <div className="flex items-center space-x-3">
-          <FilterButton name={"Taglia"} onClick={() => tagliaHandler(1)} />
+          <FilterButton name={'Taglia'} onClick={() => tagliaHandler(1)} />
           <FilterButton
-            name={"Prezzo & disponibilita"}
+            name={'Prezzo & disponibilita'}
             onClick={() => tagliaHandler(2)}
           />
-          <FilterButton name={"Marca"} onClick={() => tagliaHandler(3)} />
-          <FilterButton name={"Genere"} onClick={() => tagliaHandler(4)} />
-          <FilterButton name={"Colore"} onClick={() => tagliaHandler(5)} />
+          <FilterButton name={'Marca'} onClick={() => tagliaHandler(3)} />
+          <FilterButton name={'Genere'} onClick={() => tagliaHandler(4)} />
+          <FilterButton name={'Colore'} onClick={() => tagliaHandler(5)} />
         </div>
       </div>
       {taglia === 1 && <TagliaDropdown />}

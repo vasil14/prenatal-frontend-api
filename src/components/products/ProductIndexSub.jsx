@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import Cards from "../cards/Cards";
-import { Pagination } from "antd";
-import FilterComponent from "../Filters/FilterComponent";
+import React, { useEffect, useContext, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import Cards from '../cards/Cards';
+import { Pagination } from 'antd';
+import FilterComponent from '../Filters/FilterComponent';
 
 const ProductIndexSub = () => {
   const { getSubCatProducts, subCatProducts } = useContext(ProductContext);
@@ -22,7 +22,7 @@ const ProductIndexSub = () => {
       <div className=" mx-auto">
         <div className="py-6">
           <BreadcrumbComponent
-            product_type={location.pathname.replace("/products/", "")}
+            product_type={location.pathname.replace('/products/', '')}
           />
         </div>
         <div>

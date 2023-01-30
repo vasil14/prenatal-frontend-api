@@ -1,5 +1,5 @@
-import React from "react";
-import { Slider, Switch } from "antd";
+import React from 'react';
+import { Slider, Switch } from 'antd';
 const PrezzoComponent = () => {
   return (
     <div className="absolute w-full bg-white drop-shadow-xl z-50 ">
@@ -26,7 +26,7 @@ const PrezzoComponent = () => {
               range
               defaultValue={[0, 2000]}
               max={2000}
-              tooltip={({ open: true }, { placement: "bottom" })}
+              tooltip={({ open: true }, { placement: 'bottom' })}
             />
           </div>
         </div>

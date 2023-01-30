@@ -1,13 +1,13 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { ProductProvider } from "./Context/ProductContext";
-import Home from "./components/Home";
-import ProductIndex from "./components/products/ProductIndex";
-import ProductEdit from "./components/products/ProductEdit";
-import Navbar from "./components/Navbar";
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
-import ProductIndexSub from "./components/products/ProductIndex";
-import Footer from "./components/Footer";
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { ProductProvider } from './Context/ProductContext';
+import Home from './components/Home';
+import ProductIndex from './components/products/ProductIndex';
+import ProductEdit from './components/products/ProductEdit';
+import Navbar from './components/Navbar';
+import Login from './components/user/Login';
+import Register from './components/user/Register';
+import ProductIndexSub from './components/products/ProductIndex';
+import Footer from './components/Footer';
 
 function App() {
   const location = useLocation();
@@ -28,15 +28,11 @@ function App() {
             path="/products/:categoryName"
             element={<ProductIndex />}
           />
-          {/* <Route
-            exact
-            path="/products/:categoryName/:id(\0-9)"
-            element={<ProductEdit />}
-          /> */}
+          <Route exact path="/product/:title" element={<ProductEdit />} />
           <Route
             exact
             path="/products/:categoryName/:subCat"
-            element={<ProductIndexSub />}
+            element={<ProductIndex />}
           />
         </Routes>
       </div>

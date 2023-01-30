@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-import { Link } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const Cards = ({
   image,
@@ -13,7 +13,7 @@ const Cards = ({
   marke,
   title,
   id,
-  size = "300px",
+  size = '300px',
 }) => {
   SwiperCore.use([Navigation]);
   const [showCarusel, setShowCarusel] = useState(false);
@@ -27,10 +27,6 @@ const Cards = ({
     <div
       className={`relative  max-w-sm w-[${size}] bg-white hover:scale-105 hover:drop-shadow-2xl duration-300 ease-in-out align-center z-10`}
     >
-      {/* <Link to={`${id}`}>
-        <img src={image} alt={image} />
-      </Link> */}
-
       <div
         className={`border w-[${size}]`}
         onMouseEnter={handleMouseEnter}
@@ -42,7 +38,10 @@ const Cards = ({
           navigation={showCarusel}
         >
           <SwiperSlide>
-            <Link to={`${id}`}>
+            <Link
+              to={`/product/${title.replaceAll(' ', '-')}`}
+              action="replace"
+            >
               <img src={image} alt={image} />
             </Link>
           </SwiperSlide>

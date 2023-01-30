@@ -1,30 +1,32 @@
-import React from "react";
-import ProductContext from "../../Context/ProductContext";
-import { useParams } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import blank from "../../assets/blank.jpg";
-import SizeComponent from "../SizeComponent";
-import AccordionComponent from "../AccordionComponent";
+import React from 'react';
+import ProductContext from '../../Context/ProductContext';
+import { useParams } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import blank from '../../assets/blank.jpg';
+import SizeComponent from '../SizeComponent';
+import AccordionComponent from '../AccordionComponent';
 
 const ProductEdit = () => {
   const { product, getProduct } = useContext(ProductContext);
-  let { id } = useParams();
+  let { title } = useParams();
 
   useEffect(() => {
-    getProduct(id);
+    getProduct(title);
   }, []);
   return (
     <div>
       <div className="mt-4">
-        <BreadcrumbComponent product_type={product.product_type} />
+        <BreadcrumbComponent
+          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
+        />
       </div>
       <div className="flex flex-row">
         <div className="basis-2/3 grid grid-cols-2 gap-6 mt-6 mr-6">
           <div className="border border-slate-300">
-            <img src={product.image_link} className="w-full h-full" />
+            <img src={product[0]?.image_link} className="w-full h-full" />
           </div>
-          {product.images?.map((image, index) => {
+          {product[0]?.images?.map((image, index) => {
             return (
               <div key={index} className="border border-slate-300">
                 <img src={image.link} className=" h-full " />
@@ -33,7 +35,7 @@ const ProductEdit = () => {
           })}
 
           <div>
-            {product.images?.length % 2 == 0 && (
+            {product[0]?.images?.length % 2 == 0 && (
               <div className="border border-slate-300">
                 <img src={blank} className="w-full h-full" />
               </div>
@@ -42,12 +44,21 @@ const ProductEdit = () => {
         </div>
         <div className="flex flex-col mt-4 px-3 w-[385px]">
           <h1 className="text-[22px] text-[#333333] font-poppins font-[500]">
-            {product.title}
+            {product[0]?.title}
           </h1>
+
           <h1 className="font-poppins text-[35px] text-[#E72A6E] mt-10">
-            € {product.price}
+            € {product[1]?.price}
           </h1>
-          <hr className="flex mx-auto w-full bg-[#789A40] max-w-[400px] h-[2px]" />
+
+          {product[1]?.vip_price != 0 && (
+            <div>
+              <hr className="flex mx-auto w-full bg-[#789A40] max-w-[400px] h-[2px]" />
+              <h1 className="font-poppins text-[35px] text-[#789A40] mt-10">
+                € {product[1]?.vip_price}
+              </h1>
+            </div>
+          )}
           <div className="my-10 space-y-6">
             <div className="flex justify-between">
               <p>Taglie</p>
@@ -55,7 +66,7 @@ const ProductEdit = () => {
                 Guida alle taglie
               </a>
             </div>
-            <SizeComponent size={product.taglia} />
+            <SizeComponent size={product[0]?.taglia} />
           </div>
           <button
             type="button"
@@ -70,7 +81,7 @@ const ProductEdit = () => {
             Aggiungi alla lista
           </button>
           <div className="text-xs text-black font-normal space-y-2 mt-6">
-            <p>{product.description}</p>
+            <p>{product[0]?.description}</p>
           </div>
           <div className="mt-5">
             <AccordionComponent data={product} />
