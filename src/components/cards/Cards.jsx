@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import React, { useState, useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
+import ProductContext from "../../Context/ProductContext";
 
 const Cards = ({
   image,
@@ -13,10 +14,19 @@ const Cards = ({
   marke,
   title,
   id,
-  size = '300px',
+  size = "300px",
 }) => {
   SwiperCore.use([Navigation]);
+  const { setId } = useContext(ProductContext);
   const [showCarusel, setShowCarusel] = useState(false);
+
+  let _title = title.replaceAll("/", "-");
+  let _title_ = _title.replaceAll(" ", "-");
+
+  const handleClick = (id) => {
+    setId(id);
+  };
+
   const handleMouseEnter = () => {
     setShowCarusel(true);
   };
@@ -38,18 +48,15 @@ const Cards = ({
           navigation={showCarusel}
         >
           <SwiperSlide>
-            <Link
-              to={`/product/${title.replaceAll(' ', '-')}`}
-              action="replace"
-            >
-              <img src={image} alt={image} />
+            <Link to={`/product/${_title_}`} action="replace">
+              <img src={image} alt={image} onClick={() => handleClick(id)} />
             </Link>
           </SwiperSlide>
           {images?.map((a, i) => {
             return (
               <SwiperSlide key={i}>
-                <Link to={`${id}`}>
-                  <img src={a.link} alt={a} />
+                <Link to={`/product/${_title_}`}>
+                  <img src={a.link} alt={a} onClick={() => handleClick(id)} />
                 </Link>
               </SwiperSlide>
             );

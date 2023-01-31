@@ -68,7 +68,11 @@ const Navbar = () => {
                   {!categoryIsOpen && category}
 
                   {categoryIsOpen && (
-                    <Link to={`products/${category.toLowerCase()}`}>
+                    <Link
+                      to={`products/${category
+                        .replaceAll(" ", "-")
+                        .toLowerCase()}`}
+                    >
                       <div onClick={closeCategory}>{category}</div>
                     </Link>
                   )}

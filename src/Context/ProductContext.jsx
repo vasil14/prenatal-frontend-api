@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000/api/v1/';
+import { createContext, useState } from "react";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext({
   user: null,
@@ -15,20 +15,20 @@ export const ProductProvider = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);
   const [categoryChildren, setCategoryChildren] = useState([]);
-  const [subCatProducts, setSubCatProducts] = useState([]);
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
   const [getCategories, setCategories] = useState([]);
   const [user, setUser] = useState({});
+  const [getId, setId] = useState("");
 
-  const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem('ACCESS_TOKEN', token);
+      localStorage.setItem("ACCESS_TOKEN", token);
     } else {
-      localStorage.removeItem('ACCESS_TOKEN');
+      localStorage.removeItem("ACCESS_TOKEN");
     }
   };
 
@@ -46,32 +46,40 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProducts = async (name) => {
-    const apiProducts = await axios.get('products?title=' + name);
+    const apiProducts = await axios.get("products?title=" + name);
     setProducts(apiProducts.data);
   };
 
-  const getProduct = async (title) => {
-    const response = await axios.get('products/' + title);
+  const getProduct = async (getId) => {
+    const response = await axios.get("products/" + getId);
     setProduct(response.data);
   };
 
-  const getProductsCategory = async (categoryName, currentPage) => {
-    const response = await axios.get(
-      `products/categoria-prodotto/${categoryName}?page=${currentPage}`
-    );
-    setProductsCategory(response.data);
+  const getProductsCategory = async (categoryName, currentPage, colore) => {
+    if (colore) {
+      const response = await axios.get(
+        `products/categoria-prodotto/${categoryName.replaceAll(
+          "-",
+          " "
+        )}?page=${currentPage}&colore=${colore}`
+      );
+      setProductsCategory(response.data);
+    } else {
+      const response = await axios.get(
+        `products/categoria-prodotto/${categoryName.replaceAll(
+          "-",
+          " "
+        )}?page=${currentPage}`
+      );
+      setProductsCategory(response.data);
+    }
   };
 
   const getCategoriesWithChildren = async (categoryName) => {
-    const response = await axios.get('categories/' + categoryName);
-    setCategoryChildren(response.data);
-  };
-
-  const getSubCatProducts = async (categoryName, subCat, currentPage) => {
     const response = await axios.get(
-      `products/categoria-prodotto/${categoryName}/${subCat}?page=${currentPage}`
+      "categories/" + categoryName.replaceAll("-", " ")
     );
-    setSubCatProducts(response.data);
+    setCategoryChildren(response.data);
   };
 
   return (
@@ -92,13 +100,12 @@ export const ProductProvider = ({ children }) => {
         categoryChildren,
         setCategoryChildren,
         getCategoriesWithChildren,
-        getSubCatProducts,
-        subCatProducts,
-        setSubCatProducts,
         closeCategory,
         categoryIsOpen,
         categoryHandler,
         getCategories,
+        setId,
+        getId,
       }}
     >
       {children}

@@ -1,137 +1,132 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "../Checkbox";
 
 const ColoreDropdown = () => {
+  const [getColors, setGetColors] = useState([]);
+  let colors = [];
+  const handleChange = (e) => {
+    if (getColors.includes(e)) {
+      const filtered = getColors.filter(function (ele) {
+        return ele != e;
+      });
+      setGetColors([...filtered]);
+    } else {
+      setGetColors((current) => [...current, e]);
+    }
+  };
+  console.log(getColors);
+
   return (
     <div className="absolute w-full bg-white drop-shadow-xl z-40 ">
-      <div className="flex flex-wrap">
+      <div className="space-x-4 min-w-full">
         {/* Abbigliamento mamma */}
-        <div className="px-3 pt-3 w-1/3">
+        <div className="px-5 pt-5 ">
           <h1 className="text-[#e72b6f] text-base font-semibold px-5 pt-5">
-            Abbigliamento mamma
+            Filtra per colore
           </h1>
-          <div className="px-5 pb-2 w-full">
-            <div className="grid grid-cols-5 gap-10">
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+
+          <div className="px-5 pb-2">
+            <div className="flex justify-start flex-wrap -ml-4 ">
+              <div className="ml-4 mt-4 min-w-[200px] ">
+                <input
+                  className="border-red"
+                  type="checkbox"
+                  onChange={() => handleChange("Azzuro")}
+                />{" "}
+                <span className="ml-2 pt-1">Azzuro</span>
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Beige")}
+                />{" "}
+                Beige
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Bianco")}
+                />{" "}
+                Bianco
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Fantasia")}
+                />{" "}
+                Fantasia
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Giallo")}
+                />{" "}
+                Giallo
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Grigio")}
+                />{" "}
+                Grigio
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Marrone")}
+                />{" "}
+                Marrone
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Non definito")}
+                />{" "}
+                Non definito
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Panna")}
+                />{" "}
+                Panna
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Rosa")}
+                />{" "}
+                Rosa
               </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
-              </div>
-              <div className="ml-4 mt-4 ">
-                <Checkbox
-                  description={"Beige"}
-                  rounded={"none"}
-                  color={"gray-200"}
-                  h={"20px"}
-                  w-={"20px"}
-                />
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400"
+                  type="checkbox"
+                  onChange={() => handleChange("Rosso")}
+                />{" "}
+                Rosso
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="w-full px-5 pb-3 pt-5">
-          <button
-            className="rounded-full bg-[#e72b6f] text-white  text-sm font-normal uppercase px-5 py-1.5"
-            aria-label="Applica"
-          >
-            <span className="px-4 py-1">applica</span>
-          </button>
-        </div>
+      <div className="w-full px-5 pb-3 pt-5">
+        <button
+          className="rounded-full bg-[#e72b6f] text-white  text-sm font-normal uppercase px-5 py-1.5"
+          aria-label="Applica"
+        >
+          <span className="px-4 py-1">applica</span>
+        </button>
       </div>
     </div>
   );

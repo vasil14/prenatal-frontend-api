@@ -1,24 +1,25 @@
-import React from 'react';
-import ProductContext from '../../Context/ProductContext';
-import { useParams } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-import BreadcrumbComponent from '../BreadcrumbComponent';
-import blank from '../../assets/blank.jpg';
-import SizeComponent from '../SizeComponent';
-import AccordionComponent from '../AccordionComponent';
+import React from "react";
+import ProductContext from "../../Context/ProductContext";
+import { useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import BreadcrumbComponent from "../BreadcrumbComponent";
+import blank from "../../assets/blank.jpg";
+import SizeComponent from "../SizeComponent";
+import AccordionComponent from "../AccordionComponent";
 
 const ProductEdit = () => {
-  const { product, getProduct } = useContext(ProductContext);
-  let { title } = useParams();
+  const { product, getProduct, getId } = useContext(ProductContext);
+  console.log(getId);
 
   useEffect(() => {
-    getProduct(title);
+    getProduct(getId);
   }, []);
+
   return (
     <div>
       <div className="mt-4">
         <BreadcrumbComponent
-          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
+          product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
         />
       </div>
       <div className="flex flex-row">
