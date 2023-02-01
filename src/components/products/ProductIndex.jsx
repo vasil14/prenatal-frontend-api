@@ -33,25 +33,28 @@ const ProductIndex = () => {
   }
 
   return (
-    <div>
-      <div className="mx-auto">
-        <div className="py-6">
-          <BreadcrumbComponent
-            product_type={location.pathname.replace("/products/", "")}
-          />
-        </div>
-        <div>
-          <h1 className="block text-2xl font-bold text-gray-800 uppercase ">
-            {categoryName}
-          </h1>
-        </div>
-        <div className="mt-10">
-          <FilterComponent />
-        </div>
-        <div className="flex flex-wrap pt-12">
+    <div className="mx-auto container">
+      <div className="py-6 px-5 ">
+        <BreadcrumbComponent
+          product_type={location.pathname.replace("/products/", "")}
+        />
+      </div>
+      <div className="px-5">
+        <h1 className="block text-2xl font-bold text-gray-800 uppercase ">
+          {categoryName}
+        </h1>
+      </div>
+      <div className="mt-10 px-5">
+        <FilterComponent />
+      </div>
+      <div className="container mx-auto">
+        <div className="flex flex-wrap pt-12 ">
           {productsCategory?.data?.map((product, index) => {
             return (
-              <div key={index} className="mb-10 p-2 ">
+              <div
+                key={index}
+                className="mb-10 p-2 w-1/2 xs:w-1/2 lg:w-1/3 xl:w-1/4 "
+              >
                 <Cards
                   images={product.images}
                   image={product.image_link}
@@ -68,17 +71,17 @@ const ProductIndex = () => {
             );
           })}
         </div>
-        <div className="flex justify-center">
-          <Pagination
-            current={currentPage}
-            total={productsCategory.total}
-            defaultPageSize={12}
-            size="small"
-            onChange={(page, pageSize) => {
-              setCurrentPage(page);
-            }}
-          />
-        </div>
+      </div>
+      <div className="flex justify-center">
+        <Pagination
+          current={currentPage}
+          total={productsCategory.total}
+          defaultPageSize={12}
+          size="small"
+          onChange={(page, pageSize) => {
+            setCurrentPage(page);
+          }}
+        />
       </div>
     </div>
   );

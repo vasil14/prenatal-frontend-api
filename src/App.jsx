@@ -15,42 +15,58 @@ function App() {
     <ProductProvider>
       {location.pathname.match(/login/) ||
       location.pathname.match(/register/) ? null : (
-        <Navbar />
+        <div className="w-full overflow-hidden">
+          <div className="flex justify-center items-center border-b">
+            <div className="xl:max-w-[1300px] w-full">
+              <Navbar />
+            </div>
+          </div>
+        </div>
       )}
 
-      <div className="w-[1300px] flex mx-auto">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route exact path="/product/:title" element={<ProductEdit />} />
-          {/* <Route
-            exact
-            path="/products/:categoryName"
-            element={<ProductIndex />}
-          />
-          <Route
-            exact
-            path="/products/:categoryName/:subCat"
-            element={<ProductIndex />}
-          /> */}
-          <Route
-            path="/products/:categoryName/:subCat_1/:subCat_2/:subCat_3"
-            element={<ProductIndex />}
-          />
-          <Route path="/products/:categoryName" element={<ProductIndex />}>
-            <Route path=":subCat_1" element={<ProductIndex />} />
-            <Route path=":subCat_1/:subCat_2" element={<ProductIndex />} />
-            <Route
-              path=":subCat_1/:subCat_2/subCat_3"
-              element={<ProductIndex />}
-            />
-          </Route>
-        </Routes>
+      <div className="w-full overflow-hidden">
+        <div className="flex justify-center items-center">
+          <div className="xl:max-w-[1300px] w-full">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route exact path="/product/:title" element={<ProductEdit />} />
+              {/* <Route
+                exact
+                path="/products/:categoryName"
+                element={<ProductIndex />}
+              />
+              <Route
+                exact
+                path="/products/:categoryName/:subCat"
+                element={<ProductIndex />}
+              /> */}
+              <Route
+                path="/products/:categoryName/:subCat_1/:subCat_2/:subCat_3"
+                element={<ProductIndex />}
+              />
+              <Route path="/products/:categoryName" element={<ProductIndex />}>
+                <Route path=":subCat_1" element={<ProductIndex />} />
+                <Route path=":subCat_1/:subCat_2" element={<ProductIndex />} />
+                <Route
+                  path=":subCat_1/:subCat_2/subCat_3"
+                  element={<ProductIndex />}
+                />
+              </Route>
+            </Routes>
+          </div>
+        </div>
       </div>
       {location.pathname.match(/login/) ||
       location.pathname.match(/register/) ? null : (
-        <Footer />
+        <div className="w-full overflow-hidden">
+          <div className="flex justify-center items-center">
+            <div className="xl:max-w-[1300px] w-full">
+              <Footer />
+            </div>
+          </div>
+        </div>
       )}
     </ProductProvider>
   );

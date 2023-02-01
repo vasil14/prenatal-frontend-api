@@ -3,7 +3,7 @@ import Checkbox from "../Checkbox";
 
 const GenereDropdown = () => {
   return (
-    <div className="absolute w-full bg-white drop-shadow-xl z-50 ">
+    <div className="absolute w-full bg-white drop-shadow-xl ">
       <div className="flex flex-wrap">
         <div className="px-3 pt-3 w-1/3">
           <h1 className="text-[#e72b6f] text-base font-semibold px-5 pt-5">

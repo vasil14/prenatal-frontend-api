@@ -5,11 +5,13 @@ import location from "../assets/location.png";
 import { categories, specialCat } from "../constants/index";
 import Account from "./user/Account";
 import CategoryDropdown from "./CategoryDropdown";
-import Backdrop from "./Backdrop";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import SearchComponent from "./SearchComponent";
 import SearchDropdownComponent from "./SearchDropdownComponent";
 import ProductContext from "../Context/ProductContext";
+import { MenuOutlined } from "@ant-design/icons";
+import searchIcon from "../assets/search_icon.png";
+import cart from "../assets/cart.png";
 
 const Navbar = () => {
   const { closeCategory, categoryIsOpen, categoryHandler, getCategories } =
@@ -25,78 +27,111 @@ const Navbar = () => {
   };
 
   return (
-    <div className="border-b-2 h-[167px] ">
-      <div className=" max-w-[1300px] mx-auto z-50">
-        <div className="flex flex-row justify-between items-center pt-8">
-          <div className="w-60">
-            <Link to="/">
-              <img src={logo} alt="logo" className="w-[208px] " />
-            </Link>
-          </div>
-          <SearchComponent
-            onClick={handleSearchBar}
-            color="border-gray-800"
-            placeholder="Che prodotto stai cercando?"
-            paddingX="px-16"
-          />
-          <div className="flex flex-row  w-72">
-            <p className="text-[9px] text-right ">
-              PRENOTA & RITIRA <br /> IN NEGOZIO
-            </p>
-            <div className="flex flex-row h-[25px]">
-              <img src={location} alt="icons" className="ml-4 " />
-              <div className="ml-4">
-                <Account />
+    <div className="pt-5">
+      {/* Navbar desktop */}
+      <div className="hidden lg:block  container mx-auto">
+        <div className="max-h-[180px] ">
+          <div className="flex justify-between items-center pt-2 md:space-x-16">
+            <div className="w-60">
+              <Link to="/">
+                <img src={logo} alt="logo" className="w-[208px] " />
+              </Link>
+            </div>
+            <SearchComponent
+              onClick={handleSearchBar}
+              color="border-gray-800"
+              placeholder="Che prodotto stai cercando?"
+              paddingX="px-16"
+            />
+            <div className="flex flex-row  w-72">
+              <p className="text-[9px] text-right ">
+                PRENOTA & RITIRA <br /> IN NEGOZIO
+              </p>
+              <div className="flex flex-row h-[25px] pr-3">
+                <img src={location} alt="icons" className="ml-4 " />
+                <div className="ml-4">
+                  <Account />
+                </div>
+                <div className="ml-4 ">
+                  <ShoppingCart />
+                </div>
               </div>
-              <div className="ml-4">
-                <ShoppingCart />
+            </div>
+          </div>
+          <div className="container z-10">
+            <div className="flex items-center justify-between my-5 space-x-2">
+              <div className="container mx-auto">
+                {categories.map((category, index) => {
+                  return (
+                    <div
+                      onClick={() => categoryHandler(category)}
+                      className={` cursor-pointer inline-block p-2`}
+                      key={index}
+                    >
+                      {!categoryIsOpen && category}
+                      {categoryIsOpen && (
+                        <Link
+                          to={`products/${category
+                            .replaceAll(" ", "-")
+                            .toLowerCase()}`}
+                        >
+                          <h1
+                            onClick={closeCategory}
+                            className="relative text-base leading-5 text-gray-900 hover:text-primary font-normal"
+                          >
+                            {category}
+                          </h1>
+                        </Link>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="flex justify-between space-x-2">
+                {specialCat.map((special, index) => {
+                  return (
+                    <div
+                      className={`${
+                        index === specialCat.length - 1 ? "mr-0" : "mr-5"
+                      } inline-block`}
+                      key={index}
+                    >
+                      <h1 className="relative text-base leading-5 text-gray-900 hover:text-primary font-normal">
+                        {special}
+                      </h1>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-between max-w-[1300px] mx-auto mt-10">
-          <div className="flex flex-row  ">
-            {categories.map((category, index) => {
-              return (
-                <div
-                  onClick={() => categoryHandler(category)}
-                  className={`${
-                    index === categories.length - 1 ? "mr-0" : "mr-5"
-                  } cursor-pointer`}
-                  key={index}
-                >
-                  {!categoryIsOpen && category}
+      </div>
+      {/* Navbar mobile */}
 
-                  {categoryIsOpen && (
-                    <Link
-                      to={`products/${category
-                        .replaceAll(" ", "-")
-                        .toLowerCase()}`}
-                    >
-                      <div onClick={closeCategory}>{category}</div>
-                    </Link>
-                  )}
-                </div>
-              );
-            })}
+      <div className="flex md:h-16 justify-between items-center lg:hidden relative px-2 py-1 border-b container mx-auto">
+        <div className="lg:hidden flex flex-grow flex-shrink flex-1 pt-2">
+          <div>
+            <button className="inline-flex items-center justify-center p-3 text-gray-700 focus:text-black focus:bg-gray-100 focus:outline-none print:hidden">
+              <MenuOutlined style={{ fontSize: "24px" }} />
+            </button>
           </div>
-          <div className="flex flex-row  ">
-            {specialCat.map((special, index) => {
-              return (
-                <div
-                  className={`${
-                    index === specialCat.length - 1 ? "mr-0" : "mr-5"
-                  }`}
-                  key={index}
-                >
-                  {special}
-                </div>
-              );
-            })}
+          <div className="p-2">
+            <img src={location} alt="location" className="w-5 h-7" />
+          </div>
+        </div>
+        <div className="block px-2 lg:hidden">
+          <img src={logo} alt="logo" className="h-5" />
+        </div>
+        <div className="lg:hidden flex flex-grow flex-shrink justify-end flex-1 pt-2">
+          <div className="p-2">
+            <img src={searchIcon} alt="searchIcon" />
+          </div>
+          <div className="p-2">
+            <ShoppingCart />
           </div>
         </div>
       </div>
-
       {categoryIsOpen && <CategoryDropdown categoryName={getCategories} />}
       {/* {categoryIsOpen && <Backdrop onClick={closeCategory} />} */}
 

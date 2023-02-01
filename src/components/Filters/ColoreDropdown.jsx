@@ -17,7 +17,7 @@ const ColoreDropdown = () => {
   console.log(getColors);
 
   return (
-    <div className="absolute w-full bg-white drop-shadow-xl z-40 ">
+    <div className="absolute w-full bg-white drop-shadow-xl  ">
       <div className="space-x-4 min-w-full">
         {/* Abbigliamento mamma */}
         <div className="px-5 pt-5 ">

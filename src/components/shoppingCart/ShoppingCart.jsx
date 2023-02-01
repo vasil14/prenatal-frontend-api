@@ -10,7 +10,7 @@ function ShoppingCart() {
     setCartOpen(!cartOpen);
   }
   return (
-    <div className="relative items-center w-[26px]">
+    <div className="relative items-center w-[26px] ">
       <BadgeComponent
         img={<img src={cart} alt="cart" />}
         onClick={cartHandler}

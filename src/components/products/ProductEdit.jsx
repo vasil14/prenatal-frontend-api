@@ -22,7 +22,7 @@ const ProductEdit = () => {
           product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
         />
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row container mx-auto">
         <div className="basis-2/3 grid grid-cols-2 gap-6 mt-6 mr-6">
           <div className="border border-slate-300">
             <img src={product[0]?.image_link} className="w-full h-full" />

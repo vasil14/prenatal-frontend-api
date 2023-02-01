@@ -4,7 +4,7 @@ import { categories, tuEPrenatal, azienda, supporto } from "../constants";
 const Footer = () => {
   return (
     <div className="border-y mt-24">
-      <div className="flex flex-wrap justify-between items-start py-10  border-y w-[1300px] mx-auto">
+      <div className="flex flex-wrap justify-between items-start py-10  border-y mx-auto">
         <div className=" px-4 w-1/4 ">
           <div className="font-semibold uppercase text-sm">
             <p>Categorie</p>

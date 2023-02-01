@@ -11,7 +11,7 @@ const CategoryDropdown = ({ categoryName }) => {
   }, [categoryName]);
 
   return (
-    <div className="relative z-30 drop-shadow-xl">
+    <div className="relative  drop-shadow-xl z-40">
       <div className="absolute bg-white w-full text-white ">
         <div className="max-w-[1300px] mx-auto my-6 text-black">
           <div className="flex flex-row">

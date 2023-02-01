@@ -5,7 +5,7 @@ import IncDecCounter from "./IncDecCounter";
 
 const CartDropdown = () => {
   return (
-    <div className="absolute right-0 top-9 w-[310px] z-30 drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white">
+    <div className="absolute right-0 top-9 w-[310px] drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white ">
       <div className="p-4 border-b border-gray-100">
         <p className="text-base font-bold text-[#e72b6f]">Il tuo carello (1)</p>
       </div>

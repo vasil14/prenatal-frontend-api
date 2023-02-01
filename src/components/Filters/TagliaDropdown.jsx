@@ -3,7 +3,7 @@ import Checkbox from "../Checkbox";
 
 const TagliaDropdown = () => {
   return (
-    <div className="absolute w-full bg-white drop-shadow-xl z-50 ">
+    <div className="absolute w-full bg-white drop-shadow-xl">
       <div className="flex flex-wrap">
         {/* Abbigliamento mamma */}
         <div className="px-3 pt-3 w-1/3">

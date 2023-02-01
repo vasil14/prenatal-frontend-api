@@ -8,14 +8,14 @@ import RadioButton from "../RadioButton";
 import ProductContext from "../../Context/ProductContext";
 
 const Register = () => {
+  const { setUser, setToken } = useContext(ProductContext);
+  const [getGender, setGender] = useState();
+  const [startDate, setStartDate] = useState(new Date());
+
   const nameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  const { setUser, setToken } = useContext(ProductContext);
-  const [getGender, setGender] = useState();
-  const [startDate, setStartDate] = useState(new Date());
 
   const onSubmit = (e) => {
     e.preventDefault();
