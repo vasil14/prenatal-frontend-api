@@ -1,25 +1,25 @@
-import React from "react";
-import ProductContext from "../../Context/ProductContext";
-import { useParams } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import blank from "../../assets/blank.jpg";
-import SizeComponent from "../SizeComponent";
-import AccordionComponent from "../AccordionComponent";
+import React from 'react';
+import ProductContext from '../../Context/ProductContext';
+import { useParams } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import blank from '../../assets/blank.jpg';
+import SizeComponent from '../SizeComponent';
+import AccordionComponent from '../AccordionComponent';
 
 const ProductEdit = () => {
-  const { product, getProduct, getId } = useContext(ProductContext);
-  console.log(getId);
+  const { product, getProduct, productId } = useContext(ProductContext);
+  console.log(productId);
 
   useEffect(() => {
-    getProduct(getId);
-  }, []);
+    getProduct(productId);
+  }, [productId]);
 
   return (
     <div>
       <div className="mt-4">
         <BreadcrumbComponent
-          product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
+          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
         />
       </div>
       <div className="flex flex-row container mx-auto">
@@ -49,14 +49,14 @@ const ProductEdit = () => {
           </h1>
 
           <h1 className="font-poppins text-[35px] text-[#E72A6E] mt-10">
-            € {product[1]?.price}
+            € {product[0]?.children && product[0]?.children[0]?.price}
           </h1>
 
           {product[1]?.vip_price != 0 && (
             <div>
               <hr className="flex mx-auto w-full bg-[#789A40] max-w-[400px] h-[2px]" />
               <h1 className="font-poppins text-[35px] text-[#789A40] mt-10">
-                € {product[1]?.vip_price}
+                € {product[0]?.children[0]?.vip_price}
               </h1>
             </div>
           )}

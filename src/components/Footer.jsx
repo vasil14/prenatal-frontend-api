@@ -1,5 +1,5 @@
-import React from "react";
-import { categories, tuEPrenatal, azienda, supporto } from "../constants";
+import React from 'react';
+import { categories, tuEPrenatal, azienda, supporto } from '../constants';
 
 const Footer = () => {
   return (

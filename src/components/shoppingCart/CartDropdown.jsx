@@ -1,11 +1,11 @@
-import React from "react";
-import item from "../../assets/item.jpg";
-import Trash from "../../assets/trash.svg";
-import IncDecCounter from "./IncDecCounter";
+import React from 'react';
+import item from '../../assets/item.jpg';
+import Trash from '../../assets/trash.svg';
+import IncDecCounter from './IncDecCounter';
 
 const CartDropdown = () => {
   return (
-    <div className="absolute right-0 top-9 w-[310px] drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white ">
+    <div className="absolute right-0 top-9 w-[310px] drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white z-50">
       <div className="p-4 border-b border-gray-100">
         <p className="text-base font-bold text-[#e72b6f]">Il tuo carello (1)</p>
       </div>
@@ -53,7 +53,7 @@ const CartDropdown = () => {
           </div>
         </div>
         <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border focus:outline-none hover:bg-white hover:border-[#e72b6f] hover:text-[#e72b6f] text-base py-2 text-white bg-[#e72b6f] ">
-          {" "}
+          {' '}
           CONCLUDI l'ORDINE
         </button>
       </div>
