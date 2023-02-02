@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000/api/v1/';
+import { createContext, useState } from "react";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext({
   user: null,
@@ -18,21 +18,32 @@ export const ProductProvider = ({ children }) => {
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
   const [getCategories, setCategories] = useState([]);
   const [user, setUser] = useState({});
-  const [productId, setProductId] = useState([]);
+  const [productId, _setProductId] = useState([]);
+  const [showFilterComp, setShowFilterComp] = useState(0);
 
-  const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
-  const setId = (id) => {
-    setProductId(id);
+  const filterCompHandler = (value) => {
+    value == showFilterComp ? setShowFilterComp(0) : setShowFilterComp(value);
+  };
+
+  const setProductId = (id) => {
+    _setProductId(id);
+
+    if (id) {
+      localStorage.setItem("PRODUCT_ID", id);
+    } else {
+      localStorage.removeItem("PRODUCT_ID");
+    }
   };
 
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem('ACCESS_TOKEN', token);
+      localStorage.setItem("ACCESS_TOKEN", token);
     } else {
-      localStorage.removeItem('ACCESS_TOKEN');
+      localStorage.removeItem("ACCESS_TOKEN");
     }
   };
 
@@ -50,12 +61,12 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProducts = async (name) => {
-    const apiProducts = await axios.get('products?title=' + name);
+    const apiProducts = await axios.get("products?title=" + name);
     setProducts(apiProducts.data);
   };
 
   const getProduct = async (getId) => {
-    const response = await axios.get('products/' + getId);
+    const response = await axios.get("products/" + getId);
     setProduct(response.data);
   };
 
@@ -63,16 +74,16 @@ export const ProductProvider = ({ children }) => {
     if (colore) {
       const response = await axios.get(
         `products/categoria-prodotto/${categoryName.replaceAll(
-          '-',
-          ' '
+          "-",
+          " "
         )}?page=${currentPage}&colore=${colore}`
       );
       setProductsCategory(response.data);
     } else {
       const response = await axios.get(
         `products/categoria-prodotto/${categoryName.replaceAll(
-          '-',
-          ' '
+          "-",
+          " "
         )}?page=${currentPage}`
       );
       setProductsCategory(response.data);
@@ -81,7 +92,7 @@ export const ProductProvider = ({ children }) => {
 
   const getCategoriesWithChildren = async (categoryName) => {
     const response = await axios.get(
-      'categories/' + categoryName.replaceAll('-', ' ')
+      "categories/" + categoryName.replaceAll("-", " ")
     );
     setCategoryChildren(response.data);
   };
@@ -109,7 +120,9 @@ export const ProductProvider = ({ children }) => {
         categoryHandler,
         getCategories,
         productId,
-        setId,
+        setProductId,
+        showFilterComp,
+        filterCompHandler,
       }}
     >
       {children}

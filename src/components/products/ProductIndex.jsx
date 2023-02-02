@@ -44,7 +44,7 @@ const ProductIndex = () => {
           {categoryName}
         </h1>
       </div>
-      <div className="mt-10 px-5">
+      <div className="container mt-6 mb-5">
         <FilterComponent />
       </div>
       <div className="container mx-auto">
