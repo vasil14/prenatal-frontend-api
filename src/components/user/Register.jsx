@@ -154,22 +154,22 @@ const Register = () => {
               htmlFor="flexCheckDefault"
             >
               Dichiaro di aver letto ed accettato{" "}
-              <a href="#" className="text-[#e72b6f]">
+              <a href="#" className="text-primary">
                 l’informativa sui dati personali
               </a>{" "}
               e di aver preso visione ed accettato il{" "}
-              <a href="#" className="text-[#e72b6f]">
+              <a href="#" className="text-primary">
                 Regolamento della Prenatal Card
               </a>{" "}
               o il{" "}
-              <a href="#" className="text-[#e72b6f]">
+              <a href="#" className="text-primary">
                 Regolamento della Prenatal VIP Card
               </a>
               . *
             </label>
           </div>
           <div className="mt-10">
-            <button className="w-full h-[46px] px-4 py-2 tracking-wide text-sm text-white font-bold transition-colors duration-150 transform bg-[#e72b6f] rounded-md hover:bg-white hover:border hover:border-[#e72b6f] hover:text-[#e72b6f] focus:outline-none focus:bg-purple-600">
+            <button className="w-full h-[46px] px-4 py-2 tracking-wide text-sm text-white font-bold transition-colors duration-150 transform bg-primary rounded-md hover:bg-white hover:border hover:border-primary hover:text-primary focus:outline-none focus:bg-purple-600">
               REGISTRATI
             </button>
           </div>
@@ -178,7 +178,7 @@ const Register = () => {
             Hai gia un account?
           </p>
           <a
-            className="flex justify-center text-[#e72b6f] text-sm font-poppins font-medium mt-2 mb-3"
+            className="flex justify-center text-primary text-sm font-poppins font-medium mt-2 mb-3"
             href="/login"
           >
             ACCEDI

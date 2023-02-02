@@ -15,18 +15,18 @@ const Account = () => {
       >
         <Dropdown.Item href="/login">
           <Link to="/login">
-            <button className="bg-[#e72b6f] rounded-full w-[200px] h-[40px] mt-[8px] text-white text-[16px]">
+            <button className="bg-primary rounded-full w-[200px] h-[40px] mt-[8px] text-white text-[16px]">
               ACCEDI
             </button>
           </Link>
         </Dropdown.Item>
 
         <div className="flex flex-row mt-2 ml-2 mb-2">
-          <p className="text-[#e72b6f] text-[13px] font-poppins mr-1">
+          <p className="text-primary text-[13px] font-poppins mr-1">
             Nuovo su Prénatal?{" "}
           </p>
           <a
-            className="underline text-[#e72b6f] text-[13px] font-poppins "
+            className="underline text-primary text-[13px] font-poppins "
             href="/register"
           >
             Registrati qui

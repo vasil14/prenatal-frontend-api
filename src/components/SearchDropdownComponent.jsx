@@ -24,7 +24,7 @@ const SearchDropdownComponent = ({ onClick }) => {
           className="w-36 h-11 justify-start hover:cursor-pointer"
         />
         <SearchComponent
-          color="border-[#e72b6f]"
+          color="border-primary"
           placeholder="Ricerca..."
           paddingX="px-5"
         />

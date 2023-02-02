@@ -20,11 +20,17 @@ export const ProductProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [productId, _setProductId] = useState([]);
   const [showFilterComp, setShowFilterComp] = useState(0);
-
+  const [totalProducts, _setTotalProducts] = useState();
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const filterCompHandler = (value) => {
     value == showFilterComp ? setShowFilterComp(0) : setShowFilterComp(value);
+  };
+
+  const setTotalProducts = (total) => {
+    _setTotalProducts(total);
+
+    localStorage.setItem("TOTAL_PRODUCTS", total);
   };
 
   const setProductId = (id) => {
@@ -123,6 +129,8 @@ export const ProductProvider = ({ children }) => {
         setProductId,
         showFilterComp,
         filterCompHandler,
+        setTotalProducts,
+        totalProducts,
       }}
     >
       {children}

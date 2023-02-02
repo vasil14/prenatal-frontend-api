@@ -7,18 +7,14 @@ const text = `
   it can be found as a welcome guest in many households across the world.
 `;
 const AccordionComponent = ({ data }) => {
-  const [active, setActiveKey] = useState(["0"]);
-  const onChange = (key) => {
-    setActiveKey([key]);
-  };
   return (
     <Collapse accordion ghost>
       <Panel header="INFO PRODOTTO" key="1">
         <p className="font-semibold">
-          Codice prodotto: <span className="font-normal"> {data.mpn} </span>{" "}
+          Codice prodotto: <span className="font-normal"> {data[0]?.mpn} </span>{" "}
         </p>
         <p className="font-semibold">
-          Genere: <span className="font-normal"> {data.genere} </span>{" "}
+          Genere: <span className="font-normal"> {data[0]?.genere} </span>{" "}
         </p>
       </Panel>
 

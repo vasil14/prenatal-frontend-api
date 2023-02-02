@@ -1,13 +1,13 @@
-import React from 'react';
-import item from '../../assets/item.jpg';
-import Trash from '../../assets/trash.svg';
-import IncDecCounter from './IncDecCounter';
+import React from "react";
+import item from "../../assets/item.jpg";
+import Trash from "../../assets/trash.svg";
+import IncDecCounter from "./IncDecCounter";
 
 const CartDropdown = () => {
   return (
     <div className="absolute right-0 top-9 w-[310px] drop-shadow-[0px_0px_20px_rgba(0,0,0,0.15)] bg-white z-50">
       <div className="p-4 border-b border-gray-100">
-        <p className="text-base font-bold text-[#e72b6f]">Il tuo carello (1)</p>
+        <p className="text-base font-bold text-primary">Il tuo carello (1)</p>
       </div>
       <div className="flex flex-nowrap justify-between items-center px-4 py-3.5 space-x-1 ">
         <div className="w-14 flex-shrink-0 px-2">
@@ -31,7 +31,7 @@ const CartDropdown = () => {
         </div>
         <div>
           <div className="flex flex-col justify-end ">
-            <p className="text-sm font-medium whitespace-nowrap text-[#e72b6f]">
+            <p className="text-sm font-medium whitespace-nowrap text-primary">
               € 139,90
             </p>
           </div>
@@ -41,19 +41,19 @@ const CartDropdown = () => {
         <div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-normal">Spedizone :</p>
-            <p className="text-sm font-medium flex-shrink-0 ml-2 uppercase text-[#e72b6f]">
+            <p className="text-sm font-medium flex-shrink-0 ml-2 uppercase text-primary">
               GRATIS
             </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="uppercase text-sm font-normal flex">Totale :</p>
-            <p className="text-lg font-medium flex-shrink-0 ml-2 text-[#e72b6f]">
+            <p className="text-lg font-medium flex-shrink-0 ml-2 text-primary">
               € 139,90
             </p>
           </div>
         </div>
-        <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border focus:outline-none hover:bg-white hover:border-[#e72b6f] hover:text-[#e72b6f] text-base py-2 text-white bg-[#e72b6f] ">
-          {' '}
+        <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border focus:outline-none hover:bg-white hover:border-primary hover:text-primary text-base py-2 text-white bg-primary ">
+          {" "}
           CONCLUDI l'ORDINE
         </button>
       </div>

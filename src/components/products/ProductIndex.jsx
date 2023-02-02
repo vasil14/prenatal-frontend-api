@@ -7,9 +7,10 @@ import { Pagination } from "antd";
 import FilterComponent from "../Filters/FilterComponent";
 
 const ProductIndex = () => {
-  const { productsCategory, getProductsCategory } = useContext(ProductContext);
+  const { productsCategory, getProductsCategory, setTotalProducts } =
+    useContext(ProductContext);
   let { categoryName, subCat_1, subCat_2, subCat_3 } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
 
   const colore = searchParams.get("colore");
@@ -17,18 +18,22 @@ const ProductIndex = () => {
   if (subCat_3) {
     useEffect(() => {
       getProductsCategory(subCat_3, currentPage, colore);
+      setTotalProducts(productsCategory?.total);
     }, [subCat_3, currentPage, colore]);
   } else if (subCat_2) {
     useEffect(() => {
       getProductsCategory(subCat_2, currentPage, colore);
+      setTotalProducts(productsCategory?.total);
     }, [subCat_2, currentPage, colore]);
   } else if (subCat_1) {
     useEffect(() => {
       getProductsCategory(subCat_1, currentPage, colore);
+      setTotalProducts(productsCategory?.total);
     }, [subCat_1, currentPage, colore]);
   } else {
     useEffect(() => {
       getProductsCategory(categoryName, currentPage, colore);
+      setTotalProducts(productsCategory?.total);
     }, [categoryName, currentPage, colore]);
   }
 
@@ -74,11 +79,12 @@ const ProductIndex = () => {
       </div>
       <div className="flex justify-center">
         <Pagination
+          defaultCurrent={1}
           current={currentPage}
           total={productsCategory.total}
-          defaultPageSize={12}
           size="small"
-          onChange={(page, pageSize) => {
+          showSizeChanger={false}
+          onChange={(page) => {
             setCurrentPage(page);
           }}
         />

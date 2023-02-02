@@ -1,17 +1,17 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/prenatal.png';
-import location from '../assets/location.png';
-import { categories, specialCat } from '../constants/index';
-import Account from './user/Account';
-import CategoryDropdown from './CategoryDropdown';
-import ShoppingCart from './shoppingCart/ShoppingCart';
-import SearchComponent from './SearchComponent';
-import SearchDropdownComponent from './SearchDropdownComponent';
-import ProductContext from '../Context/ProductContext';
-import { MenuOutlined } from '@ant-design/icons';
-import searchIcon from '../assets/search_icon.png';
-import cart from '../assets/cart.png';
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/prenatal.png";
+import location from "../assets/location.png";
+import { categories, specialCat } from "../constants/index";
+import Account from "./user/Account";
+import CategoryDropdown from "./CategoryDropdown";
+import ShoppingCart from "./shoppingCart/ShoppingCart";
+import SearchComponent from "./SearchComponent";
+import SearchDropdownComponent from "./SearchDropdownComponent";
+import ProductContext from "../Context/ProductContext";
+import { MenuOutlined } from "@ant-design/icons";
+import searchIcon from "../assets/search_icon.png";
+import cart from "../assets/cart.png";
 
 const Navbar = () => {
   const { closeCategory, categoryIsOpen, categoryHandler, getCategories } =
@@ -27,11 +27,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="pt-5 border-b border-primary lg:border-gray-200 bg-primary lg:bg-white">
+    <div className="border-b ">
       {/* Navbar desktop */}
       <div className="hidden lg:block xl:max-w-[1300px] mx-auto">
         <div>
-          <div className="container">
+          <div className="container mx-auto pt-5">
             <div className="pb-2 px-2 flex justify-between items-center md:space-x-16 ">
               <div className="w-60">
                 <Link to="/">
@@ -73,7 +73,7 @@ const Navbar = () => {
                         {categoryIsOpen && (
                           <Link
                             to={`products/${category
-                              .replaceAll(' ', '-')
+                              .replaceAll(" ", "-")
                               .toLowerCase()}`}
                           >
                             <h1
@@ -93,7 +93,7 @@ const Navbar = () => {
                     return (
                       <div
                         className={`${
-                          index === specialCat.length - 1 ? 'mr-0' : 'mr-5'
+                          index === specialCat.length - 1 ? "mr-0" : "mr-5"
                         } inline-block`}
                         key={index}
                       >
@@ -109,13 +109,13 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* Navbar mobile */}
 
-      <div className="flex md:h-16 justify-between items-center lg:hidden relative px-2 py-1 border-b container mx-auto">
+      {/* Navbar mobile */}
+      <div className="flex md:h-16 justify-between items-center lg:hidden relative px-2 py-1 container mx-auto">
         <div className="lg:hidden flex flex-grow flex-shrink flex-1 pt-2">
           <div>
             <button className="inline-flex items-center justify-center p-3 text-gray-700 focus:text-black focus:bg-gray-100 focus:outline-none print:hidden">
-              <MenuOutlined style={{ fontSize: '24px' }} />
+              <MenuOutlined style={{ fontSize: "24px" }} />
             </button>
           </div>
           <div className="p-2">

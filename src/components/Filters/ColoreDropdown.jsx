@@ -17,10 +17,10 @@ const ColoreDropdown = () => {
   console.log(getColors);
 
   return (
-    <div className="absolute w-full bg-white drop-shadow-xl z-40">
+    <div className="absolute w-full top-10 bg-white drop-shadow-xl z-40">
       <div className="space-x-4 min-w-full">
         <div className="px-5 pt-5 ">
-          <h1 className="text-[#e72b6f] text-base font-semibold px-5 pt-5">
+          <h1 className="text-primary text-base font-semibold px-5 pt-5">
             Filtra per colore
           </h1>
 
@@ -122,7 +122,7 @@ const ColoreDropdown = () => {
       <div className="w-full px-5 pb-3 pt-5">
         <Link to={getColors ? `?colore=${getColors}` : ""}>
           <button
-            className="rounded-full bg-[#e72b6f] text-white  text-sm font-normal uppercase px-5 py-1.5"
+            className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
             aria-label="Applica"
             onClick={() => filterCompHandler(0)}
           >

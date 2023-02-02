@@ -9,6 +9,10 @@ module.exports = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
+    colors: {
+      primary: "#e72b6f",
+      secondary: "#789A40",
+    },
   },
   plugins: [require("flowbite/plugin")],
 };

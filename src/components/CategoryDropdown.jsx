@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
-import ProductContext from '../Context/ProductContext';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from "react";
+import ProductContext from "../Context/ProductContext";
+import { Link } from "react-router-dom";
 
 const CategoryDropdown = ({ categoryName }) => {
   const { categoryChildren, getCategoriesWithChildren, closeCategory } =
@@ -14,16 +14,16 @@ const CategoryDropdown = ({ categoryName }) => {
     <div className="relative drop-shadow-xl z-40 ">
       <div className="bg-white shadow absolute left-0 w-full">
         <div className="xl:max-w-[1300px] mx-auto">
-          <div className="container flex">
+          <div className="container mx-auto">
             <div className="flex -ml-10 flex-grow flex-shrink flex-wrap  w-3/4 ">
-              {categoryChildren[0]?.children?.map((sub_1, i) => (
+              {categoryChildren[0]?.children?.map((sub_1) => (
                 <div key={sub_1.id} className="py-8 pl-10 space-y-3 w-1/4">
                   <Link
                     to={
-                      '/products/' +
-                      categoryName.replaceAll(' ', '-').toLowerCase() +
-                      '/' +
-                      sub_1.name.replaceAll(' ', '-').toLowerCase()
+                      "/products/" +
+                      categoryName.replaceAll(" ", "-").toLowerCase() +
+                      "/" +
+                      sub_1.name.replaceAll(" ", "-").toLowerCase()
                     }
                   >
                     <h1
@@ -38,12 +38,12 @@ const CategoryDropdown = ({ categoryName }) => {
                       <div key={i} className="space-y-3.5">
                         <Link
                           to={
-                            '/products/' +
+                            "/products/" +
                             categoryName.toLowerCase() +
-                            '/' +
-                            sub_1.name.replaceAll(' ', '-').toLowerCase() +
-                            '/' +
-                            sub_2.name.replaceAll(' ', '-').toLowerCase()
+                            "/" +
+                            sub_1.name.replaceAll(" ", "-").toLowerCase() +
+                            "/" +
+                            sub_2.name.replaceAll(" ", "-").toLowerCase()
                           }
                         >
                           <h3
@@ -57,11 +57,11 @@ const CategoryDropdown = ({ categoryName }) => {
                           <div key={i} className="space-y-3.5">
                             <Link
                               to={`/products/${categoryName.toLowerCase()}/${sub_1.name
-                                .replaceAll(' ', '-')
+                                .replaceAll(" ", "-")
                                 .toLowerCase()}/${sub_2.name
-                                .replaceAll(' ', '-')
+                                .replaceAll(" ", "-")
                                 .toLowerCase()}/${sub_3.name
-                                .replaceAll(' ', '-')
+                                .replaceAll(" ", "-")
                                 .toLowerCase()}`}
                             >
                               <h3
