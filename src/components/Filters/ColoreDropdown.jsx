@@ -14,7 +14,6 @@ const ColoreDropdown = () => {
       setGetColors((current) => [...current, e]);
     }
   };
-  console.log(getColors);
 
   return (
     <div className="absolute w-full top-10 bg-white drop-shadow-xl z-40">

@@ -8,11 +8,8 @@ import PrezzoComponent from "./PrezzoComponent";
 import ColoreDropdown from "./ColoreDropdown";
 import ProductContext from "../../Context/ProductContext";
 
-const FilterComponent = () => {
-  const { showFilterComp, filterCompHandler, totalProducts } =
-    useContext(ProductContext);
-
-  console.log(totalProducts);
+const FilterComponent = ({ totalProducts }) => {
+  const { showFilterComp, filterCompHandler } = useContext(ProductContext);
 
   return (
     <div className="container mt-6 mb-5 lg:mt-10 md:mb-0">

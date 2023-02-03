@@ -9,7 +9,6 @@ import logo_sm from "../../assets/logo-small.jpg";
 
 const ProductEdit = () => {
   const { product, getProduct } = useContext(ProductContext);
-  console.log(product);
 
   useEffect(() => {
     const id = localStorage.getItem("PRODUCT_ID");

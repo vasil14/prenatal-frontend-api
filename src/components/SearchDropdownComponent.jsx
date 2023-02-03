@@ -8,14 +8,14 @@ import Cards from "./cards/Cards";
 
 const SearchDropdownComponent = ({ onClick }) => {
   const { products, getProducts, formValues } = useContext(ProductContext);
-  const { name } = useParams();
 
   useEffect(() => {
     getProducts(formValues?.search);
   }, [formValues]);
+  console.log(products);
 
   return (
-    <div className="absolute top-0 bg-slate-300 w-full text-white ">
+    <div className="absolute top-0 bg-white w-full text-white drop-shadow-xl">
       <div className="flex flex-row px-12 pt-8 justify-between">
         <img
           onClick={onClick}

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import axios from "axios";
+import { LoginOutlined } from "@ant-design/icons";
 axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext({
@@ -10,7 +11,7 @@ const ProductContext = createContext({
 });
 
 export const ProductProvider = ({ children }) => {
-  const [formValues, setFormValues] = useState([]);
+  const [formValues, setFormValues] = useState("");
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);
@@ -20,17 +21,10 @@ export const ProductProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [productId, _setProductId] = useState([]);
   const [showFilterComp, setShowFilterComp] = useState(0);
-  const [totalProducts, _setTotalProducts] = useState();
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const filterCompHandler = (value) => {
     value == showFilterComp ? setShowFilterComp(0) : setShowFilterComp(value);
-  };
-
-  const setTotalProducts = (total) => {
-    _setTotalProducts(total);
-
-    localStorage.setItem("TOTAL_PRODUCTS", total);
   };
 
   const setProductId = (id) => {
@@ -77,6 +71,7 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProductsCategory = async (categoryName, currentPage, colore) => {
+    console.log(categoryName);
     if (colore) {
       const response = await axios.get(
         `products/categoria-prodotto/${categoryName.replaceAll(
@@ -129,8 +124,6 @@ export const ProductProvider = ({ children }) => {
         setProductId,
         showFilterComp,
         filterCompHandler,
-        setTotalProducts,
-        totalProducts,
       }}
     >
       {children}

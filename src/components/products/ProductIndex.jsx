@@ -7,36 +7,26 @@ import { Pagination } from "antd";
 import FilterComponent from "../Filters/FilterComponent";
 
 const ProductIndex = () => {
-  const { productsCategory, getProductsCategory, setTotalProducts } =
-    useContext(ProductContext);
+  const { productsCategory, getProductsCategory } = useContext(ProductContext);
   let { categoryName, subCat_1, subCat_2, subCat_3 } = useParams();
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
 
   const colore = searchParams.get("colore");
 
-  if (subCat_3) {
-    useEffect(() => {
-      getProductsCategory(subCat_3, currentPage, colore);
-      setTotalProducts(productsCategory?.total);
-    }, [subCat_3, currentPage, colore]);
-  } else if (subCat_2) {
-    useEffect(() => {
-      getProductsCategory(subCat_2, currentPage, colore);
-      setTotalProducts(productsCategory?.total);
-    }, [subCat_2, currentPage, colore]);
-  } else if (subCat_1) {
-    useEffect(() => {
-      getProductsCategory(subCat_1, currentPage, colore);
-      setTotalProducts(productsCategory?.total);
-    }, [subCat_1, currentPage, colore]);
-  } else {
-    useEffect(() => {
-      getProductsCategory(categoryName, currentPage, colore);
-      setTotalProducts(productsCategory?.total);
-    }, [categoryName, currentPage, colore]);
-  }
+  console.log(productsCategory);
 
+  useEffect(() => {
+    if (subCat_3) {
+      getProductsCategory(subCat_3, currentPage, colore);
+    } else if (subCat_2) {
+      getProductsCategory(subCat_2, currentPage, colore);
+    } else if (subCat_1) {
+      getProductsCategory(subCat_1, currentPage, colore);
+    } else {
+      getProductsCategory(categoryName, currentPage, colore);
+    }
+  }, [subCat_3, subCat_2, subCat_1, categoryName, currentPage, colore]);
   return (
     <div className="mx-auto container">
       <div className="py-6 px-5 ">
@@ -50,7 +40,7 @@ const ProductIndex = () => {
         </h1>
       </div>
       <div className="container mt-6 mb-5">
-        <FilterComponent />
+        <FilterComponent totalProducts={productsCategory?.total} />
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap pt-12 ">
@@ -64,15 +54,12 @@ const ProductIndex = () => {
                   images={product.images}
                   image={product.image_link}
                   id={product.id}
-                  price={product.children[0]?.price}
-                  vipPrice={product.children[0]?.vip_price}
+                  price={product?.children[0]?.price}
+                  vipPrice={product?.children[0]?.vip_price}
                   marke={product.marche}
                   title={product.title}
                 />
               </div>
-              // <div className={`w-[280px] h-[360px] mb-[40px]`} key={index}>
-              //   <img src={product.image_link} />
-              // </div>
             );
           })}
         </div>
