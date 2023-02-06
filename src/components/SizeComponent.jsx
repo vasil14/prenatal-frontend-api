@@ -1,16 +1,17 @@
 import React from "react";
 
-const SizeComponent = ({ size }) => {
-  const taglie = size?.split(",");
+const SizeComponent = ({ children }) => {
+  console.log(children);
   return (
     <div className="flex flex-wrap">
-      {taglie?.map((taglia, i) => (
+      {children?.map((data, i) => (
         <button
           key={i}
           type="button"
-          className="border border-gray-400 rounded-full px-2 focus:border-[#E72A6E] text-[15px] mt-4 mr-2 flex-shrink-0"
+          className={`border border-gray-400 rounded-full px-2 focus:border-[#E72A6E] text-[15px] mt-4 mr-2 flex-shrink-0 disabled disabled:opacity-50 `}
+          disabled={data?.stock == 0}
         >
-          {taglia}
+          {data.taglia}
         </button>
       ))}
     </div>

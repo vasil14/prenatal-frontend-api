@@ -105,18 +105,6 @@ const Register = () => {
           <div className="flex flex-row justify-between mt-5">
             <h1>Sesso</h1>
             <div className="flex flex-row ">
-              {/* <RadioButton
-                value="Femmina"
-                onChange={(e) => setGender(e.target.value)}
-                descritpion="Femmina"
-                id="sesso"
-              />
-              <RadioButton
-                value="Maschio"
-                onChange={(e) => setGender(e.target.value)}
-                descritpion="Maschio"
-                id="sesso"
-              /> */}
               <div className="form-check flex justify-items-center ml-4">
                 <input
                   className="form-check-input rounded-full h-[17px] w-[17px] appearance-none  bg-white checked:border-none checked:bg-secondary focus:outline-none transition duration-200 bg-repeat cursor-pointer mr-[10px]"
@@ -177,12 +165,11 @@ const Register = () => {
           <p className="flex justify-center text-[13px] mt-12">
             Hai gia un account?
           </p>
-          <a
-            className="flex justify-center text-primary text-sm font-poppins font-medium mt-2 mb-3"
-            href="/login"
-          >
-            ACCEDI
-          </a>
+          <Link to={"/login"} replace>
+            <button className="flex mx-auto text-primary text-sm font-poppins font-medium mt-2 mb-3">
+              ACCEDI
+            </button>
+          </Link>
         </form>
       </div>
     </div>

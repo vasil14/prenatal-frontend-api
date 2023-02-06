@@ -36,7 +36,7 @@ const Cards = ({
   return (
     <div className="group">
       <div
-        className={`relative  max-w-sm w-[${size}] bg-white group-hover:scale-105 group-hover:drop-shadow-2xl duration-300 ease-in-out align-center  transition transform group-hover:z-50 `}
+        className={`relative  max-w-sm w-[${size}] bg-white group-hover:scale-105 group-hover:drop-shadow-2xl duration-300 ease-in-out align-center  transition transform group-hover:z-20 `}
       >
         <div
           className={`border w-[${size}] `}
@@ -50,14 +50,24 @@ const Cards = ({
           >
             <SwiperSlide>
               <Link to={`/product/${_title_}`} action="replace">
-                <img src={image} alt={image} onClick={() => handleClick(id)} />
+                <img
+                  src={image}
+                  alt={image}
+                  onClick={() => handleClick(id)}
+                  className="w-full h-full bg-contain"
+                />
               </Link>
             </SwiperSlide>
             {images?.map((a, i) => {
               return (
                 <SwiperSlide key={i}>
                   <Link to={`/product/${_title_}`}>
-                    <img src={a.link} alt={a} onClick={() => handleClick(id)} />
+                    <img
+                      src={a.link}
+                      alt={a}
+                      onClick={() => handleClick(id)}
+                      className="w-full h-full bg-contain"
+                    />
                   </Link>
                 </SwiperSlide>
               );
@@ -69,18 +79,22 @@ const Cards = ({
             <div className="flex-shrink-0 text-base sm:text-xl text-primary font-medium leading-none whitespace-nowrap">
               € {price}
             </div>
-            <div className="border-t border-secondary flex-1 mx-2 block md:pointer-events-none appearance-none"></div>
-            <div className="flex xs:items-start xs:flex-col flex-row items-center">
-              <span className="flex-shrink-0 text-base sm:text-xl text-secondary text-success font-medium whitespace-nowrap md:pointer-events-none appearance-none">
-                € {vipPrice}
-              </span>
-              <div className="flex">
-                <span className="text-[10px] md:text-xxs text-secondary  uppercase block pl-1 leading-none md:pointer-events-none appearance-none">
-                  Con <br />
-                  Vip card
-                </span>
-              </div>
-            </div>
+            {vipPrice > 0 && (
+              <>
+                <div className="border-t border-secondary flex-1 mx-2 block md:pointer-events-none appearance-none"></div>
+                <div className="flex xs:items-start xs:flex-col flex-row items-center">
+                  <span className="flex-shrink-0 text-base sm:text-xl text-secondary text-success font-medium whitespace-nowrap md:pointer-events-none appearance-none">
+                    € {vipPrice}
+                  </span>
+                  <div className="flex">
+                    <span className="text-[10px] md:text-xxs text-secondary  uppercase block pl-1 leading-none md:pointer-events-none appearance-none">
+                      Con <br />
+                      Vip card
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <span className="mt-2 block text-sm font-light uppercase leading-none">
             {marke}

@@ -1,21 +1,23 @@
 import React, { useContext, useEffect } from "react";
 import ProductContext from "../Context/ProductContext";
-import { useParams } from "react-router-dom";
 import logo2 from "../assets/logo2.png";
 import cancel from "../assets/cancel.png";
 import SearchComponent from "./SearchComponent";
-import Cards from "./cards/Cards";
+import SearchCard from "./SearchCard";
 
 const SearchDropdownComponent = ({ onClick }) => {
   const { products, getProducts, formValues } = useContext(ProductContext);
 
   useEffect(() => {
-    getProducts(formValues?.search);
+    if (formValues?.search.length) {
+      getProducts(formValues?.search);
+    }
   }, [formValues]);
+
   console.log(products);
 
   return (
-    <div className="absolute top-0 bg-white w-full text-white drop-shadow-xl">
+    <div className="absolute top-0 bg-white w-full drop-shadow-xl">
       <div className="flex flex-row px-12 pt-8 justify-between">
         <img
           onClick={onClick}
@@ -41,14 +43,14 @@ const SearchDropdownComponent = ({ onClick }) => {
           {products?.map((product) => {
             return (
               <div key={product.id}>
-                <Cards
-                  size="270px"
-                  images={product.images}
+                <SearchCard
                   image={product.image_link}
                   id={product.id}
-                  price={product.price}
-                  vipPrice={product.vip_price}
-                  marke={product.marche}
+                  price={
+                    product?.children[0]
+                      ? product?.children[0]?.price
+                      : product?.price
+                  }
                   title={product.title}
                 />
               </div>

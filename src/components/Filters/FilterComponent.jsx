@@ -58,7 +58,7 @@ const FilterComponent = ({ totalProducts }) => {
               {totalProducts}
             </span>
             <span className="whitespace-nowrap font-normal text-pnt-black text-xs md:text-sm ml-1">
-              ordinati per
+              total products
             </span>
           </div>
         </div>

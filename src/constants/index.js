@@ -3,7 +3,7 @@ export const categories = [
   "Bambina",
   "Bambino",
   "Casa",
-  "Pasegio",
+  "Passeggini",
   "Auto e viaggio",
   "Gioco",
   "Baby Food",

@@ -19,14 +19,19 @@ const ProductIndex = () => {
   useEffect(() => {
     if (subCat_3) {
       getProductsCategory(subCat_3, currentPage, colore);
+      window.scrollTo({ top: 0 });
     } else if (subCat_2) {
       getProductsCategory(subCat_2, currentPage, colore);
+      window.scrollTo({ top: 0 });
     } else if (subCat_1) {
       getProductsCategory(subCat_1, currentPage, colore);
+      window.scrollTo({ top: 0 });
     } else {
       getProductsCategory(categoryName, currentPage, colore);
+      window.scrollTo({ top: 0 });
     }
   }, [subCat_3, subCat_2, subCat_1, categoryName, currentPage, colore]);
+
   return (
     <div className="mx-auto container">
       <div className="py-6 px-5 ">
@@ -54,8 +59,16 @@ const ProductIndex = () => {
                   images={product.images}
                   image={product.image_link}
                   id={product.id}
-                  price={product?.children[0]?.price}
-                  vipPrice={product?.children[0]?.vip_price}
+                  price={
+                    product?.children[0]?.price
+                      ? product?.children[0]?.price
+                      : product?.price
+                  }
+                  vipPrice={
+                    product?.children[0]?.vip_price
+                      ? product?.children[0]?.vip_price
+                      : product?.vip_price
+                  }
                   marke={product.marche}
                   title={product.title}
                 />

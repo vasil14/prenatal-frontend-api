@@ -107,11 +107,43 @@ const ColoreDropdown = () => {
               </div>
               <div className="ml-4 mt-4 min-w-[200px]">
                 <input
-                  className="border-gray-400"
+                  className="border-gray-400 "
                   type="checkbox"
                   onChange={() => handleChange("Rosso")}
                 />{" "}
-                Rosso
+                Blu
+              </div>
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400 "
+                  type="checkbox"
+                  onChange={() => handleChange("Rosso")}
+                />{" "}
+                Denim
+              </div>
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400 "
+                  type="checkbox"
+                  onChange={() => handleChange("Rosso")}
+                />{" "}
+                Marrone
+              </div>
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400 "
+                  type="checkbox"
+                  onChange={() => handleChange("Rosso")}
+                />{" "}
+                Nero
+              </div>
+              <div className="ml-4 mt-4 min-w-[200px]">
+                <input
+                  className="border-gray-400 "
+                  type="checkbox"
+                  onChange={() => handleChange("Rosso")}
+                />{" "}
+                Verde
               </div>
             </div>
           </div>

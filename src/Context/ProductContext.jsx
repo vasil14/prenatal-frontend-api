@@ -22,6 +22,15 @@ export const ProductProvider = ({ children }) => {
   const [productId, _setProductId] = useState([]);
   const [showFilterComp, setShowFilterComp] = useState(0);
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+
+  const openSearchBar = () => {
+    setShowSearchDropdown(true);
+  };
+
+  const closeSearchBar = () => {
+    setShowSearchDropdown(false);
+  };
 
   const filterCompHandler = (value) => {
     value == showFilterComp ? setShowFilterComp(0) : setShowFilterComp(value);
@@ -71,7 +80,6 @@ export const ProductProvider = ({ children }) => {
   };
 
   const getProductsCategory = async (categoryName, currentPage, colore) => {
-    console.log(categoryName);
     if (colore) {
       const response = await axios.get(
         `products/categoria-prodotto/${categoryName.replaceAll(
@@ -124,6 +132,10 @@ export const ProductProvider = ({ children }) => {
         setProductId,
         showFilterComp,
         filterCompHandler,
+        openSearchBar,
+        closeSearchBar,
+        showSearchDropdown,
+        setShowSearchDropdown,
       }}
     >
       {children}

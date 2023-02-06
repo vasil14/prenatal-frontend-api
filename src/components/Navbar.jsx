@@ -14,17 +14,24 @@ import searchIcon from "../assets/search_icon.png";
 import cart from "../assets/cart.png";
 
 const Navbar = () => {
-  const { closeCategory, categoryIsOpen, categoryHandler, getCategories } =
-    useContext(ProductContext);
-  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const {
+    closeCategory,
+    categoryIsOpen,
+    categoryHandler,
+    getCategories,
+    openSearchBar,
+    closeSearchBar,
+    showSearchDropdown,
+  } = useContext(ProductContext);
+  // const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
-  const handleSearchBar = () => {
-    setShowSearchDropdown(true);
-  };
+  // const openSearchBar = () => {
+  //   setShowSearchDropdown(true);
+  // };
 
-  const closeSearchBar = () => {
-    setShowSearchDropdown(false);
-  };
+  // const closeSearchBar = () => {
+  //   setShowSearchDropdown(false);
+  // };
 
   return (
     <div className="border-b ">
@@ -39,7 +46,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <SearchComponent
-                onClick={handleSearchBar}
+                onClick={openSearchBar}
                 color="border-gray-800"
                 placeholder="Che prodotto stai cercando?"
                 paddingX="px-16"
