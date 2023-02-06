@@ -1,30 +1,26 @@
-import React, { useRef, useState, useContext } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
-import logo from "../../assets/prenatal.png";
-import axiosClient from "../../axios-client";
-import RadioButton from "../RadioButton";
-import ProductContext from "../../Context/ProductContext";
+import React, { useRef, useState, useContext } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/prenatal.png';
+import axiosClient from '../../axios-client';
+import RadioButton from '../RadioButton';
+import ProductContext from '../../Context/ProductContext';
 
 const Register = () => {
   const { setUser, setToken } = useContext(ProductContext);
   const [getGender, setGender] = useState();
   const [startDate, setStartDate] = useState(new Date());
-
-  const nameRef = useRef();
-  const lastNameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const { nameRef, lastNameRef, emailRef, passwordRef } = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const date =
       startDate.getFullYear() +
-      "/" +
+      '/' +
       (startDate.getMonth() + 1) +
-      "/" +
+      '/' +
       startDate.getDate();
 
     const payload = {
@@ -37,7 +33,7 @@ const Register = () => {
     };
 
     axiosClient
-      .post("/register", payload)
+      .post('/register', payload)
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
@@ -141,15 +137,15 @@ const Register = () => {
               className="form-check-label inline-block font-poppins text-[15px]"
               htmlFor="flexCheckDefault"
             >
-              Dichiaro di aver letto ed accettato{" "}
+              Dichiaro di aver letto ed accettato{' '}
               <a href="#" className="text-primary">
                 l’informativa sui dati personali
-              </a>{" "}
-              e di aver preso visione ed accettato il{" "}
+              </a>{' '}
+              e di aver preso visione ed accettato il{' '}
               <a href="#" className="text-primary">
                 Regolamento della Prenatal Card
-              </a>{" "}
-              o il{" "}
+              </a>{' '}
+              o il{' '}
               <a href="#" className="text-primary">
                 Regolamento della Prenatal VIP Card
               </a>
@@ -165,7 +161,7 @@ const Register = () => {
           <p className="flex justify-center text-[13px] mt-12">
             Hai gia un account?
           </p>
-          <Link to={"/login"} replace>
+          <Link to={'/login'} replace>
             <button className="flex mx-auto text-primary text-sm font-poppins font-medium mt-2 mb-3">
               ACCEDI
             </button>

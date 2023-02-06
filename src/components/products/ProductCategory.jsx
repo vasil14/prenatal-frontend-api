@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import Cards from "../cards/Cards";
-import { Pagination } from "antd";
-import FilterComponent from "../Filters/FilterComponent";
+import React, { useEffect, useContext, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import Cards from '../cards/Cards';
+import { Pagination } from 'antd';
+import FilterComponent from '../Filters/FilterComponent';
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
@@ -12,31 +12,26 @@ const ProductIndex = () => {
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const colore = searchParams.get("colore");
-
-  console.log(productsCategory);
+  const colore = searchParams.get('colore');
 
   useEffect(() => {
     if (subCat_3) {
       getProductsCategory(subCat_3, currentPage, colore);
-      window.scrollTo({ top: 0 });
     } else if (subCat_2) {
       getProductsCategory(subCat_2, currentPage, colore);
-      window.scrollTo({ top: 0 });
     } else if (subCat_1) {
       getProductsCategory(subCat_1, currentPage, colore);
-      window.scrollTo({ top: 0 });
     } else {
       getProductsCategory(categoryName, currentPage, colore);
-      window.scrollTo({ top: 0 });
     }
+    window.scrollTo({ top: 0 });
   }, [subCat_3, subCat_2, subCat_1, categoryName, currentPage, colore]);
 
   return (
     <div className="mx-auto container">
       <div className="py-6 px-5 ">
         <BreadcrumbComponent
-          product_type={location.pathname.replace("/products/", "")}
+          product_type={location.pathname.replace('/products/', '')}
         />
       </div>
       <div className="px-5">

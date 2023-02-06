@@ -1,10 +1,53 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+
+const colorItems = [
+  {
+    key: 'azzuro',
+    value: 'Azzuro',
+    color: 'blue',
+  },
+  {
+    key: 'beige',
+    value: 'Beige',
+    color: 'blue',
+  },
+  {
+    key: 'bianco',
+    value: 'Bianco',
+    color: 'pink',
+  },
+  {
+    key: 'grigio',
+    value: 'Grigio',
+    color: 'blue',
+  },
+  {
+    key: 'biallo',
+    value: 'Giallo',
+    color: 'blue',
+  },
+  {
+    key: 'marrone',
+    value: 'Marrone',
+    color: 'blue',
+  },
+  {
+    key: 'non_definito',
+    value: 'Non definito',
+    color: 'blue',
+  },
+  {
+    key: 'panna',
+    value: 'Panna',
+    color: 'blue',
+  },
+];
 
 const ColoreDropdown = () => {
   const { filterCompHandler } = useContext(ProductContext);
-  const [getColors, setGetColors] = useState("");
+  const [getColors, setGetColors] = useState('');
 
   const handleChange = (e) => {
     if (getColors.includes(e)) {
@@ -22,142 +65,33 @@ const ColoreDropdown = () => {
           <h1 className="text-primary text-base font-semibold px-5 pt-5">
             Filtra per colore
           </h1>
-
           <div className="px-5 pb-2">
             <div className="flex justify-start flex-wrap -ml-4 ">
-              <div className="ml-4 mt-4 min-w-[200px] ">
-                <input
-                  className="border-red"
-                  type="checkbox"
-                  onChange={() => handleChange("Azzuro")}
-                />{" "}
-                <span className="ml-2 pt-1">Azzuro</span>
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Beige")}
-                />{" "}
-                Beige
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Bianco")}
-                />{" "}
-                Bianco
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Fantasia")}
-                />{" "}
-                Fantasia
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Giallo")}
-                />{" "}
-                Giallo
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Grigio")}
-                />{" "}
-                Grigio
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Marrone")}
-                />{" "}
-                Marrone
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Non definito")}
-                />{" "}
-                Non definito
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Panna")}
-                />{" "}
-                Panna
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400"
-                  type="checkbox"
-                  onChange={() => handleChange("Rosa")}
-                />{" "}
-                Rosa
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400 "
-                  type="checkbox"
-                  onChange={() => handleChange("Rosso")}
-                />{" "}
-                Blu
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400 "
-                  type="checkbox"
-                  onChange={() => handleChange("Rosso")}
-                />{" "}
-                Denim
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400 "
-                  type="checkbox"
-                  onChange={() => handleChange("Rosso")}
-                />{" "}
-                Marrone
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400 "
-                  type="checkbox"
-                  onChange={() => handleChange("Rosso")}
-                />{" "}
-                Nero
-              </div>
-              <div className="ml-4 mt-4 min-w-[200px]">
-                <input
-                  className="border-gray-400 "
-                  type="checkbox"
-                  onChange={() => handleChange("Rosso")}
-                />{" "}
-                Verde
-              </div>
+              {colorItems.map((item) => {
+                return (
+                  <div key={item.key} className="ml-4 mt-4 min-w-[200px] ">
+                    <input
+                      style={{ backgroundColor: `${item.color}` }}
+                      type="checkbox"
+                      onChange={() => handleChange(item.value)}
+                    />
+                    <span className="ml-2 pt-1">{item.value}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
       <div className="w-full px-5 pb-3 pt-5">
-        <Link to={getColors ? `?colore=${getColors}` : ""}>
+        <Link to={getColors ? `?colore=${getColors}` : ''}>
           <button
             className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
             aria-label="Applica"
             onClick={() => filterCompHandler(0)}
           >
-            <span className="px-4 py-1">applica</span>
+            <span className="px-4 py-1">Applica</span>
           </button>
         </Link>
       </div>

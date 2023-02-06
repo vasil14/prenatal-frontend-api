@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import ProductContext from "../Context/ProductContext";
-import logo2 from "../assets/logo2.png";
-import cancel from "../assets/cancel.png";
-import SearchComponent from "./SearchComponent";
-import SearchCard from "./SearchCard";
+import React, { useContext, useEffect } from 'react';
+import ProductContext from '../Context/ProductContext';
+import logo2 from '../assets/logo2.png';
+import close from '../assets/cancel.png';
+import SearchComponent from './SearchBarComponent';
+import SearchCard from './SearchCard';
 
 const SearchDropdownComponent = ({ onClick }) => {
   const { products, getProducts, formValues } = useContext(ProductContext);
@@ -25,16 +25,12 @@ const SearchDropdownComponent = ({ onClick }) => {
           alt="logo"
           className="w-36 h-11 justify-start hover:cursor-pointer"
         />
-        <SearchComponent
-          color="border-primary"
-          placeholder="Ricerca..."
-          paddingX="px-5"
-        />
+        <SearchComponent />
         <img
           onClick={onClick}
-          src={cancel}
-          alt="cancel"
-          className=" w-5 h-5 justify-end hover:cursor-pointer"
+          src={close}
+          alt="close"
+          className="mt-3 w-5 h-5 justify-end hover:cursor-pointer focus:border-none"
         />
       </div>
       <div className="flex space-x-3 mt-10">

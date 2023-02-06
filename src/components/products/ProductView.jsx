@@ -1,28 +1,28 @@
-import React from "react";
-import ProductContext from "../../Context/ProductContext";
-import { useContext, useEffect } from "react";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import blank from "../../assets/blank.jpg";
-import SizeComponent from "../SizeComponent";
-import AccordionComponent from "../AccordionComponent";
-import logo_sm from "../../assets/logo-small.jpg";
+import React from 'react';
+import ProductContext from '../../Context/ProductContext';
+import { useContext, useEffect } from 'react';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import blank from '../../assets/blank.jpg';
+import SizeComponent from '../SizeComponent';
+import AccordionComponent from '../AccordionComponent';
+import logo_sm from '../../assets/logo-small.jpg';
 
-const ProductEdit = () => {
+const ProductView = () => {
   const { product, getProduct } = useContext(ProductContext);
 
   useEffect(() => {
-    const id = localStorage.getItem("PRODUCT_ID");
+    const id = localStorage.getItem('PRODUCT_ID');
     if (id) {
       getProduct(id);
       window.scrollTo({ top: 0 });
     }
-  }, [localStorage.getItem("PRODUCT_ID")]);
-  console.log(product);
+  }, [localStorage.getItem('PRODUCT_ID')]);
+
   return (
     <div>
       <div className="mt-4">
         <BreadcrumbComponent
-          product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
+          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
         />
       </div>
       <div className="container mx-auto">
@@ -64,7 +64,7 @@ const ProductEdit = () => {
               <div className="flex flex-col pb-4 border-b ">
                 <div className="flex gap-2 md:gap-4 mt-1  ">
                   <span className="text-primary font-poppins font-normal text-3xl md:text-4xl leading-none">
-                    €{" "}
+                    €{' '}
                     {product[0]?.children[0]
                       ? product[0]?.children[0]?.price
                       : product[0]?.price}
@@ -81,7 +81,7 @@ const ProductEdit = () => {
                       € {product[0]?.children[0]?.vip_price}
                     </span>
                     <span className="uppercase text-secondary text-xs ">
-                      {" "}
+                      {' '}
                       Con Vip Card
                     </span>
                   </div>
@@ -135,4 +135,4 @@ const ProductEdit = () => {
   );
 };
 
-export default ProductEdit;
+export default ProductView;

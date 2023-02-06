@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-import { Link } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
-import ProductContext from "../../Context/ProductContext";
+import React, { useState, useContext } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import ProductContext from '../../Context/ProductContext';
 
 const Cards = ({
   image,
@@ -14,14 +14,14 @@ const Cards = ({
   marke,
   title,
   id,
-  size = "300px",
+  size = '300px',
 }) => {
   SwiperCore.use([Navigation]);
   const { setProductId } = useContext(ProductContext);
   const [showCarusel, setShowCarusel] = useState(false);
 
-  let _title = title.replaceAll("/", "-");
-  let _title_ = _title.replaceAll(" ", "-");
+  const _title = title.replaceAll('/', '-');
+  const _title_ = _title.replaceAll(' ', '-');
 
   const handleClick = (id) => {
     setProductId(id);
@@ -110,14 +110,10 @@ const Cards = ({
         </div>
         <div className="relative">
           <div className="absolute top-0 left-0 right-0 hidden bg-white transition duration-300 ease-in-out md:group-hover:block">
-            <div className="relative">
-              <div className="mt-5 w-full">
-                <div className="flex w-full flex-col space-y-3 mb-2 px-2">
-                  <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border transition delay-150 duration-150 ease-in-out focus:outline-none text-base py-2  bg-primary text-white border-primary hover:bg-white hover:text-primary focus:bg-white focus:text-primary focus:shadow-outline-primary cursor-pointer ">
-                    AGGIUNGI AL CARRELLO
-                  </button>
-                </div>
-              </div>
+            <div className="flex w-full flex-col space-y-3 mb-2 px-2">
+              <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border transition delay-150 duration-150 ease-in-out focus:outline-none text-base py-2  bg-primary text-white border-primary hover:bg-white hover:text-primary focus:bg-white focus:text-primary focus:shadow-outline-primary cursor-pointer ">
+                AGGIUNGI AL CARRELLO
+              </button>
             </div>
           </div>
         </div>

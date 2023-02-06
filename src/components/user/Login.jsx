@@ -1,23 +1,23 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
-import logo from "../../assets/prenatal.png";
-import ProductContext from "../../Context/ProductContext";
-import axiosClient from "../../axios-client";
+import React, { useRef, useContext, useState, useEffect } from 'react';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
+import logo from '../../assets/prenatal.png';
+import ProductContext from '../../Context/ProductContext';
+import axiosClient from '../../axios-client';
 
 const Login = () => {
   const navigate = useNavigate();
   const [authenticated, setauthenticated] = useState(null);
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("ACCESS_TOKEN");
-    if (loggedInUser) {
-      setauthenticated(loggedInUser);
-    }
-  }, []);
   const { setUser, setToken } = useContext(ProductContext);
 
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('ACCESS_TOKEN');
+    if (loggedInUser) {
+      setauthenticated(loggedInUser);
+    }
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -28,11 +28,11 @@ const Login = () => {
     };
 
     axiosClient
-      .post("/login", payload)
+      .post('/login', payload)
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         const response = err.response;

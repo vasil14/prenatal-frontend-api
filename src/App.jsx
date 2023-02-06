@@ -1,13 +1,12 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { ProductProvider } from "./Context/ProductContext";
-import Home from "./components/Home";
-import ProductIndex from "./components/products/ProductIndex";
-import ProductEdit from "./components/products/ProductEdit";
-import Navbar from "./components/Navbar";
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
-import ProductIndexSub from "./components/products/ProductIndex";
-import Footer from "./components/Footer";
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { ProductProvider } from './Context/ProductContext';
+import Home from './containers/home/Home';
+import ProductCategory from './components/products/ProductCategory';
+import ProductView from './components/products/ProductView';
+import Navbar from './components/Navbar';
+import Login from './components/user/Login';
+import Register from './components/user/Register';
+import Footer from './components/Footer';
 
 function App() {
   const location = useLocation();
@@ -27,17 +26,19 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route exact path="/product/:title" element={<ProductEdit />} />
+              <Route exact path="/product/:title" element={<ProductView />} />
               <Route
-                path="/products/:categoryName/:subCat_1/:subCat_2/:subCat_3"
-                element={<ProductIndex />}
-              />
-              <Route path="/products/:categoryName" element={<ProductIndex />}>
-                <Route path=":subCat_1" element={<ProductIndex />} />
-                <Route path=":subCat_1/:subCat_2" element={<ProductIndex />} />
+                path="/products/:categoryName"
+                element={<ProductCategory />}
+              >
+                <Route path=":subCat_1" element={<ProductCategory />} />
+                <Route
+                  path=":subCat_1/:subCat_2"
+                  element={<ProductCategory />}
+                />
                 <Route
                   path=":subCat_1/:subCat_2/subCat_3"
-                  element={<ProductIndex />}
+                  element={<ProductCategory />}
                 />
               </Route>
             </Routes>

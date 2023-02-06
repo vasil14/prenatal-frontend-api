@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
 const SizeComponent = ({ children }) => {
-  console.log(children);
   return (
     <div className="flex flex-wrap">
       {children?.map((data, i) => (

@@ -1,16 +1,15 @@
-import React, { useState, useContext } from "react";
-import filter from "../../assets/filter.png";
-import FilterButton from "./FilterButton";
-import TagliaDropdown from "./TagliaDropdown";
-import MarcaDropdown from "./MarcaDropdown";
-import GenereDropdown from "./GenereDropdown";
-import PrezzoComponent from "./PrezzoComponent";
-import ColoreDropdown from "./ColoreDropdown";
-import ProductContext from "../../Context/ProductContext";
+import React, { useState, useContext } from 'react';
+import filter from '../../assets/filter.png';
+import FilterButton from './FilterButton';
+import TagliaDropdown from './TagliaDropdown';
+import MarcaDropdown from './MarcaDropdown';
+import GenereDropdown from './GenereDropdown';
+import PrezzoComponent from './PrezzoComponent';
+import ColoreDropdown from './ColoreDropdown';
+import ProductContext from '../../Context/ProductContext';
 
 const FilterComponent = ({ totalProducts }) => {
   const { showFilterComp, filterCompHandler } = useContext(ProductContext);
-
   return (
     <div className="container mt-6 mb-5 lg:mt-10 md:mb-0">
       <div className="relative justify-between space-y-4 lg:flex lg:space-y-0">
@@ -24,23 +23,23 @@ const FilterComponent = ({ totalProducts }) => {
             </div>
             <div className="flex items-center space-x-3">
               <FilterButton
-                name={"Taglia"}
+                name={'Taglia'}
                 onClick={() => filterCompHandler(1)}
               />
               <FilterButton
-                name={"Prezzo & disponibilita"}
+                name={'Prezzo & disponibilita'}
                 onClick={() => filterCompHandler(2)}
               />
               <FilterButton
-                name={"Marca"}
+                name={'Marca'}
                 onClick={() => filterCompHandler(3)}
               />
               <FilterButton
-                name={"Genere"}
+                name={'Genere'}
                 onClick={() => filterCompHandler(4)}
               />
               <FilterButton
-                name={"Colore"}
+                name={'Colore'}
                 onClick={() => filterCompHandler(5)}
               />
             </div>
@@ -67,6 +66,9 @@ const FilterComponent = ({ totalProducts }) => {
         {showFilterComp === 3 && <MarcaDropdown />}
         {showFilterComp === 4 && <GenereDropdown />}
         {showFilterComp === 5 && <ColoreDropdown />}
+      </div>
+      <div>
+        <p>Colore:</p>
       </div>
     </div>
   );
