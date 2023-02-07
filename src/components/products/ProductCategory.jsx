@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import Cards from "../cards/Cards";
-import { Pagination } from "antd";
-import FilterComponent from "../Filters/FilterComponent";
+import React, { useEffect, useContext, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import ProductContext from '../../Context/ProductContext';
+import BreadcrumbComponent from '../BreadcrumbComponent';
+import Cards from '../cards/Cards';
+import { Pagination } from 'antd';
+import FilterComponent from '../Filters/FilterComponent';
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
@@ -12,7 +12,7 @@ const ProductIndex = () => {
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const colore = searchParams.get("colore");
+  const colore = searchParams.get('colore');
 
   useEffect(() => {
     if (subCat_3) {
@@ -26,12 +26,12 @@ const ProductIndex = () => {
     }
     window.scrollTo({ top: 0 });
   }, [subCat_3, subCat_2, subCat_1, categoryName, currentPage, colore]);
-  console.log(productsCategory);
+  console.log(productsCategory.category);
   return (
     <div className="mx-auto container">
       <div className="py-6 px-5 ">
         <BreadcrumbComponent
-          product_type={location.pathname.replace("/products/", "")}
+          product_type={location.pathname.replace('/products/', '')}
         />
       </div>
       <div className="px-5">
@@ -40,11 +40,14 @@ const ProductIndex = () => {
         </h1>
       </div>
       <div className="container mt-6 mb-5">
-        <FilterComponent totalProducts={productsCategory?.total} />
+        <FilterComponent
+          totalProducts={productsCategory?.products?.total}
+          colors={productsCategory?.category}
+        />
       </div>
       <div className="container mx-auto">
         <div className="flex flex-wrap pt-12 ">
-          {productsCategory?.data?.map((product, index) => {
+          {productsCategory?.products?.data?.map((product, index) => {
             return (
               <div
                 key={index}
@@ -76,7 +79,7 @@ const ProductIndex = () => {
         <Pagination
           defaultCurrent={1}
           current={currentPage}
-          total={productsCategory.total}
+          total={productsCategory?.products?.total}
           size="small"
           showSizeChanger={false}
           onChange={(page) => {
