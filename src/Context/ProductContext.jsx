@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import axios from "axios";
-import { LoginOutlined } from "@ant-design/icons";
 axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
 const ProductContext = createContext({

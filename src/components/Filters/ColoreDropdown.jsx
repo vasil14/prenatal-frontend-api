@@ -1,63 +1,29 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import ProductContext from '../../Context/ProductContext';
-
-const colorItems = [
-  {
-    key: 'azzuro',
-    value: 'Azzuro',
-    color: 'blue',
-  },
-  {
-    key: 'beige',
-    value: 'Beige',
-    color: 'blue',
-  },
-  {
-    key: 'bianco',
-    value: 'Bianco',
-    color: 'pink',
-  },
-  {
-    key: 'grigio',
-    value: 'Grigio',
-    color: 'blue',
-  },
-  {
-    key: 'biallo',
-    value: 'Giallo',
-    color: 'blue',
-  },
-  {
-    key: 'marrone',
-    value: 'Marrone',
-    color: 'blue',
-  },
-  {
-    key: 'non_definito',
-    value: 'Non definito',
-    color: 'blue',
-  },
-  {
-    key: 'panna',
-    value: 'Panna',
-    color: 'blue',
-  },
-];
+import React, { useState, useContext } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import ProductContext from "../../Context/ProductContext";
+import { colorItems } from "../../constants/index";
 
 const ColoreDropdown = () => {
   const { filterCompHandler } = useContext(ProductContext);
-  const [getColors, setGetColors] = useState('');
+  const [getColors, setGetColors] = useState("");
 
-  const handleChange = (e) => {
-    if (getColors.includes(e)) {
-      const filtered = getColors.filter((ele) => ele != e);
+  const handleChange = (color) => {
+    if (getColors.includes(color)) {
+      const filtered = getColors.filter((element) => element != color);
       setGetColors([...filtered]);
     } else {
-      setGetColors((current) => [...current, e]);
+      setGetColors((current) => [...current, color]);
     }
   };
 
+  useEffect(() => {
+    if (getColors) {
+      localStorage.setItem("COLORS", getColors);
+    } else {
+      localStorage.removeItem("COLORS");
+    }
+  }, []);
   return (
     <div className="absolute w-full top-10 bg-white drop-shadow-xl z-40">
       <div className="space-x-4 min-w-full">
@@ -72,6 +38,7 @@ const ColoreDropdown = () => {
                   <div key={item.key} className="ml-4 mt-4 min-w-[200px] ">
                     <input
                       style={{ backgroundColor: `${item.color}` }}
+                      className=""
                       type="checkbox"
                       onChange={() => handleChange(item.value)}
                     />
@@ -85,7 +52,7 @@ const ColoreDropdown = () => {
       </div>
 
       <div className="w-full px-5 pb-3 pt-5">
-        <Link to={getColors ? `?colore=${getColors}` : ''}>
+        <Link to={getColors ? `?colore=${getColors}` : ""}>
           <button
             className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
             aria-label="Applica"

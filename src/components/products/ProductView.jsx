@@ -1,55 +1,75 @@
-import React from 'react';
-import ProductContext from '../../Context/ProductContext';
-import { useContext, useEffect } from 'react';
-import BreadcrumbComponent from '../BreadcrumbComponent';
-import blank from '../../assets/blank.jpg';
-import SizeComponent from '../SizeComponent';
-import AccordionComponent from '../AccordionComponent';
-import logo_sm from '../../assets/logo-small.jpg';
+import React from "react";
+import ProductContext from "../../Context/ProductContext";
+import { useContext, useEffect } from "react";
+import BreadcrumbComponent from "../BreadcrumbComponent";
+import blank from "../../assets/blank.jpg";
+import SizeComponent from "../SizeComponent";
+import AccordionComponent from "../AccordionComponent";
+import logo_sm from "../../assets/logo-small.jpg";
 
 const ProductView = () => {
   const { product, getProduct } = useContext(ProductContext);
 
   useEffect(() => {
-    const id = localStorage.getItem('PRODUCT_ID');
+    const id = localStorage.getItem("PRODUCT_ID");
     if (id) {
       getProduct(id);
       window.scrollTo({ top: 0 });
     }
-  }, [localStorage.getItem('PRODUCT_ID')]);
+  }, [localStorage.getItem("PRODUCT_ID")]);
 
   return (
     <div>
       <div className="mt-4">
         <BreadcrumbComponent
-          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
+          product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
         />
       </div>
       <div className="container mx-auto">
         <div className="flex flex-row container mx-auto">
-          <div className="basis-2/3 grid grid-cols-2 gap-6 mt-6 mr-6">
-            <div className="border block border-gray-300 ">
-              <img
-                src={product[0]?.image_link}
-                className="w-full h-full object-cover"
-              />
+          <div>
+            <div className="basis-2/3 grid grid-cols-2 gap-6 mt-6 mr-6">
+              <div className="border block border-gray-300 ">
+                <img
+                  src={product[0]?.image_link}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              {product[0]?.images?.map((image, index) => {
+                if (index < 3) {
+                  return (
+                    <div
+                      key={index}
+                      className="border border-gray-300 object-contain "
+                    >
+                      <img src={image.link} className="w-full h-full " />
+                    </div>
+                  );
+                }
+              })}
+              <div>
+                {(product[0]?.images?.length == 0 ||
+                  product[0]?.images?.length == 2) && (
+                  <div className="border border-gray-300 min-h-full">
+                    <img src={blank} className="w-full h-full object-contain" />
+                  </div>
+                )}
+              </div>
             </div>
-            {product[0]?.images?.map((image, index) => {
-              return (
-                <div key={index} className="border border-gray-300">
-                  <img
-                    src={image.link}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
-            <div>
-              {product[0]?.images?.length % 2 == 0 && (
-                <div className="border border-gray-300 min-h-full">
-                  <img src={blank} className="w-full h-full object-cover" />
-                </div>
-              )}
+
+            <div className="flex flex-wrap space-x-4">
+              {product[0]?.images?.map((image, index) => {
+                if (index >= 3) {
+                  return (
+                    <div key={index} className="w-1/6 justify-items-start ">
+                      <img
+                        src={image.link}
+                        className="border border-gray-300 object-contain"
+                      />
+                    </div>
+                  );
+                }
+              })}
             </div>
           </div>
           <div className="self-start w-full lg:sticky lg:top-0 lg:pt-5 lg:max-w-sm px-3 ">
@@ -64,7 +84,7 @@ const ProductView = () => {
               <div className="flex flex-col pb-4 border-b ">
                 <div className="flex gap-2 md:gap-4 mt-1  ">
                   <span className="text-primary font-poppins font-normal text-3xl md:text-4xl leading-none">
-                    €{' '}
+                    €{" "}
                     {product[0]?.children[0]
                       ? product[0]?.children[0]?.price
                       : product[0]?.price}
@@ -81,7 +101,7 @@ const ProductView = () => {
                       € {product[0]?.children[0]?.vip_price}
                     </span>
                     <span className="uppercase text-secondary text-xs ">
-                      {' '}
+                      {" "}
                       Con Vip Card
                     </span>
                   </div>
@@ -112,7 +132,7 @@ const ProductView = () => {
 
             <button
               type="button"
-              className="uppercase w-full bg-[#E72A6E] text-white rounded-full px-5 py-2 mt-6 font-medium hover:bg-white hover:text-[#E72A6E] border border-[#E72A6E] delay-150 ease-in-out duration-150"
+              className=" uppercase w-full bg-[#E72A6E] text-white rounded-full px-5 py-2 mt-10 font-medium hover:bg-white hover:text-[#E72A6E] border border-[#E72A6E] delay-150 ease-in-out duration-150"
             >
               Aggiungi al carello
             </button>

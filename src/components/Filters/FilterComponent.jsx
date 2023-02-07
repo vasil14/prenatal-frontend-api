@@ -1,18 +1,28 @@
-import React, { useState, useContext } from 'react';
-import filter from '../../assets/filter.png';
-import FilterButton from './FilterButton';
-import TagliaDropdown from './TagliaDropdown';
-import MarcaDropdown from './MarcaDropdown';
-import GenereDropdown from './GenereDropdown';
-import PrezzoComponent from './PrezzoComponent';
-import ColoreDropdown from './ColoreDropdown';
-import ProductContext from '../../Context/ProductContext';
+import React, { useEffect, useContext, useState } from "react";
+import filter from "../../assets/filter.png";
+import FilterButton from "./FilterButton";
+import TagliaDropdown from "./TagliaDropdown";
+import MarcaDropdown from "./MarcaDropdown";
+import GenereDropdown from "./GenereDropdown";
+import PrezzoComponent from "./PrezzoComponent";
+import ColoreDropdown from "./ColoreDropdown";
+import ProductContext from "../../Context/ProductContext";
+import { filters } from "../../constants/index";
 
 const FilterComponent = ({ totalProducts }) => {
   const { showFilterComp, filterCompHandler } = useContext(ProductContext);
+  const [getColors, setColors] = useState([""]);
+
+  useEffect(() => {
+    const colors = localStorage.getItem("COLORS")?.split(",");
+    if (colors) {
+      setColors(colors);
+    }
+  }, []);
   return (
     <div className="container mt-6 mb-5 lg:mt-10 md:mb-0">
       <div className="relative justify-between space-y-4 lg:flex lg:space-y-0">
+        {/* Dekstop filter component */}
         <div className="hidden lg:block">
           <div className="flex items-center space-x-5 px-2">
             <div className="flex space-x-2">
@@ -22,29 +32,17 @@ const FilterComponent = ({ totalProducts }) => {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <FilterButton
-                name={'Taglia'}
-                onClick={() => filterCompHandler(1)}
-              />
-              <FilterButton
-                name={'Prezzo & disponibilita'}
-                onClick={() => filterCompHandler(2)}
-              />
-              <FilterButton
-                name={'Marca'}
-                onClick={() => filterCompHandler(3)}
-              />
-              <FilterButton
-                name={'Genere'}
-                onClick={() => filterCompHandler(4)}
-              />
-              <FilterButton
-                name={'Colore'}
-                onClick={() => filterCompHandler(5)}
-              />
+              {filters.map(({ name, id }) => (
+                <FilterButton
+                  key={id}
+                  name={name}
+                  onClick={() => filterCompHandler(id)}
+                />
+              ))}
             </div>
           </div>
         </div>
+        {/* Mobile filters component */}
         <div className="lg:hidden">
           <button className="relative pointer-events-auto lg:hidden focus:outline-none w-full border-2 rounded-full py-2 flex items-center justify-center border-gray-300 text-base text-primary font-medium ">
             <img src={filter} alt="filter" />
@@ -67,9 +65,19 @@ const FilterComponent = ({ totalProducts }) => {
         {showFilterComp === 4 && <GenereDropdown />}
         {showFilterComp === 5 && <ColoreDropdown />}
       </div>
-      <div>
-        <p>Colore:</p>
-      </div>
+      {/* {getColors && (
+        <div className="mt-2 flex flex-wrap items-center text-sm space-x-2 text-gray-600">
+          <p>Colore: </p>
+          <div className="flex flex-row space-x-2">
+            {getColors?.map((color, i) => {
+              return <FilterButton key={i} name={color} />;
+            })}
+            <div onClick={() => localStorage.removeItem("COLORS")}>
+              <FilterComponent name={"Resseta"} />
+            </div>
+          </div>
+        </div>
+      )} */}
     </div>
   );
 };

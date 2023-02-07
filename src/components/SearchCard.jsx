@@ -27,7 +27,7 @@ const SearchCard = ({ image, id, title, price }) => {
               <img src={logo_sm} alt="logo" />
             </div>
             <div className="text-sm justify-items-start">{title}</div>
-            {title.length < 35 && <div className="h-5"></div>}
+            {title.length < 34 && <div className="h-5"></div>}
             <div className="flex flex-col mt-3">
               <div className="grid justify-items-start text-sm font-semibold font-poppins">
                 {price}

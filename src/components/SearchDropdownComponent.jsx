@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react';
-import ProductContext from '../Context/ProductContext';
-import logo2 from '../assets/logo2.png';
-import close from '../assets/cancel.png';
-import SearchComponent from './SearchBarComponent';
-import SearchCard from './SearchCard';
+import React, { useContext, useEffect } from "react";
+import ProductContext from "../Context/ProductContext";
+import logo2 from "../assets/logo2.png";
+import close from "../assets/cancel.png";
+import SearchComponent from "./SearchBarComponent";
+import SearchCard from "./SearchCard";
 
 const SearchDropdownComponent = ({ onClick }) => {
   const { products, getProducts, formValues } = useContext(ProductContext);
@@ -13,8 +13,6 @@ const SearchDropdownComponent = ({ onClick }) => {
       getProducts(formValues?.search);
     }
   }, [formValues]);
-
-  console.log(products);
 
   return (
     <div className="absolute top-0 bg-white w-full drop-shadow-xl">

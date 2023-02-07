@@ -8,15 +8,15 @@
   background-color: rgb(241, 241, 241);
 } */
 
-[type='radio'],
+/* [type='radio'],
 [type='checkbox'] {
   color: red !important;
-}
+} */
 
 [type='radio']:focus,
 [type='checkbox']:focus {
   --tw-ring-color: none !important;
-  color: none !important ;
+  /* color: none !important; */
 }
 
 .backdrop {
@@ -41,8 +41,7 @@
   --tw-ring-color: none !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-pagination
-  .ant-pagination-item {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-pagination .ant-pagination-item {
   border: none !important;
 }
 
@@ -50,28 +49,24 @@
   background-color: #e72b6f !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
-  .ant-slider-track {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal .ant-slider-track {
   height: 2px !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
-  .ant-slider-handle::after {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::after {
   box-shadow: 0 0 0 2px #e72b6f !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
-  .ant-slider-handle {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal .ant-slider-handle {
   inset-block-start: -2px !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
-  .ant-slider-handle::after {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::after {
   width: 15px !important;
   height: 15px !important;
 }
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
-  .ant-slider-handle::before {
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::before {
   width: 15px !important;
   height: 15px !important;
 }
