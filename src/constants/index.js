@@ -1,7 +1,7 @@
 export const categories = [
   "Mamma",
-  "Bambina",
-  "Bambino",
+  "Moda bambina",
+  "Moda bambino",
   "Casa",
   "Passeggini",
   "Auto e viaggio",
@@ -66,48 +66,5 @@ export const filters = [
   {
     id: 5,
     name: "Colore",
-  },
-];
-
-export const colorItems = [
-  {
-    key: "azzuro",
-    value: "Azzuro",
-    color: "blue",
-  },
-  {
-    key: "beige",
-    value: "Beige",
-    color: "blue",
-  },
-  {
-    key: "bianco",
-    value: "Bianco",
-    color: "white",
-  },
-  {
-    key: "grigio",
-    value: "Grigio",
-    color: "gray",
-  },
-  {
-    key: "giallo",
-    value: "Giallo",
-    color: "yellow",
-  },
-  {
-    key: "marrone",
-    value: "Marrone",
-    color: "brown",
-  },
-  {
-    key: "non_definito",
-    value: "Non definito",
-    color: "transparent",
-  },
-  {
-    key: "panna",
-    value: "Panna",
-    color: "blue",
   },
 ];

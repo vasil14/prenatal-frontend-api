@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Slider, Switch } from "antd";
 const PrezzoComponent = () => {
+  const [getValues, setValues] = useState([]);
+
+  const onAfterChange = (value) => {
+    setValues(value);
+  };
+
   return (
     <div className="absolute w-full top-10 bg-white drop-shadow-xl z-40">
       <div className="flex flex-wrap">
@@ -26,18 +33,22 @@ const PrezzoComponent = () => {
               range
               defaultValue={[0, 2000]}
               max={2000}
-              tooltip={({ open: true }, { placement: "bottom" })}
+              tooltip={{ placement: "bottom" }}
+              open={true}
+              onAfterChange={onAfterChange}
             />
           </div>
         </div>
 
         <div className="w-full px-5 pb-3 pt-5">
-          <button
-            className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
-            aria-label="Applica"
-          >
-            <span className="px-4 py-1">applica</span>
-          </button>
+          <Link to={getValues ? `?price=${getValues}` : ""}>
+            <button
+              className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
+              aria-label="Applica"
+            >
+              <span className="px-4 py-1">applica</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

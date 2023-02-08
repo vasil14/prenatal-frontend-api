@@ -1,13 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ProductContext from '../../Context/ProductContext';
-import { colorItems } from '../../constants/index';
+import React, { useState, useContext } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import ProductContext from "../../Context/ProductContext";
 
 const ColoreDropdown = ({ colors }) => {
   const { filterCompHandler } = useContext(ProductContext);
-  const [getColors, setGetColors] = useState('');
-  // console.log(colors);
+  const [getColors, setGetColors] = useState("");
+
   const handleChange = (color) => {
     if (getColors.includes(color)) {
       const filtered = getColors.filter((element) => element != color);
@@ -19,11 +18,12 @@ const ColoreDropdown = ({ colors }) => {
 
   useEffect(() => {
     if (getColors) {
-      localStorage.setItem('COLORS', getColors);
+      localStorage.setItem("COLORS", getColors);
     } else {
-      localStorage.removeItem('COLORS');
+      localStorage.removeItem("COLORS");
     }
-  }, []);
+  }, [getColors]);
+
   return (
     <div className="absolute w-full top-10 bg-white drop-shadow-xl z-40">
       <div className="space-x-4 min-w-full">
@@ -34,17 +34,23 @@ const ColoreDropdown = ({ colors }) => {
           <div className="px-5 pb-2">
             <div className="flex justify-start flex-wrap -ml-4 ">
               {colors?.map((item) => {
-                return (
-                  <div key={item.key} className="ml-4 mt-4 min-w-[200px] ">
-                    <input
-                      style={{ backgroundColor: `${item.color}` }}
-                      className=""
-                      type="checkbox"
-                      onChange={() => handleChange(item.name)}
-                    />
-                    <span className="ml-2 pt-1">{item.name}</span>
-                  </div>
-                );
+                return item?.colors?.map(({ name, id }) => {
+                  console.log(name);
+                  return (
+                    <div key={id} className="ml-4 mt-4 min-w-[200px] ">
+                      <input
+                        // style={{ backgroundColor: `${name}` }}
+                        className={`bg-${name.replace(
+                          "_",
+                          " "
+                        )} focus:bg-Nero border-gray-300 focus:border-gray-400`}
+                        type="checkbox"
+                        onChange={() => handleChange(name)}
+                      />
+                      <span className="ml-2 pt-1">{name}</span>
+                    </div>
+                  );
+                });
               })}
             </div>
           </div>
@@ -52,7 +58,7 @@ const ColoreDropdown = ({ colors }) => {
       </div>
 
       <div className="w-full px-5 pb-3 pt-5">
-        <Link to={getColors ? `?colore=${getColors}` : ''}>
+        <Link to={getColors ? `?colore=${getColors}` : ""}>
           <button
             className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
             aria-label="Applica"

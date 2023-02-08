@@ -40,6 +40,7 @@ const Register = () => {
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
+        navigate("/");
       })
       .catch((err) => {
         const response = err.response;

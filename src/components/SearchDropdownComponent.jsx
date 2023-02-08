@@ -14,8 +14,10 @@ const SearchDropdownComponent = ({ onClick }) => {
     }
   }, [formValues]);
 
+  console.log(products);
+
   return (
-    <div className="absolute top-0 bg-white w-full drop-shadow-xl">
+    <div className="absolute top-0 bg-white w-full drop-shadow-xl h-modal min-h-screen overflow-auto">
       <div className="flex flex-row px-12 pt-8 justify-between">
         <img
           onClick={onClick}
@@ -31,7 +33,7 @@ const SearchDropdownComponent = ({ onClick }) => {
           className="mt-3 w-5 h-5 justify-end hover:cursor-pointer focus:border-none"
         />
       </div>
-      <div className="flex space-x-3 mt-10">
+      <div className="flex space-x-3 my-10">
         <div className="basis-1/5"></div>
         <div className="basis-4-5 relative grid grid-cols-5 gap-6 md:justify-between justify-between ">
           {products?.map((product) => {
@@ -45,6 +47,7 @@ const SearchDropdownComponent = ({ onClick }) => {
                       ? product?.children[0]?.price
                       : product?.price
                   }
+                  vip_price={product?.children[0]?.vip_price}
                   title={product.title}
                 />
               </div>

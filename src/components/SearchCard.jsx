@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProductContext from "../Context/ProductContext";
 import logo_sm from "../assets/logo-small.jpg";
 
-const SearchCard = ({ image, id, title, price }) => {
+const SearchCard = ({ image, id, title, price, vip_price }) => {
   const { setProductId, setShowSearchDropdown } = useContext(ProductContext);
   const handleClick = (id) => {
     setProductId(id);
@@ -15,7 +15,7 @@ const SearchCard = ({ image, id, title, price }) => {
   return (
     <Link to={`/product/${_title_}`}>
       <div
-        className="w-[270px] h-[500px] border border-gray-300 hover:border-primary rounded-md"
+        className="w-[270px] h-[515px] border border-gray-300 hover:border-primary rounded-md"
         onClick={() => handleClick(id)}
       >
         <div className="flex flex-col">
@@ -30,8 +30,14 @@ const SearchCard = ({ image, id, title, price }) => {
             {title.length < 34 && <div className="h-5"></div>}
             <div className="flex flex-col mt-3">
               <div className="grid justify-items-start text-sm font-semibold font-poppins">
-                {price}
+                € {price}
               </div>
+              {vip_price != 0 && (
+                <div className="justify-items-start text-sm font-semibold font-poppins text-primary inline-block mt-1">
+                  <span className="font-light text-sm">VIP Club</span>{" "}
+                  {vip_price} €
+                </div>
+              )}
               <div className="grid justify-items-end">
                 <button className="bg-primary w-9 h-9 items-end rounded-md ">
                   {" "}

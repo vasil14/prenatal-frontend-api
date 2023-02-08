@@ -20,7 +20,7 @@ export const ProductProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [productId, _setProductId] = useState([]);
   const [showFilterComp, setShowFilterComp] = useState(0);
-  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [token, _setToken] = useState();
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   const openSearchBar = () => {
@@ -100,7 +100,7 @@ export const ProductProvider = ({ children }) => {
 
   const getCategoriesWithChildren = async (categoryName) => {
     const response = await axios.get(
-      "categories/" + categoryName.replaceAll("-", " ")
+      "category/" + categoryName.replaceAll("-", " ")
     );
     setCategoryChildren(response.data);
   };

@@ -1,8 +1,8 @@
-import React, { useRef, useContext, useState, useEffect } from 'react';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
-import logo from '../../assets/prenatal.png';
-import ProductContext from '../../Context/ProductContext';
-import axiosClient from '../../axios-client';
+import React, { useRef, useContext, useState, useEffect } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import logo from "../../assets/prenatal.png";
+import ProductContext from "../../Context/ProductContext";
+import axiosClient from "../../axios-client";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Login = () => {
   const passwordRef = useRef();
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('ACCESS_TOKEN');
+    const loggedInUser = localStorage.getItem("ACCESS_TOKEN");
     if (loggedInUser) {
       setauthenticated(loggedInUser);
     }
@@ -28,11 +28,11 @@ const Login = () => {
     };
 
     axiosClient
-      .post('/login', payload)
+      .post("/login", payload)
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
-        navigate('/');
+        navigate("/");
       })
       .catch((err) => {
         const response = err.response;

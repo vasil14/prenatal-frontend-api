@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import ProductContext from '../../Context/ProductContext';
+import React, { useState, useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/navigation";
+import ProductContext from "../../Context/ProductContext";
 
 const Cards = ({
   image,
@@ -14,14 +14,14 @@ const Cards = ({
   marke,
   title,
   id,
-  size = '300px',
+  size = "300px",
 }) => {
   SwiperCore.use([Navigation]);
   const { setProductId } = useContext(ProductContext);
   const [showCarusel, setShowCarusel] = useState(false);
 
-  const _title = title.replaceAll('/', '-');
-  const _title_ = _title.replaceAll(' ', '-');
+  const _title = title.replaceAll("/", "-");
+  const _title_ = _title.replaceAll(" ", "-");
 
   const handleClick = (id) => {
     setProductId(id);
@@ -100,7 +100,7 @@ const Cards = ({
             {marke}
           </span>
 
-          <Link to={`${id}`}>
+          <Link to={`/product/${_title_}`}>
             <div className="mb-3 min-h-8">
               <span className="block whitespace-normal text-base leading-4">
                 {title}
