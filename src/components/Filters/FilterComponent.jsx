@@ -13,7 +13,6 @@ const FilterComponent = ({ totalProducts, colors }) => {
   const { showFilterComp, filterCompHandler } = useContext(ProductContext);
   const [getColors, setColors] = useState([""]);
 
-
   useEffect(() => {
     const colors = localStorage.getItem("COLORS")?.split(",");
     if (colors) {
@@ -66,7 +65,7 @@ const FilterComponent = ({ totalProducts, colors }) => {
         {showFilterComp === 4 && <GenereDropdown />}
         {showFilterComp === 5 && <ColoreDropdown colors={colors} />}
       </div>
-      {/* {getColors && (
+      {/* {localStorage.getItem("COLORS") && (
         <div className="mt-2 flex flex-wrap items-center text-sm space-x-2 text-gray-600">
           <p>Colore: </p>
           <div className="flex flex-row space-x-2">

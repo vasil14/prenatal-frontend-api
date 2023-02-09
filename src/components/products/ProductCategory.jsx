@@ -26,7 +26,7 @@ const ProductIndex = () => {
     }
     window.scrollTo({ top: 0 });
   }, [subCat_3, subCat_2, subCat_1, categoryName, currentPage, colore]);
-  console.log(productsCategory.category);
+
   return (
     <div className="mx-auto container">
       <div className="py-6 px-5 ">

@@ -68,10 +68,6 @@ const Login = () => {
                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-            <p className="flex justify-center text-[11px] mx-2 ">
-              La password deve avere almeno 6 caratteri, con lettere maiuscole e
-              minuscole e numeri.
-            </p>
             <a
               href="#"
               className="flex mt-5 text-xs font-bold underline justify-end"

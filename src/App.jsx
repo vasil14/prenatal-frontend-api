@@ -1,12 +1,12 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { ProductProvider } from './Context/ProductContext';
-import Home from './containers/home/Home';
-import ProductCategory from './components/products/ProductCategory';
-import ProductView from './components/products/ProductView';
-import Navbar from './components/Navbar';
-import Login from './components/user/Login';
-import Register from './components/user/Register';
-import Footer from './components/Footer';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { ProductProvider } from "./Context/ProductContext";
+import Home from "./containers/home/Home";
+import ProductCategory from "./components/products/ProductCategory";
+import ProductView from "./components/products/ProductView";
+import Navbar from "./components/Navbar";
+import Login from "./components/user/Login";
+import Register from "./components/user/Register";
+import Footer from "./components/Footer";
 
 function App() {
   const location = useLocation();
@@ -14,7 +14,7 @@ function App() {
     <ProductProvider>
       {location.pathname.match(/login/) ||
       location.pathname.match(/register/) ? null : (
-        <div className="bg-white w-full left-0 top-0 z-50 relative">
+        <div className="bg-white w-full left-0 top-0 z-50  sticky">
           <Navbar />
         </div>
       )}

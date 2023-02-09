@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/prenatal.png";
 import axiosClient from "../../axios-client";
 import RadioButton from "../RadioButton";
@@ -11,6 +11,7 @@ const Register = () => {
   const { setUser, setToken } = useContext(ProductContext);
   const [getGender, setGender] = useState();
   const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate();
   const nameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
@@ -75,7 +76,7 @@ const Register = () => {
             />
           </div>
           <p className="flex justify-center text-[11px] mx-2 ">
-            La password deve avere almeno 6 caratteri, con lettere maiuscole e
+            La password deve avere almeno 8 caratteri, con lettere maiuscole e
             minuscole e numeri.
           </p>
           <div className="grid grid-cols-2 gap-5">

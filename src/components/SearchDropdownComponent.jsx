@@ -14,8 +14,6 @@ const SearchDropdownComponent = ({ onClick }) => {
     }
   }, [formValues]);
 
-  console.log(products);
-
   return (
     <div className="absolute top-0 bg-white w-full drop-shadow-xl h-modal min-h-screen overflow-auto">
       <div className="flex flex-row px-12 pt-8 justify-between">

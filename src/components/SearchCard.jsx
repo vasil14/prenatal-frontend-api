@@ -32,7 +32,7 @@ const SearchCard = ({ image, id, title, price, vip_price }) => {
               <div className="grid justify-items-start text-sm font-semibold font-poppins">
                 € {price}
               </div>
-              {vip_price != 0 && (
+              {vip_price > 0 && (
                 <div className="justify-items-start text-sm font-semibold font-poppins text-primary inline-block mt-1">
                   <span className="font-light text-sm">VIP Club</span>{" "}
                   {vip_price} €

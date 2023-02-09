@@ -35,7 +35,6 @@ const ColoreDropdown = ({ colors }) => {
             <div className="flex justify-start flex-wrap -ml-4 ">
               {colors?.map((item) => {
                 return item?.colors?.map(({ name, id }) => {
-                  console.log(name);
                   return (
                     <div key={id} className="ml-4 mt-4 min-w-[200px] ">
                       <input
