@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../BreadcrumbComponent";
-import Cards from "../cards/Cards";
+import BreadcrumbComponent from "../../components/BreadcrumbComponent";
+import Cards from "../../components/cards/Cards";
 import { Pagination } from "antd";
-import FilterComponent from "../Filters/FilterComponent";
+import FilterComponent from "../../components/Filters/FilterComponent";
 
 const ProductIndex = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);

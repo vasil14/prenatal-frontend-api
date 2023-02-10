@@ -10,7 +10,9 @@ const ProductContext = createContext({
 });
 
 export const ProductProvider = ({ children }) => {
-  const [formValues, setFormValues] = useState("");
+  const [formValues, setFormValues] = useState({
+    search: "",
+  });
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);

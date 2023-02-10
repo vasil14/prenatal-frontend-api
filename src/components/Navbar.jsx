@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/prenatal.png";
 import location from "../assets/location.png";
 import { categories, specialCat } from "../constants/index";
-import Account from "./user/Account";
+import AccountDropdown from "./user/AccountDropdown";
 import CategoryDropdown from "./CategoryDropdown";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import SearchComponent from "./SearchBarComponent";
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <div className="flex flex-row h-[25px] pr-3">
                   <img src={location} alt="icons" className="ml-4 " />
                   <div className="ml-4">
-                    <Account />
+                    <AccountDropdown />
                   </div>
                   <div className="ml-4 ">
                     <ShoppingCart />

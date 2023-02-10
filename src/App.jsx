@@ -1,8 +1,8 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ProductProvider } from "./Context/ProductContext";
 import Home from "./containers/home/Home";
-import ProductCategory from "./components/products/ProductCategory";
-import ProductView from "./components/products/ProductView";
+import ProductCategory from "./containers/products/ProductCategory";
+import ProductView from "./containers/products/ProductView";
 import Navbar from "./components/Navbar";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";

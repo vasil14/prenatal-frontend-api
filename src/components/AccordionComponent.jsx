@@ -2,15 +2,22 @@ import React from "react";
 import { Collapse } from "antd";
 const { Panel } = Collapse;
 
-const AccordionComponent = ({ data }) => {
+const AccordionComponent = ({ product }) => {
   return (
     <Collapse accordion ghost>
       <Panel header="INFO PRODOTTO" key="1">
         <p className="font-semibold">
-          Codice prodotto: <span className="font-normal"> {data[0]?.mpn} </span>{" "}
+          Codice prodotto:{" "}
+          <span className="font-normal"> {product[0]?.mpn} </span>{" "}
         </p>
         <p className="font-semibold">
-          Genere: <span className="font-normal"> {data[0]?.genere} </span>{" "}
+          Genere: <span className="font-normal"> {product[0]?.genere} </span>{" "}
+        </p>
+        <p className="font-semibold">
+          Colore: <span className="font-normal"> {product[0]?.colore} </span>{" "}
+        </p>
+        <p className="font-semibold">
+          Marche: <span className="font-normal"> {product[0]?.marche} </span>{" "}
         </p>
       </Panel>
 
