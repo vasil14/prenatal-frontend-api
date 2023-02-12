@@ -1,17 +1,20 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import ProductContext from "../Context/ProductContext";
-import logo_sm from "../assets/logo-small.jpg";
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+//Context
+import ProductContext from '../../Context/ProductContext';
+//Icons
+import logo_sm from '../../assets/images/logo-small.jpg';
 
 const SearchCard = ({ image, id, title, price, vip_price }) => {
   const { setProductId, setShowSearchDropdown } = useContext(ProductContext);
+
   const handleClick = (id) => {
     setProductId(id);
     setShowSearchDropdown(false);
   };
 
-  let _title = title.replaceAll("/", "-");
-  let _title_ = _title.replaceAll(" ", "-");
+  let _title = title.replaceAll('/', '-');
+  let _title_ = _title.replaceAll(' ', '-');
   return (
     <Link to={`/product/${_title_}`}>
       <div
@@ -34,13 +37,12 @@ const SearchCard = ({ image, id, title, price, vip_price }) => {
               </div>
               {vip_price > 0 && (
                 <div className="justify-items-start text-sm font-semibold font-poppins text-primary inline-block mt-1">
-                  <span className="font-light text-sm">VIP Club</span>{" "}
+                  <span className="font-light text-sm">VIP Club</span>{' '}
                   {vip_price} €
                 </div>
               )}
               <div className="grid justify-items-end">
                 <button className="bg-primary w-9 h-9 items-end rounded-md ">
-                  {" "}
                   <span className="p-auto font-poppins text-2xl font-bold text-white">
                     +
                   </span>

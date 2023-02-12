@@ -1,26 +1,24 @@
-import React from "react";
-import ProductContext from "../../Context/ProductContext";
-import { useContext, useEffect } from "react";
-import BreadcrumbComponent from "../../components/BreadcrumbComponent";
-import ProductDetailsComponent from "../../components/ProductDetailsComponent";
-import CardViewComponent from "../../components/cards/CardViewComponent";
+import { useContext, useEffect } from 'react';
+//ContextProvider
+import ProductContext from '../../Context/ProductContext';
+//Components
+import BreadcrumbComponent from '../../components/BreadcrumbComponent';
+import ProductDetailsComponent from '../../components/products/ProductDetailsComponent';
+import CardViewComponent from '../../components/cards/CardViewComponent';
 
 const ProductView = () => {
   const { product, getProduct } = useContext(ProductContext);
 
   useEffect(() => {
-    const id = localStorage.getItem("PRODUCT_ID");
-    if (id) {
-      getProduct(id);
-      window.scrollTo({ top: 0 });
-    }
-  }, [localStorage.getItem("PRODUCT_ID")]);
+    const id = localStorage.getItem('PRODUCT_ID');
+    if (id) getProduct(id);
+  }, [localStorage.getItem('PRODUCT_ID')]);
 
   return (
-    <div>
+    <>
       <div className="mt-4 container mx-auto">
         <BreadcrumbComponent
-          product_type={product[0]?.product_type?.replaceAll(" > ", "/")}
+          product_type={product[0]?.product_type?.replaceAll(' > ', '/')}
         />
       </div>
       <div className="container mx-auto">
@@ -29,7 +27,7 @@ const ProductView = () => {
           <ProductDetailsComponent product={product} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

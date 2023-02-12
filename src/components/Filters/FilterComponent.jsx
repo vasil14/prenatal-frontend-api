@@ -1,20 +1,20 @@
-import React, { useEffect, useContext, useState } from "react";
-import filter from "../../assets/filter.png";
-import FilterButton from "./FilterButton";
-import TagliaDropdown from "./TagliaDropdown";
-import MarcaDropdown from "./MarcaDropdown";
-import GenereDropdown from "./GenereDropdown";
-import PrezzoComponent from "./PrezzoComponent";
-import ColoreDropdown from "./ColoreDropdown";
-import ProductContext from "../../Context/ProductContext";
-import { filters } from "../../constants/index";
+import React, { useEffect, useContext, useState } from 'react';
+import filter from '../../assets/images/filter.png';
+import FilterButton from './FilterButton';
+import TagliaDropdown from './TagliaDropdown';
+import MarcaDropdown from './MarcaDropdown';
+import GenereDropdown from './GenereDropdown';
+import PrezzoComponent from './PrezzoComponent';
+import ColoreDropdown from './ColoreDropdown';
+import ProductContext from '../../Context/ProductContext';
+import { filters } from '../../constants/index';
 
 const FilterComponent = ({ totalProducts, colors }) => {
   const { showFilterComp, filterCompHandler } = useContext(ProductContext);
-  const [getColors, setColors] = useState([""]);
+  const [getColors, setColors] = useState(['']);
 
   useEffect(() => {
-    const colors = localStorage.getItem("COLORS")?.split(",");
+    const colors = localStorage.getItem('COLORS')?.split(',');
     if (colors) {
       setColors(colors);
     }

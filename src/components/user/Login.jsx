@@ -1,29 +1,32 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
-import logo from "../../assets/prenatal.png";
-import ProductContext from "../../Context/ProductContext";
-import axiosClient from "../../axios-client";
-import InputFieldComponent from "./InputFieldComponent";
+import { useRef, useContext, useState, useEffect } from 'react';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
+//Icons
+import logo from '../../assets/images/prenatal.png';
+//Components
+import ProductContext from '../../Context/ProductContext';
+import InputFieldComponent from './InputFieldComponent';
+//Axios
+import axiosClient from '../../axios-client';
 
 const Login = () => {
   const { setUser, setToken } = useContext(ProductContext);
 
-  const navigate = useNavigate();
   const [authenticated, setauthenticated] = useState(null);
-  const [getErrors, setErrors] = useState();
+  const [errors, setErrors] = useState();
 
+  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("ACCESS_TOKEN");
+    const loggedInUser = localStorage.getItem('ACCESS_TOKEN');
     if (loggedInUser) {
       setauthenticated(loggedInUser);
     }
     setTimeout(() => {
       setErrors(false);
     }, 3000);
-  }, [getErrors]);
+  }, [errors]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +37,11 @@ const Login = () => {
     };
 
     axiosClient
-      .post("/login", payload)
+      .post('/user/login', payload)
       .then(({ data }) => {
         setUser(data.user);
         setToken(data.token);
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         const response = err.response;
@@ -53,9 +56,9 @@ const Login = () => {
     return (
       <>
         <div className="relative flex flex-col justify-items-center-center overflow-hidden align-middle">
-          {getErrors && (
+          {errors && (
             <div className="mx-auto  px-20 py-3 rounded- bg-primary">
-              <h1>{getErrors}</h1>
+              <h1>{errors}</h1>
             </div>
           )}
           <Link to="/">
@@ -66,13 +69,13 @@ const Login = () => {
             <form onSubmit={onSubmit} className="mt-6">
               <InputFieldComponent
                 refProp={emailRef}
-                tyep={"email"}
-                placeholder={"Email"}
+                type={'email'}
+                placeholder={'Email'}
               />
               <InputFieldComponent
                 refProp={passwordRef}
-                tyep={"password"}
-                placeholder={"Password"}
+                type={'password'}
+                placeholder={'Password'}
               />
               <a
                 href="#"

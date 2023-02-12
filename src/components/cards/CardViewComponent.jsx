@@ -1,5 +1,5 @@
-import React from "react";
-import blank from "../../assets/blank.jpg";
+import React from 'react';
+import blank from '../../assets/images/blank.jpg';
 
 const CardViewComponent = ({ product }) => {
   return (

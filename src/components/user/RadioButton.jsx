@@ -1,6 +1,4 @@
-import React from "react";
-
-function RadioButton({ ref, descritpion, id }) {
+const RadioButton = ({ ref, descritpion, id }) => {
   return (
     <div className="form-check flex justify-items-center ml-4">
       <input
@@ -14,6 +12,6 @@ function RadioButton({ ref, descritpion, id }) {
       </label>
     </div>
   );
-}
+};
 
 export default RadioButton;

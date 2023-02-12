@@ -1,10 +1,8 @@
-import React from "react";
-
-const SizeComponent = ({ children }) => {
+const SizeComponent = ({ productChildren }) => {
   return (
     <div className="flex flex-wrap">
-      {children &&
-        children?.map((data, i) => (
+      {productChildren &&
+        productChildren?.map((data, i) => (
           <button
             key={i}
             type="button"

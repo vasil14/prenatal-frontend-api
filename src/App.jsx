@@ -1,15 +1,13 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { ProductProvider } from "./Context/ProductContext";
-import Home from "./containers/home/Home";
-import ProductCategory from "./containers/products/ProductCategory";
-import ProductView from "./containers/products/ProductView";
-import Navbar from "./components/Navbar";
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
-import Footer from "./components/Footer";
+import { useLocation } from 'react-router-dom';
+import { ProductProvider } from './Context/ProductContext';
+//Components
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import RoutesComponent from './components/routes/RoutesComponent';
 
-function App() {
+const App = () => {
   const location = useLocation();
+
   return (
     <ProductProvider>
       {location.pathname.match(/login/) ||
@@ -18,39 +16,13 @@ function App() {
           <Navbar />
         </div>
       )}
-
-      <div className="w-full">
-        <div className="flex justify-center items-center">
-          <div className="xl:max-w-[1300px] w-full">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route exact path="/product/:title" element={<ProductView />} />
-              <Route
-                path="/products/:categoryName"
-                element={<ProductCategory />}
-              >
-                <Route path=":subCat_1" element={<ProductCategory />} />
-                <Route
-                  path=":subCat_1/:subCat_2"
-                  element={<ProductCategory />}
-                />
-                <Route
-                  path=":subCat_1/:subCat_2/subCat_3"
-                  element={<ProductCategory />}
-                />
-              </Route>
-            </Routes>
-          </div>
-        </div>
-      </div>
+      <RoutesComponent />
       {location.pathname.match(/login/) ||
       location.pathname.match(/register/) ? null : (
         <Footer />
       )}
     </ProductProvider>
   );
-}
+};
 
 export default App;

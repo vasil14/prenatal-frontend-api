@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+import { createContext, useState } from 'react';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8000/api/';
 
 const ProductContext = createContext({
   user: null,
@@ -11,14 +12,14 @@ const ProductContext = createContext({
 
 export const ProductProvider = ({ children }) => {
   const [formValues, setFormValues] = useState({
-    search: "",
+    search: '',
   });
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [productsCategory, setProductsCategory] = useState([]);
   const [categoryChildren, setCategoryChildren] = useState([]);
   const [categoryIsOpen, setCategoryIdOpen] = useState(false);
-  const [getCategories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [user, setUser] = useState({});
   const [productId, _setProductId] = useState([]);
   const [showFilterComp, setShowFilterComp] = useState(0);
@@ -37,29 +38,32 @@ export const ProductProvider = ({ children }) => {
     value == showFilterComp ? setShowFilterComp(0) : setShowFilterComp(value);
   };
 
+  // Save ID in Local Storage
   const setProductId = (id) => {
     _setProductId(id);
 
     if (id) {
-      localStorage.setItem("PRODUCT_ID", id);
+      localStorage.setItem('PRODUCT_ID', id);
     } else {
-      localStorage.removeItem("PRODUCT_ID");
+      localStorage.removeItem('PRODUCT_ID');
     }
   };
 
+  // Save Token in Local Storage
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem("ACCESS_TOKEN", token);
+      localStorage.setItem('ACCESS_TOKEN', token);
     } else {
-      localStorage.removeItem("ACCESS_TOKEN");
+      localStorage.removeItem('ACCESS_TOKEN');
     }
   };
 
   const closeCategory = () => {
     setCategoryIdOpen(!categoryIsOpen);
   };
+
   const categoryHandler = (category) => {
     setCategoryIdOpen(!categoryIsOpen);
     setCategories(category);
@@ -70,39 +74,43 @@ export const ProductProvider = ({ children }) => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const getProducts = async (name) => {
-    const apiProducts = await axios.get("products?title=" + name);
-    setProducts(apiProducts.data);
-  };
-
+  // Get Product by ID
   const getProduct = async (getId) => {
-    const response = await axios.get("products/" + getId);
+    const response = await axios.get('products/' + getId);
     setProduct(response.data);
   };
 
+  // Get Products by title
+  const getProducts = async (name) => {
+    const apiProducts = await axios.get('products?title=' + name);
+    setProducts(apiProducts.data);
+  };
+
+  // Get Products by Category
   const getProductsCategory = async (categoryName, currentPage, colore) => {
     if (colore) {
       const response = await axios.get(
-        `products/categoria-prodotto/${categoryName.replaceAll(
-          "-",
-          " "
+        `products/category/${categoryName.replaceAll(
+          '-',
+          ' '
         )}?page=${currentPage}&colore=${colore}`
       );
       setProductsCategory(response.data);
     } else {
       const response = await axios.get(
-        `products/categoria-prodotto/${categoryName.replaceAll(
-          "-",
-          " "
+        `products/category/${categoryName.replaceAll(
+          '-',
+          ' '
         )}?page=${currentPage}`
       );
       setProductsCategory(response.data);
     }
   };
 
+  // Get Category with subCategories
   const getCategoriesWithChildren = async (categoryName) => {
     const response = await axios.get(
-      "category/" + categoryName.replaceAll("-", " ")
+      'category/' + categoryName.replaceAll('-', ' ')
     );
     setCategoryChildren(response.data);
   };
@@ -128,7 +136,7 @@ export const ProductProvider = ({ children }) => {
         closeCategory,
         categoryIsOpen,
         categoryHandler,
-        getCategories,
+        categories,
         productId,
         setProductId,
         showFilterComp,

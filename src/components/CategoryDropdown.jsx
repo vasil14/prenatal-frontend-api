@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
-import ProductContext from "../Context/ProductContext";
-import { Link } from "react-router-dom";
+import { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import ProductContext from '../Context/ProductContext';
 
 const CategoryDropdown = ({ categoryName }) => {
   const { categoryChildren, getCategoriesWithChildren, closeCategory } =
@@ -20,10 +20,10 @@ const CategoryDropdown = ({ categoryName }) => {
                 <div key={sub_1.id} className="py-8 pl-10 space-y-3 w-1/4">
                   <Link
                     to={
-                      "/products/" +
-                      categoryName.replaceAll(" ", "-").toLowerCase() +
-                      "/" +
-                      sub_1.name.replaceAll(" ", "-").toLowerCase()
+                      '/products/' +
+                      categoryName.replaceAll(' ', '-').toLowerCase() +
+                      '/' +
+                      sub_1.name.replaceAll(' ', '-').toLowerCase()
                     }
                   >
                     <h1
@@ -38,12 +38,12 @@ const CategoryDropdown = ({ categoryName }) => {
                       <div key={i} className="space-y-3.5">
                         <Link
                           to={
-                            "/products/" +
+                            '/products/' +
                             categoryName.toLowerCase() +
-                            "/" +
-                            sub_1.name.replaceAll(" ", "-").toLowerCase() +
-                            "/" +
-                            sub_2.name.replaceAll(" ", "-").toLowerCase()
+                            '/' +
+                            sub_1.name.replaceAll(' ', '-').toLowerCase() +
+                            '/' +
+                            sub_2.name.replaceAll(' ', '-').toLowerCase()
                           }
                         >
                           <h3
@@ -57,11 +57,11 @@ const CategoryDropdown = ({ categoryName }) => {
                           <div key={i} className="space-y-3.5">
                             <Link
                               to={`/products/${categoryName.toLowerCase()}/${sub_1.name
-                                .replaceAll(" ", "-")
+                                .replaceAll(' ', '-')
                                 .toLowerCase()}/${sub_2.name
-                                .replaceAll(" ", "-")
+                                .replaceAll(' ', '-')
                                 .toLowerCase()}/${sub_3.name
-                                .replaceAll(" ", "-")
+                                .replaceAll(' ', '-')
                                 .toLowerCase()}`}
                             >
                               <h3

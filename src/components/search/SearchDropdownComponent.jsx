@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import ProductContext from "../Context/ProductContext";
-import logo2 from "../assets/logo2.png";
-import close from "../assets/cancel.png";
-import SearchComponent from "./SearchBarComponent";
-import SearchCard from "./SearchCard";
+import { useContext, useEffect } from 'react';
+import ProductContext from '../../Context/ProductContext';
+//Components
+import SearchComponent from './SearchBarComponent';
+import SearchCard from './SearchCard';
+//Icons
+import logo2 from '../../assets/images/logo2.png';
+import close from '../../assets/images/cancel.png';
 
 const SearchDropdownComponent = ({ onClick }) => {
   const { products, getProducts, formValues } = useContext(ProductContext);

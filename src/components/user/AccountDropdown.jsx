@@ -1,16 +1,21 @@
-import React, { useContext } from "react";
-import user from "../../assets/user.png";
-import { Dropdown } from "flowbite-react";
-import { Link, useNavigate } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-
+import { useContext } from 'react';
+import { Dropdown } from 'flowbite-react';
+import { Link, useNavigate } from 'react-router-dom';
+//Icons
+import user from '../../assets/images/user.png';
+//Context
+import ProductContext from '../../Context/ProductContext';
+//Components
+import AccountButton from './AccountButton';
 const Account = () => {
   const { token, setToken } = useContext(ProductContext);
   const navigate = useNavigate();
+
   const logOutHandle = () => {
     setToken(null);
-    navigate("/");
+    navigate('/');
   };
+
   return (
     <div className="w-[26px]">
       <Dropdown
@@ -21,32 +26,19 @@ const Account = () => {
         placement="auto"
       >
         {token ? (
-          <>
-            <Dropdown.Item>
-              <button
-                className="bg-primary rounded-full w-[200px] h-[40px] mt-[8px] text-white text-[16px]"
-                onClick={logOutHandle}
-              >
-                LOG OUT
-              </button>
-            </Dropdown.Item>
-          </>
+          <Dropdown.Item>
+            <AccountButton onClick={logOutHandle}> LOG OUT</AccountButton>
+          </Dropdown.Item>
         ) : (
           <>
             <Dropdown.Item>
               <Link to="/login">
-                <button
-                  className="bg-primary rounded-full w-[200px] h-[40px] mt-[8px] text-white text-[16px] "
-                  onClick={logOutHandle}
-                >
-                  ACCEDI
-                </button>
+                <AccountButton onClick={logOutHandle}> ACCEDI</AccountButton>
               </Link>
             </Dropdown.Item>
-
             <div className="flex flex-row mt-2 ml-2 mb-2">
               <p className="text-primary text-[13px] font-poppins mr-1">
-                Nuovo su Prénatal?{" "}
+                Nuovo su Prénatal?{' '}
               </p>
               <a
                 className="underline text-primary text-[13px] font-poppins "

@@ -1,5 +1,8 @@
-import React from "react";
-import Checkbox from "../Checkbox";
+//Components
+import Checkbox from '../Checkbox';
+import ApplicaButton from './ApplicaButton';
+//Constants
+import { marce } from '../../constants/index';
 
 const MarcaDropdown = () => {
   return (
@@ -10,30 +13,18 @@ const MarcaDropdown = () => {
             Filtra per marca
           </h1>
           <div className="px-5 pb-2 flex flex-row gap-20">
-            <Checkbox
-              description={"Lines"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
-            <Checkbox
-              description={"Mamijux"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
-            <Checkbox
-              description={"Prénatal"}
-              rounded={"none"}
-              color={"gray-200"}
-            />
+            {marce.map((marca, i) => (
+              <Checkbox
+                key={i}
+                description={marca}
+                rounded={'none'}
+                color={'gray-200'}
+              />
+            ))}
           </div>
         </div>
         <div className="w-full px-5 pb-3 pt-5">
-          <button
-            className="rounded-full bg-primary text-white  text-sm font-normal uppercase px-5 py-1.5"
-            aria-label="Applica"
-          >
-            <span className="px-4 py-1">applica</span>
-          </button>
+          <ApplicaButton />
         </div>
       </div>
     </div>

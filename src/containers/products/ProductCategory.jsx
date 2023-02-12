@@ -1,18 +1,20 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import ProductContext from "../../Context/ProductContext";
-import BreadcrumbComponent from "../../components/BreadcrumbComponent";
-import Cards from "../../components/cards/Cards";
-import { Pagination } from "antd";
-import FilterComponent from "../../components/Filters/FilterComponent";
+import { useEffect, useContext, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+//ContextProvider
+import ProductContext from '../../Context/ProductContext';
+//Components
+import BreadcrumbComponent from '../../components/BreadcrumbComponent';
+import Cards from '../../components/cards/Cards';
+import FilterComponent from '../../components/filters/FilterComponent';
+import { Pagination } from 'antd';
 
-const ProductIndex = () => {
+const ProductCategory = () => {
   const { productsCategory, getProductsCategory } = useContext(ProductContext);
-  let { categoryName, subCat_1, subCat_2, subCat_3 } = useParams();
+  const { categoryName, subCat_1, subCat_2, subCat_3 } = useParams();
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const colore = searchParams.get("colore");
+  const colore = searchParams.get('colore');
 
   useEffect(() => {
     if (subCat_3) {
@@ -31,7 +33,7 @@ const ProductIndex = () => {
     <div className="mx-auto container">
       <div className="py-6 px-5 ">
         <BreadcrumbComponent
-          product_type={location.pathname.replace("/products/", "")}
+          product_type={location.pathname.replace('/products/', '')}
         />
       </div>
       <div className="px-5">
@@ -91,4 +93,4 @@ const ProductIndex = () => {
   );
 };
 
-export default ProductIndex;
+export default ProductCategory;

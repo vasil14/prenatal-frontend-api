@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { useState } from 'react';
+//Icons
+import cart from '../../assets/images/cart.png';
+//Components
+import BadgeComponent from './BadgeComponent';
+import CartDropdown from './CartDropdown';
 
-import cart from "../../assets/cart.png";
-import BadgeComponent from "./BadgeComponent";
-import CartDropdown from "./CartDropdown";
-
-function ShoppingCart() {
+const ShoppingCart = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  function cartHandler() {
+
+  const cartHandler = () => {
     setCartOpen(!cartOpen);
-  }
+  };
   return (
     <div className="relative items-center w-[26px] ">
       <BadgeComponent
@@ -18,6 +20,6 @@ function ShoppingCart() {
       {cartOpen && <CartDropdown />}
     </div>
   );
-}
+};
 
 export default ShoppingCart;

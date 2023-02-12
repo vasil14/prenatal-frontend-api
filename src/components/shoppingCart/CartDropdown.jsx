@@ -1,7 +1,8 @@
-import React from "react";
-import item from "../../assets/item.jpg";
-import Trash from "../../assets/trash.svg";
-import IncDecCounter from "./IncDecCounter";
+//Icons
+import item from '../../assets/images/item.jpg';
+import Trash from '../../assets/images/trash.svg';
+//Components
+import IncDecCounter from './IncDecCounter';
 
 const CartDropdown = () => {
   return (
@@ -53,7 +54,6 @@ const CartDropdown = () => {
           </div>
         </div>
         <button className="w-full flex uppercase justify-center items-center text-center rounded-full px-5 border focus:outline-none hover:bg-white hover:border-primary hover:text-primary text-base py-2 text-white bg-primary ">
-          {" "}
           CONCLUDI l'ORDINE
         </button>
       </div>

@@ -1,6 +1,4 @@
-import React from "react";
-
-const Checkbox = ({ description, rounded = "4px", color = "[#404040]" }) => {
+const Checkbox = ({ description, rounded = '4px', color = '[#404040]' }) => {
   return (
     <div className="flex flex-row form-check mt-[20px] w-[200px]">
       <input

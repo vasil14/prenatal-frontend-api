@@ -1,7 +1,8 @@
-import React from "react";
-import SizeComponent from "../components/SizeComponent";
-import AccordionComponent from "../components/AccordionComponent";
-import logo_sm from "../assets/logo-small.jpg";
+//Icons
+import logo_sm from '../../assets/images/logo-small.jpg';
+//Components
+import Taglia from './taglia';
+import AccordionComponent from '../AccordionComponent';
 
 const ProductDetailsComponent = ({ product }) => {
   return (
@@ -17,7 +18,7 @@ const ProductDetailsComponent = ({ product }) => {
         <div className="flex flex-col pb-4 border-b ">
           <div className="flex gap-2 md:gap-4 mt-1  ">
             <span className="text-primary font-poppins font-normal text-3xl md:text-4xl leading-none">
-              €{" "}
+              €
               {product[0]?.children[0]
                 ? product[0]?.children[0]?.price
                 : product[0]?.price}
@@ -34,7 +35,6 @@ const ProductDetailsComponent = ({ product }) => {
                 € {product[0]?.children[0]?.vip_price}
               </span>
               <span className="uppercase text-secondary text-xs ">
-                {" "}
                 Con Vip Card
               </span>
             </div>
@@ -42,26 +42,10 @@ const ProductDetailsComponent = ({ product }) => {
         )}
       </div>
       {product[0]?.children?.length ? (
-        <div className="my-10 space-y-6">
-          <div className="flex justify-between">
-            <p>Taglie</p>
-            <a href="#" className="underline-offset-2 underline">
-              Guida alle taglie
-            </a>
-          </div>
-          <SizeComponent children={product[0]?.children} />
-        </div>
+        <Taglia productChildren={product[0]?.children} />
       ) : (
         product[0]?.taglia.length > 0 && (
-          <div className="my-10 space-y-6">
-            <div className="flex justify-between">
-              <p>Taglie</p>
-              <a href="#" className="underline-offset-2 underline">
-                Guida alle taglie
-              </a>
-            </div>
-            <SizeComponent children={product[0]?.taglia} />
-          </div>
+          <Taglia productChildren={product[0]?.taglia} />
         )
       )}
 

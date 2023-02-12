@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import 'react-datepicker/dist/react-datepicker.css';
 
 @tailwind base;
 @tailwind components;
@@ -41,7 +42,8 @@
   --tw-ring-color: none !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-pagination .ant-pagination-item {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-pagination
+  .ant-pagination-item {
   border: none !important;
 }
 
@@ -49,24 +51,29 @@
   background-color: #e72b6f !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal .ant-slider-track {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
+  .ant-slider-track {
   height: 2px !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::after {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::after {
   box-shadow: 0 0 0 2px #e72b6f !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal .ant-slider-handle {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider-horizontal
+  .ant-slider-handle {
   inset-block-start: -2px !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::after {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::after {
   width: 15px !important;
   height: 15px !important;
 }
 
-:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider .ant-slider-handle::before {
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-slider
+  .ant-slider-handle::before {
   width: 15px !important;
   height: 15px !important;
 }

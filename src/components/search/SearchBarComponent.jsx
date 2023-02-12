@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
-import searchIcon from "../assets/search_icon.png";
-import ProductContext from "../Context/ProductContext";
+import { useContext } from 'react';
+//Icons
+import searchIcon from '../../assets/images/search_icon.png';
+//Context
+import ProductContext from '../../Context/ProductContext';
 
 const SearchBarComponent = ({ onClick }) => {
   const { onChange, formValues } = useContext(ProductContext);
@@ -12,7 +14,7 @@ const SearchBarComponent = ({ onClick }) => {
         <img src={searchIcon} alt="searchIcon" />
         <input
           name="search"
-          value={formValues["search"]}
+          value={formValues['search']}
           className="bg-transparent border-none text-base py-1 px-2 w-full "
           placeholder="Ricerca..."
           onChange={onChange}
